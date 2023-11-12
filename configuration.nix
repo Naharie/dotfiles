@@ -9,6 +9,8 @@
       ./hardware-configuration.nix
 
       # Custom stuff
+      ./modules/home-manager.nix
+
       ./modules/hardware.nix
       ./modules/nvidia.nix
       ./modules/sound.nix
