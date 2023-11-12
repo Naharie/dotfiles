@@ -12,6 +12,7 @@
       ./modules/hardware.nix
       ./modules/nvidia.nix
       ./modules/sound.nix
+      ./modules/printing.nix
     ];
 
   # Bootloader.
