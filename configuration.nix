@@ -107,9 +107,11 @@
     libreoffice
     micro
     vscode
+    jetbrains.rider
 
     # Runtimes
     dotnet-sdk_8
+    dotnet-sdk_6
 
     # Games
     steam-run
