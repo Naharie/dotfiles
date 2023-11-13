@@ -1,6 +1,6 @@
 # The manual can be accessed with nixos-help
 
-{ config, pkgs, ... }:
+{ config, pkgs, dotnet-sdks, ... }:
 
 {
   imports =
@@ -109,9 +109,10 @@
     vscode
     jetbrains.rider
 
-    # Runtimes
-    dotnet-sdk_8
-    dotnet-sdk_6
+    # Runtimes / LSPs
+    dotnet-sdks.packages.${system}.combinedSdk
+
+    nixd
 
     # Games
     steam-run
@@ -125,22 +126,28 @@
     kdenlive
     obs-studio
     libresprite
+    gimp
+
+    # KDE Plasma
+    lightly-qt
+    libsForQt5.plasma-browser-integration
+    ddcutil
+
+    # Compatability
+    bottles
+    wine
 
     # Other
     calibre
     keepassxc
-    gimp
-    bottles
+    
     timeshift
     qalculate-qt
     ckb-next
-    wine
     fsearch
-    os-prober
+    #os-prober
+    imagemagick
 
-    lightly-qt
-    libsForQt5.plasma-browser-integration
-    ddcutil
     git
   ];
 
