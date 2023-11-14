@@ -3,7 +3,7 @@
 {
   packages = with pkgs; [
     # Code Editors
-    vscode
+    vscodium-fhs
     jetbrains.rider
 
     # Runtimes
