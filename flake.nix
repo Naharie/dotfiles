@@ -3,7 +3,6 @@
     home-manager.url = "github:nix-community/home-manager";
     nix-flatpak.url = "github:gmodena/nix-flatpak/main";
     dotnet-sdks.url = "path:/home/naharie/config/flakes/dotnet-sdks";
-    ddcutil-backend.url = "path:/home/naharie/config/flakes/ddcutil-backend";
   };
 
   outputs = { self, nixpkgs, nix-flatpak, home-manager, ... }@attrs: {
