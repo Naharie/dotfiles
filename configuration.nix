@@ -7,11 +7,15 @@
 
 { pkgs, ... }@input:
 
+# Software
 let gaming = import ./software/gaming.nix input;
 multimedia = import ./software/multimedia.nix input;
 system-management = import ./software/system.nix input;
 programming = import ./software/programming.nix input;
-communication = import ./software/communication.nix input; in
+communication = import ./software/communication.nix input;
+
+# Udev Rules
+ddcutil-rules = pkgs.callPackage ./udev/ddcutil.nix input; in
 
 {
   imports =
@@ -66,6 +70,12 @@ communication = import ./software/communication.nix input; in
     "io.github.congard.qnvsm"
   ];
   services.flatpak.update.onActivation = true;
+
+  services.udev.packages = [ ddcutil-rules ];
+
+  #services.udev.extraRules = ''
+  #  KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
+  #'';
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

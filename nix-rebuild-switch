@@ -4,4 +4,4 @@
 
 # The #valorium specifies the system hostname to build for.
 # This only important when building on a new blank system.
-nixos-rebuild switch --flake "/home/naharie/config#valorium"
+nixos-rebuild switch --flake "/home/naharie/config#valorium" "$@"
