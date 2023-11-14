@@ -1,13 +1,12 @@
 { pkgs, ... }:
 
 {
-  # Enable CUPS to print documents.
   services.printing = {
     enable = true;
     drivers = with pkgs; [
-      gutenprint
       canon-cups-ufr2
-      cups-filters
+      #gutenprint
+      #cups-filters
     ];
     browsing = true;
     browsedConf = ''

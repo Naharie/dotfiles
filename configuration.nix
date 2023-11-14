@@ -12,10 +12,7 @@ let gaming = import ./software/gaming.nix input;
 multimedia = import ./software/multimedia.nix input;
 system-management = import ./software/system.nix input;
 programming = import ./software/programming.nix input;
-communication = import ./software/communication.nix input;
-
-# Udev Rules
-ddcutil-rules = pkgs.callPackage ./udev/ddcutil.nix input; in
+communication = import ./software/communication.nix input; in
 
 {
   imports =
@@ -74,13 +71,9 @@ ddcutil-rules = pkgs.callPackage ./udev/ddcutil.nix input; in
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.05";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }

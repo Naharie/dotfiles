@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, ddcutil-backend, ... }:
 
 {
   packages = with pkgs; [
@@ -9,6 +9,7 @@
     timeshift
     
     ddcutil
+    ddcutil-backend.packages.${system}.ddcutil-backend
 
     libsForQt5.plasma-browser-integration
     libsForQt5.ksystemlog
