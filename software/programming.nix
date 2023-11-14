@@ -1,4 +1,4 @@
-{ pkgs, dotnet-sdks }:
+{ pkgs, dotnet-sdks, ... }:
 
 {
   packages = with pkgs; [
