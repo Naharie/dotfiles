@@ -73,10 +73,6 @@ ddcutil-rules = pkgs.callPackage ./udev/ddcutil.nix input; in
 
   services.udev.packages = [ ddcutil-rules ];
 
-  #services.udev.extraRules = ''
-  #  KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
-  #'';
-
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
