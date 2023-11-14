@@ -5,7 +5,7 @@
 # - Hostname in hardware/networking
 # - Kernel flag in hardware/boot-loader.nix
 
-{ pkgs, dotnet-sdks, ... }@input:
+{ pkgs, ... }@input:
 
 let gaming = import ./software/gaming.nix input;
 multimedia = import ./software/multimedia.nix input;
@@ -21,31 +21,16 @@ communication = import ./software/communication.nix input; in
       ./hardware/boot-loader.nix
       ./hardware/general.nix
       ./hardware/graphics.nix
+      ./hardware/networking.nix
       ./hardware/sound.nix
 
       ./modules/desktop-environment.nix
       ./modules/environment-variables.nix
+      ./modules/localization.nix
       ./modules/printing.nix
 
       ./modules/home-manager.nix
     ];
-
-  time.timeZone = "America/Denver";
-
-  # Localization
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
 
   nixpkgs.config.allowUnfree = true;
 
@@ -53,7 +38,7 @@ communication = import ./software/communication.nix input; in
   users.users.naharie = {
     isNormalUser = true;
     description = "Naharie";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "i2c" ];
     packages = with pkgs; [
       brave
       libreoffice
@@ -61,6 +46,7 @@ communication = import ./software/communication.nix input; in
       calibre
       keepassxc
       qalculate-qt
+      obsidian
     ]
       ++ gaming.packages
       ++ multimedia.packages
@@ -77,7 +63,6 @@ communication = import ./software/communication.nix input; in
 
   services.flatpak.enable = true;
   services.flatpak.packages = [
-    "md.obsidian.Obsidian"
     "io.github.congard.qnvsm"
   ];
   services.flatpak.update.onActivation = true;
