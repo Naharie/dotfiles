@@ -71,8 +71,6 @@ ddcutil-rules = pkgs.callPackage ./udev/ddcutil.nix input; in
   ];
   services.flatpak.update.onActivation = true;
 
-  services.udev.packages = [ ddcutil-rules ];
-
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
