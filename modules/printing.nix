@@ -26,7 +26,7 @@ BrowseProtocols all
     openFirewall = true;
   };
 
-  #networking.hosts = {
-  #  "192.168.1.137" = [ "Canon60ea6f.local" "Canon60ea6f" ];
-  #};
+  networking.hosts = {
+    "192.168.1.137" = [ "Canon60ea6f.local" "Canon60ea6f" ];
+  };
 }

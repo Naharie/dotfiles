@@ -111,8 +111,7 @@
 
     # Runtimes / LSPs
     dotnet-sdks.packages.${system}.combinedSdk
-
-    nixd
+    nil
 
     # Games
     steam-run
@@ -131,10 +130,10 @@
     # KDE Plasma
     lightly-qt
     libsForQt5.plasma-browser-integration
+    libsForQt5.ksystemlog
     ddcutil
 
     # Compatability
-    bottles
     wine
 
     # Other
@@ -166,6 +165,8 @@
     "com.discordapp.Discord"
     "com.skype.Client"
     "md.obsidian.Obsidian"
+    "io.github.congard.qnvsm"
+    "com.usebottles.bottles"
   ];
   services.flatpak.update.onActivation = true;
 
@@ -177,6 +178,8 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall.allowPing = true;
+  #networking.firewall.extraCommands = ''iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns'';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
