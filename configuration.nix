@@ -1,39 +1,38 @@
 # The manual can be accessed with nixos-help
 
-{ config, pkgs, dotnet-sdks, ... }:
+# To change for Isaiah:
+# - hardware-configuration (copy from fresh install)
+# - Hostname in hardware/networking
+# - Kernel flag in hardware/boot-loader.nix
+
+{ pkgs, dotnet-sdks, ... }@input:
+
+let gaming = import ./software/gaming.nix input;
+multimedia = import ./software/multimedia.nix input;
+system-management = import ./software/system.nix input;
+programming = import ./software/programming.nix input;
+communication = import ./software/communication.nix input; in
 
 {
   imports =
     [
-      # Include the results of the hardware scan.
       ./hardware-configuration.nix
 
-      # Custom stuff
-      ./modules/home-manager.nix
+      ./hardware/boot-loader.nix
+      ./hardware/general.nix
+      ./hardware/graphics.nix
+      ./hardware/sound.nix
 
-      ./modules/hardware.nix
-      ./modules/nvidia.nix
-      ./modules/sound.nix
+      ./modules/desktop-environment.nix
+      ./modules/environment-variables.nix
       ./modules/printing.nix
+
+      ./modules/home-manager.nix
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelModules = [ "i2c-dev" ];
-
-  # Extra flags like the one Isaiah needs.
-  # boot.kernelParams = [ "no-aer" ]
-
-  networking.hostName = "valorium";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
   time.timeZone = "America/Denver";
 
-  # Select internationalisation properties.
+  # Localization
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -48,21 +47,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  nixpkgs.config.allowUnfree = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.naharie = {
@@ -70,116 +55,35 @@
     description = "Naharie";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      # User packages
-    #  thunderbird
-    ];
+      brave
+      libreoffice
+      wine
+      calibre
+      keepassxc
+      qalculate-qt
+    ]
+      ++ gaming.packages
+      ++ multimedia.packages
+      ++ programming.packages
+      ++ communication.packages;
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  environment.sessionVariables = rec {
-    XDG_CACHE_HOME  = "$HOME/.cache";
-    XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME   = "$HOME/.local/share";
-    XDG_STATE_HOME  = "$HOME/.local/state";
-
-    # Not officially in the specification
-    XDG_BIN_HOME    = "$HOME/.local/bin";
-    PATH = [
-      "${XDG_BIN_HOME}"
-    ];
-
-    LIBVA_DRIVER_NAME = "vdpau";
-    GTK_USE_PORTAL = "1";
-    EDITOR="code --wait";
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # Internet
     firefox
-    brave
-
-    # Text Editors
-    kate
-    libreoffice
-    micro
-    vscode
-    jetbrains.rider
-
-    # Runtimes / LSPs
-    dotnet-sdks.packages.${system}.combinedSdk
-    nil
-
-    # Games
-    steam-run
-    minecraft
-
-    # Multimedia
-    darktable
-    vlc
-    puddletag
-    strawberry
-    kdenlive
-    obs-studio
-    libresprite
-    gimp
-
-    # KDE Plasma
-    lightly-qt
-    libsForQt5.plasma-browser-integration
-    libsForQt5.ksystemlog
-    ddcutil
-
-    # Compatability
-    wine
-
-    # Other
-    calibre
-    keepassxc
-    
-    timeshift
-    qalculate-qt
     ckb-next
-    fsearch
-    #os-prober
-    imagemagick
+  ] ++ system-management.packages;
 
-    git
-  ];
-
-  # Steam
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = false; # Open ports in the firewall for Source Dedicated Server
-  };
-
-  # List services that you want to enable:
+  programs.steam = gaming.steam;
 
   services.flatpak.enable = true;
   services.flatpak.packages = [
-    "com.discordapp.Discord"
-    "com.skype.Client"
     "md.obsidian.Obsidian"
     "io.github.congard.qnvsm"
-    "com.usebottles.bottles"
   ];
   services.flatpak.update.onActivation = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-  networking.firewall.allowPing = true;
-  #networking.firewall.extraCommands = ''iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns'';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
