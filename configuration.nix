@@ -48,6 +48,7 @@ communication = import ./software/communication.nix input; in
       keepassxc
       qalculate-qt
       obsidian
+      ledger
     ]
       ++ gaming.packages
       ++ multimedia.packages

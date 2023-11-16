@@ -9,9 +9,11 @@
     timeshift
 
     ddcutil
+    joycond
 
     libsForQt5.plasma-browser-integration
     libsForQt5.ksystemlog
+    libsForQt5.qt5.qtwebsockets
     lightly-qt
   ];
 }
