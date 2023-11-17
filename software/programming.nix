@@ -5,6 +5,7 @@
     # Code Editors
     vscodium
     jetbrains.rider
+    godot_4
 
     # Runtimes
     dotnet-sdks.packages.${system}.combinedSdk
