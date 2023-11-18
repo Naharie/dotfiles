@@ -1,10 +1,6 @@
 {
-  stdenv, lib, fetchzip
+  stdenv, lib, fetchzip, autoPatchelfHook
 
-# Patched dependencies
-, glibc_multi, xorg
-
-# Runtime dependencies
 , vulkan-loader
 , libGL
 , libX11
@@ -68,21 +64,15 @@ stdenv.mkDerivation rec {
   desktopFile = ./godot-beta.desktop;
   icon = ./icon.svg;
 
-  installPhase = let
-    libPath = lib.makeLibraryPath [
-      glibc_multi
-      xorg.libX11
-    ];
-  in ''
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
+
+  installPhase = ''
     mkdir -p "$out/bin"
 
     cp "Godot_v4.2-rc1_mono_linux.x86_64" $out/bin/godot
     cp -r GodotSharp "$out/bin"
-
-    #patchelf \
-    #  --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-    #  --set-rpath "${libPath}" \
-    #  "$out/bin/godot"
 
     mkdir -p "$out"/share/{applications,icons/hicolor/scalable/apps}
 
