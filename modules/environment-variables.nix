@@ -15,6 +15,6 @@
 
     LIBVA_DRIVER_NAME = "vdpau";
     GTK_USE_PORTAL = "1";
-    EDITOR="code --wait";
+    EDITOR="codium --wait";
   };
 }
