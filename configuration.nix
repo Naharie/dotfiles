@@ -34,6 +34,7 @@ communication = import ./software/communication.nix input; in
     ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.naharie = {

@@ -7,6 +7,7 @@
     libresprite
     gimp
     imagemagick
+    krita
 
     # Videos
     vlc

@@ -1,5 +1,17 @@
 [Desktop Entry]
-Name=Godot Beta
+Comment[en_US]=
+Comment=
 Exec=godot
-Type=Application
+GenericName[en_US]=
+GenericName=
 Icon=godot
+MimeType=
+Name[en_US]=Godot Beta
+Name=Godot Beta
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
