@@ -5,7 +5,7 @@
     # Code Editors
     vscodium
     jetbrains.rider
-    (pkgs.callPackage ./../derivations/godot-beta/godot-beta.nix { })
+    (pkgs.callPackage ./../derivations/godot-beta/package.nix { })
     #godot_4
 
     # Runtimes

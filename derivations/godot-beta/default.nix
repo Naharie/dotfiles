@@ -1,5 +1,5 @@
 let pkgs = import <nixpkgs> { }; in
 
 {
-  godot-beta = pkgs.callPackage ./godot-beta.nix { };
+  godot-beta = pkgs.callPackage ./package.nix { };
 }
