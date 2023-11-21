@@ -44,7 +44,7 @@ communication = import ./software/communication.nix input; in
     packages = with pkgs; [
       brave
       libreoffice
-      wine
+      wine64Packages.stableFull
       calibre
       keepassxc
       qalculate-qt
@@ -63,6 +63,9 @@ communication = import ./software/communication.nix input; in
   ] ++ system-management.packages;
 
   programs.steam = gaming.steam;
+
+  programs.command-not-found.enable = false;
+  programs.nix-index.enableBashIntegration = true;
 
   services.flatpak.enable = true;
   services.flatpak.packages = [

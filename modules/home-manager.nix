@@ -9,5 +9,7 @@
       userName  = "Naharie";
       userEmail = "oneofthosewhoescaped@gmail.com";
     };
+
+    programs.home-manager.enable = true;
   };
 }

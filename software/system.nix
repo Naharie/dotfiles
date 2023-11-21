@@ -16,6 +16,6 @@
     libsForQt5.qt5.qtwebsockets
     lightly-qt
 
-    (libsForQt5.callPackage ../derivations/kde-wallpaper-engine-backend/package.nix {})
+    #(libsForQt5.callPackage ../derivations/kde-wallpaper-engine-backend/package.nix {})
   ];
 }
