@@ -11,8 +11,13 @@
     ddcutil
     joycond
 
-    libsForQt5.plasma-browser-integration
+    partition-manager
+    libsForQt5.kpmcore
+
+    libsForQt5.filelight
     libsForQt5.ksystemlog
+
+    libsForQt5.plasma-browser-integration
     libsForQt5.qt5.qtwebsockets
     lightly-qt
 

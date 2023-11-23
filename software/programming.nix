@@ -1,4 +1,5 @@
-{ pkgs, dotnet-sdks, ... }:
+#{ pkgs, dotnet-sdks, ... }:
+{ pkgs, ... }:
 
 {
   packages = with pkgs; [
@@ -9,7 +10,7 @@
     #godot_4
 
     # Runtimes
-    dotnet-sdks.packages.${system}.combinedSdk
+    #dotnet-sdks.packages.${system}.combinedSdk
     python3
 
     # Packages

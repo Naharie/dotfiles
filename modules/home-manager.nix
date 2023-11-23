@@ -3,6 +3,7 @@
 {
   home-manager.users.naharie = {
     home.stateVersion = "23.11";
+    programs.home-manager.enable = true;
 
     programs.git = {
       enable = true;
@@ -10,6 +11,6 @@
       userEmail = "oneofthosewhoescaped@gmail.com";
     };
 
-    programs.home-manager.enable = true;
+    programs.eza.enableAliases = true;
   };
 }

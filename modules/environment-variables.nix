@@ -17,7 +17,7 @@
     GTK_USE_PORTAL = "1";
     
     # Wayland support in Electron apps
-    #NIXOS_OZONE_WL = "1";
+    NIXOS_OZONE_WL = "1";
 
     EDITOR="codium --wait";
   };

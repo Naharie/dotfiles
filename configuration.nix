@@ -8,7 +8,8 @@
 { pkgs, ... }@input:
 
 # Software
-let gaming = import ./software/gaming.nix input;
+let shell = import ./software/shell.nix input;
+gaming = import ./software/gaming.nix input;
 multimedia = import ./software/multimedia.nix input;
 system-management = import ./software/system.nix input;
 programming = import ./software/programming.nix input;
@@ -50,7 +51,9 @@ communication = import ./software/communication.nix input; in
       qalculate-qt
       obsidian
       ledger
+      libsForQt5.kdeconnect-kde
     ]
+      ++ shell.packages
       ++ gaming.packages
       ++ multimedia.packages
       ++ programming.packages
