@@ -35,7 +35,6 @@ communication = import ./software/communication.nix input; in
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "x86_64-linux";
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.naharie = {
     isNormalUser = true;
     description = "Naharie";
@@ -64,9 +63,8 @@ communication = import ./software/communication.nix input; in
   ] ++ system-management.packages;
 
   programs.steam = gaming.steam;
-
   programs.command-not-found.enable = false;
-  programs.nix-index.enableBashIntegration = true;
+  programs.nix-index.enableZshIntegration = true;
 
   services.flatpak.enable = true;
   services.flatpak.packages = [

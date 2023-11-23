@@ -34,7 +34,7 @@
         home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.naharie = import ./modules/home.nix inputs;
+            home-manager.users.naharie = import ./home/default.nix inputs;
           }
 
         ./configuration.nix

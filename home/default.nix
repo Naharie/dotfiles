@@ -12,4 +12,12 @@
     userName  = "Naharie";
     userEmail = "oneofthosewhoescaped@gmail.com";
   };
+
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      ls = "eza";
+      cat = "bat";
+    };
+  };
 }
