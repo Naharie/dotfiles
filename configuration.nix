@@ -39,6 +39,7 @@ communication = import ./software/communication.nix input; in
     isNormalUser = true;
     description = "Naharie";
     extraGroups = [ "networkmanager" "wheel" "i2c" ];
+    shell = pkgs.bash;
     packages = with pkgs; [
       brave
       libreoffice
@@ -64,7 +65,7 @@ communication = import ./software/communication.nix input; in
 
   programs.steam = gaming.steam;
   programs.command-not-found.enable = false;
-  programs.nix-index.enableZshIntegration = true;
+  programs.nix-index.enableBashIntegration = true;
 
   services.flatpak.enable = true;
   services.flatpak.packages = [
