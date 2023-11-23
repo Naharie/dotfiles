@@ -30,8 +30,6 @@ communication = import ./software/communication.nix input; in
       ./modules/environment-variables.nix
       ./modules/localization.nix
       ./modules/printing.nix
-
-      ./modules/home.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
