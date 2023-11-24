@@ -70,8 +70,13 @@ communication = import ./software/communication.nix input; in
   services.flatpak.enable = true;
   services.flatpak.packages = [
     "io.github.congard.qnvsm"
+    "io.github.everestapi.Olympus"
   ];
   services.flatpak.update.onActivation = true;
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = [ "a84ac5c10a50e083" ];
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

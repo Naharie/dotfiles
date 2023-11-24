@@ -8,6 +8,9 @@
 
     timeshift
 
+    zerotierone
+    (callPackage ../derivations/zerotier-gui/package.nix {})
+
     ddcutil
     joycond
 
