@@ -73,10 +73,9 @@ communication = import ./software/communication.nix input; in
     "io.github.everestapi.Olympus"
   ];
   services.flatpak.update.onActivation = true;
-  services.zerotierone = {
-    enable = true;
-    joinNetworks = [ "a84ac5c10a50e083" ];
-  };
+
+  services.zerotierone = communication.services.zerotierone;
+  services.murmur = communication.services.murmur;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

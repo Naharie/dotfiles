@@ -1,6 +1,6 @@
 {
   stdenv, fetchFromGitHub,
-  coreutils, gcc, gnumake, python311, python311Packages, zerotierone
+  coreutils, python311, python311Packages, zerotierone
 }:
 
 stdenv.mkDerivation {
@@ -21,8 +21,6 @@ stdenv.mkDerivation {
 
   buildInputs = [
     coreutils
-    gnumake
-    gcc
   ];
 
   runtimeDependencies = [
