@@ -13,6 +13,7 @@
     vlc
     kdenlive
     obs-studio
+    ffmpeg
 
     # Music
     puddletag
