@@ -1,10 +1,10 @@
-{ plasma-manager, ... }:
+{ nixpkgs, hyprland-nix, ... }:
 
 {
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
   imports = [
-    plasma-manager.homeManagerModules.plasma-manager
+    hyprland-nix.homeManagerModules.default
   ];
 
   programs.git = {

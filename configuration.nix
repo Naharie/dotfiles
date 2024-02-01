@@ -1,19 +1,4 @@
-# The manual can be accessed with nixos-help
-
-# To change for Isaiah:
-# - hardware-configuration (copy from fresh install)
-# - Hostname in hardware/networking
-# - Kernel flag in hardware/boot-loader.nix
-
 { pkgs, ... }@input:
-
-# Software
-let shell = import ./software/shell.nix input;
-gaming = import ./software/gaming.nix input;
-multimedia = import ./software/multimedia.nix input;
-system-management = import ./software/system.nix input;
-programming = import ./software/programming.nix input;
-communication = import ./software/communication.nix input; in
 
 {
   imports =
@@ -29,7 +14,7 @@ communication = import ./software/communication.nix input; in
       ./modules/desktop-environment.nix
       ./modules/environment-variables.nix
       ./modules/localization.nix
-      ./modules/printing.nix
+      ./modules/packages.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -40,32 +25,7 @@ communication = import ./software/communication.nix input; in
     description = "Naharie";
     extraGroups = [ "networkmanager" "wheel" "i2c" ];
     shell = pkgs.bash;
-    packages = with pkgs; [
-      brave
-      libreoffice
-      wine64Packages.stableFull
-      calibre
-      keepassxc
-      qalculate-qt
-      obsidian
-      ledger
-      libsForQt5.kdeconnect-kde
-    ]
-      ++ shell.packages
-      ++ gaming.packages
-      ++ multimedia.packages
-      ++ programming.packages
-      ++ communication.packages;
   };
-
-  environment.systemPackages = with pkgs; [
-    firefox
-    ckb-next
-  ] ++ system-management.packages;
-
-  programs.steam = gaming.steam;
-  programs.command-not-found.enable = false;
-  programs.nix-index.enableBashIntegration = true;
 
   services.flatpak.enable = true;
   services.flatpak.packages = [
@@ -74,15 +34,19 @@ communication = import ./software/communication.nix input; in
   ];
   services.flatpak.update.onActivation = true;
 
-  services.zerotierone = communication.services.zerotierone;
-  services.murmur = communication.services.murmur;
+  services.dbus.enable = true;
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = [ "a84ac5c10a50e083" ];
+  };
 
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  services.murmur.enable = true;
+  services.murmur.hostName = "valorium";
+  services.murmur.password = "valorium";
+
   system.stateVersion = "23.05";
 
+  nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }

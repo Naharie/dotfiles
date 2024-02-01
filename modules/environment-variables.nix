@@ -18,6 +18,7 @@
     
     # Wayland support in Electron apps
     NIXOS_OZONE_WL = "1";
+    MOZ_ENABLE_WAYLAND = "1";
 
     EDITOR="codium --wait";
   };
