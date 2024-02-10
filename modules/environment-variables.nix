@@ -13,7 +13,7 @@
       "${XDG_BIN_HOME}"
     ];
 
-    LIBVA_DRIVER_NAME = "vdpau";
+    #LIBVA_DRIVER_NAME = "vdpau";
     GTK_USE_PORTAL = "1";
     
     # Wayland support in Electron apps

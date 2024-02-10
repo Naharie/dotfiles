@@ -11,7 +11,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland-nix.url = "github:spikespaz/hyprland-nix";
+    #hyprland-nix.url = "github:spikespaz/hyprland-nix";
 
     # Packages
 

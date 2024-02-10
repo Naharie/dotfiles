@@ -1,4 +1,4 @@
-{ pkgs, ... }@input:
+{ pkgs, dotnet-sdks, ... }@input:
 
 {
   environment.systemPackages = with pkgs; [
@@ -7,10 +7,10 @@
     ################################
 
     firefox
-    floorp
     brave
 
-    webcord
+    #webcord
+    discord
     skypeforlinux
     mumble
     murmur
@@ -38,6 +38,7 @@
 
     # Videos
     vlc
+    mpv
     kdenlive
     obs-studio
     ffmpeg
@@ -79,7 +80,7 @@
     ############
 
     wine64Packages.stableFull
-    #dotnet-sdks.packages.${system}.combinedSdk
+    dotnet-sdks.packages.${system}.combinedSdk
     python3
 
     ########
@@ -91,7 +92,7 @@
     nil
 
     fsearch
-
+    avalonia-ilspy
     timeshift
 
     zerotierone
@@ -105,13 +106,12 @@
     libsForQt5.filelight
     libsForQt5.ksystemlog
     libsForQt5.bismuth
-
     libsForQt5.plasma-browser-integration
     libsForQt5.qt5.qtwebsockets
-
     libsForQt5.kdeconnect-kde
     libsForQt5.xdg-desktop-portal-kde
 
+    kde-rounded-corners
     lightly-qt
   ];
 
