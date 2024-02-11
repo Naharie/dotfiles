@@ -1,6 +1,8 @@
 {
   inputs = {    
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs";
+
     nix-flatpak.url = "github:gmodena/nix-flatpak/main";
     
     nix-index-database.url = "github:Mic92/nix-index-database";

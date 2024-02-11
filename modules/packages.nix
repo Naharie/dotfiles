@@ -24,6 +24,7 @@
     qalculate-qt
     obsidian
     ledger
+    gnome.gnome-calendar
 
     ##############
     # Multimedia #
