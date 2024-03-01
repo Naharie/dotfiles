@@ -15,6 +15,7 @@
     mumble
     murmur
     mediamtx
+    signal-desktop
 
     ##############################
     # Notes & Secrets & Planning #
@@ -24,7 +25,7 @@
     qalculate-qt
     obsidian
     ledger
-    gnome.gnome-calendar
+    libsForQt5.korganizer
 
     ##############
     # Multimedia #
@@ -71,7 +72,7 @@
     ################
 
     kate
-    vscodium
+    vscode
     jetbrains.rider
     #(pkgs.callPackage ./../derivations/godot-beta/package.nix { })
     godot_4
@@ -83,6 +84,8 @@
     wine64Packages.stableFull
     dotnet-sdks.packages.${system}.combinedSdk
     python3
+    typescript
+    nodejs_21
 
     ########
     # Misc #

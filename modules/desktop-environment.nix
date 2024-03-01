@@ -15,9 +15,9 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
   # Hyprland
 
-   programs.hyprland.enable = true;
+  programs.hyprland.enable = true;
 }
