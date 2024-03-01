@@ -23,30 +23,30 @@ in
         };
     };
 
-    home.pointerCursor = {
-        gtk.enable = true;
-        # x11.enable = true;
-        package = pkgs.kdePackages.breeze;
-        name = "Breeze";
-        size = 16;
-    };
+    #home.pointerCursor = {
+    #    gtk.enable = true;
+    #    # x11.enable = true;
+    #    package = pkgs.kdePackages.breeze;
+    #    name = "Breeze";
+    #    size = 16;
+    #};
 
-    gtk = {
-        enable = true;
+    #gtk = {
+    #    enable = true;
 
-        theme = {
-            name = "Breeze";
-        };
+    #    theme = {
+    #        name = "Breeze";
+    #    };
 
-        iconTheme = {
-            name = "Papirus-Teal-Core";
-        };
+    #    iconTheme = {
+    #        name = "Papirus-Teal-Core";
+    #    };
 
-        font = {
-            name = "Noto Sans";
-            size = 10;
-        };
-    };
+    #    font = {
+    #        name = "Noto Sans";
+    #        size = 10;
+    #    };
+    #};
 
 
     wayland.windowManager.hyprland = {
