@@ -1,7 +1,7 @@
 {
   inputs = {    
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    #nixpkgs.url = "github:nixos/nixpkgs";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/main";
     
@@ -24,10 +24,15 @@
     dotnet-sdks.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nix-flatpak, home-manager, nix-index-database, ... }@inputs: {
-    # valorium here is the system hostname
+  outputs = { self, nixpkgs, nix-flatpak, home-manager, nix-index-database, ... }@inputs:
+  let specialArgs = {
+    inputs = inputs;
+    system = "x86_64-linux";
+  }; in
+  {
+    # valorium here is the system hostname  
     nixosConfigurations.valorium = nixpkgs.lib.nixosSystem {
-      specialArgs = inputs;
+      specialArgs = specialArgs;
       modules = [
         nix-flatpak.nixosModules.nix-flatpak
         nix-index-database.nixosModules.nix-index
@@ -35,7 +40,7 @@
         home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.naharie = import ./home/default.nix inputs;
+            home-manager.users.naharie = import ./home/default.nix specialArgs;
         }
 
         ./configuration.nix

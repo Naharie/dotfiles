@@ -1,4 +1,4 @@
-{ pkgs, dotnet-sdks, ... }@input:
+{ pkgs, inputs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -82,7 +82,7 @@
     ############
 
     wine64Packages.stableFull
-    dotnet-sdks.packages.${system}.combinedSdk
+    inputs.dotnet-sdks.packages.${system}.combinedSdk
     python3
     typescript
     nodejs_21
