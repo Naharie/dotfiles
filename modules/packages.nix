@@ -86,6 +86,7 @@
     python3
     typescript
     nodejs_21
+      corepack
 
     ########
     # Misc #
