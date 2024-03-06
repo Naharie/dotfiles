@@ -56,7 +56,6 @@
 
     steam-run
     #minecraft
-    (callPackage ./../derivations/window-kill/package.nix {})
 
     #######
     # CLI #
