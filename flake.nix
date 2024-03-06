@@ -43,7 +43,20 @@
             home-manager.users.naharie = import ./home/default.nix specialArgs;
         }
 
-        ./configuration.nix
+        ./hardware-configuration.nix
+
+        ./hardware/boot-loader.nix
+        ./hardware/general.nix
+        ./hardware/graphics.nix
+        ./hardware/networking.nix
+        ./hardware/sound.nix
+
+        ./modules/desktop-environment.nix
+        ./modules/environment-variables.nix
+        ./modules/localization.nix
+        ./modules/packages.nix
+        ./modules/users.nix
+        ./modules/system.nix
       ];
     };
   };

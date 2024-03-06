@@ -136,4 +136,15 @@
 
   programs.command-not-found.enable = false;
   programs.nix-index.enableBashIntegration = true;
+
+  services.dbus.enable = true;
+
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = [ "a84ac5c10a50e083" ];
+  };
+
+  services.murmur.enable = true;
+  services.murmur.hostName = "valorium";
+  services.murmur.password = "valorium";
 }
