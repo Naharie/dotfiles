@@ -40,7 +40,7 @@
         home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.naharie = (import ./home/default.nix specialArgs);
+            home-manager.users.naharie = ./home/default.nix;
         }
 
         ./hardware-configuration.nix
