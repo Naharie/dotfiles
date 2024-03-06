@@ -1,0 +1,13 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=windowkill
+GenericName[en_US]=
+GenericName=
+Icon=steam
+MimeType=
+Name=Window Kill
+Path=
+Terminal=false
+TerminalOptions=
+Type=Application
