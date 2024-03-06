@@ -120,6 +120,14 @@
     lightly-qt
   ];
 
+  services.flatpak.enable = true;
+  services.flatpak.packages = [
+    "io.github.congard.qnvsm"
+    "io.github.everestapi.Olympus"
+    "us.zoom.Zoom"
+  ];
+  services.flatpak.update.onActivation = true;
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

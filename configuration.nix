@@ -27,14 +27,6 @@
     shell = pkgs.bash;
   };
 
-  services.flatpak.enable = true;
-  services.flatpak.packages = [
-    "io.github.congard.qnvsm"
-    "io.github.everestapi.Olympus"
-    "us.zoom.Zoom"
-  ];
-  services.flatpak.update.onActivation = true;
-
   services.dbus.enable = true;
 
   services.zerotierone = {
