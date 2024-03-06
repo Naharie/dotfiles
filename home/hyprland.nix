@@ -1,7 +1,5 @@
-{ inputs, system, ... }:
+{ pkgs, ... }:
 
-let pkgs = inputs.nixpkgs.legacyPackages.${system};
-in
 {
   home.pointerCursor = {
       gtk.enable = true;

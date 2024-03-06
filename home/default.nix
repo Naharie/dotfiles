@@ -3,6 +3,7 @@
 {
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
+
   imports = [
     #hyprland-nix.homeManagerModules.default
     ./hyprland.nix
