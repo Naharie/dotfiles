@@ -1,6 +1,29 @@
-{ ... }:
+{ inputs, system }:
 
+let pkgs = inputs.nixpkgs.legacyPackages.${system};
+in
 {
+  home.pointerCursor = {
+      gtk.enable = true;
+      # x11.enable = true;
+      package = pkgs.kdePackages.breeze;
+      name = "Breeze";
+      size = 24;
+  };
+  gtk = {
+      enable = true;
+      theme = {
+          name = "Breeze";
+      };
+      iconTheme = {
+          name = "Papirus-Teal-Core";
+      };
+      font = {
+          name = "Noto Sans";
+          size = 10;
+      };
+  };
+
   wayland.windowManager.hyprland = {
         enable = true;
         settings = {
