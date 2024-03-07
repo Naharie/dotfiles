@@ -6,7 +6,7 @@
 
   imports = [
     #hyprland-nix.homeManagerModules.default
-    ./hyprland.nix
+    #./hyprland.nix
   ];
 
   programs.git = {
