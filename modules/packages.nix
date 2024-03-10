@@ -44,9 +44,12 @@
     kdenlive
     ffmpeg
 
-    obs-studio
-    obs-studio-plugins.input-overlay
-    obs-studio-plugins.obs-pipewire-audio-capture
+    (pkgs.wrapOBS {
+      plugins = with pkgs.obs-studio-plugins; [
+        input-overlay
+        obs-pipewire-audio-capture
+      ];
+    })
 
     # Music
     puddletag
@@ -138,6 +141,9 @@
 
   programs.command-not-found.enable = false;
   programs.nix-index.enableBashIntegration = true;
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [];
 
   services.dbus.enable = true;
 
