@@ -93,6 +93,13 @@
     nodejs_21
       corepack
 
+    #############
+    # Databases #
+    #############
+
+    beekeeper-studio
+    mariadb_110
+
     ########
     # Misc #
     ########
@@ -104,6 +111,7 @@
     fsearch
     avalonia-ilspy
     timeshift
+    filezilla
 
     zerotierone
     (callPackage ./../derivations/zerotier-gui/package.nix {})
@@ -155,4 +163,7 @@
   services.murmur.enable = true;
   services.murmur.hostName = "valorium";
   services.murmur.password = "valorium";
+
+  services.mysql.enable = true;
+  services.mysql.package = pkgs.mariadb_110;
 }
