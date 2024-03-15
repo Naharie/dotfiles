@@ -1,8 +1,10 @@
 { lib
 , fetchFromGitHub
 , buildNpmPackage
-, plasma-framework
+, pkgs
 }:
+
+let plasma-framework = pkgs.libsForQt5.plasma-framework; in
 
 buildNpmPackage rec {
   pname = "polonium";
