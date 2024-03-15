@@ -123,7 +123,12 @@
     libsForQt5.kpmcore
     libsForQt5.filelight
     libsForQt5.ksystemlog
-    libsForQt5.bismuth
+
+    # Tiling Window Managers
+    # libsForQt5.bismuth
+    # libsForQt5.polonium
+    (callPackage ./../derivations/polonium.nix {})
+
     libsForQt5.plasma-browser-integration
     libsForQt5.qt5.qtwebsockets
     libsForQt5.kdeconnect-kde
