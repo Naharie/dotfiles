@@ -60,7 +60,9 @@
     ##########
 
     steam-run
-    #minecraft
+    minecraft
+    # Steam game version locking by making them packages
+    # https://github.com/Siegema/nix-steam
 
     #######
     # CLI #
@@ -110,7 +112,8 @@
 
     fsearch
     avalonia-ilspy
-    timeshift
+    # Backup Tool
+    vorta
     filezilla
 
     zerotierone
