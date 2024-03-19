@@ -61,6 +61,7 @@
 
     steam-run
     minecraft
+    lutris
     # Steam game version locking by making them packages
     # https://github.com/Siegema/nix-steam
 
