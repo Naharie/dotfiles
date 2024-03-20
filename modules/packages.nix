@@ -9,7 +9,7 @@
     firefox
     brave
 
-    #webcord
+    webcord
     discord
     skypeforlinux
     mumble
