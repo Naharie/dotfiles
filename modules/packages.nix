@@ -9,8 +9,8 @@
     firefox
     brave
 
-    webcord
     discord
+    webcord
     skypeforlinux
     mumble
     murmur
@@ -62,6 +62,7 @@
     steam-run
     minecraft
     lutris
+    heroic
     # Steam game version locking by making them packages
     # https://github.com/Siegema/nix-steam
 
@@ -84,6 +85,7 @@
     jetbrains.rider
     #(pkgs.callPackage ./../derivations/godot-beta/package.nix { })
     godot_4
+    libreoffice
 
     ############
     # Runtimes #
