@@ -9,8 +9,9 @@
     firefox
     brave
 
-    discord
+    #discord
     webcord
+    vesktop
     skypeforlinux
     mumble
     murmur
