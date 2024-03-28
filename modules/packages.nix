@@ -1,5 +1,7 @@
 { pkgs, inputs, ... }:
 
+let nur = import ../packages; in
+
 {
   environment.systemPackages = with pkgs; [
     ################################
@@ -62,7 +64,7 @@
     minecraft
     lutris
     heroic
-    (callPackage ./../packages/proton-ge {})
+    nur.proton-ge
 
     # Steam game version locking by making them packages
     # https://github.com/Siegema/nix-steam
@@ -84,7 +86,6 @@
     kate
     vscode
     jetbrains.rider
-    #(pkgs.callPackage ./../derivations/godot-beta/package.nix { })
     godot_4
     libreoffice
 
@@ -121,7 +122,7 @@
     filezilla
 
     zerotierone
-    (callPackage ./../packages/zerotier-gui {})
+    nur.zerotier-gui
 
     joycond
 
@@ -134,7 +135,7 @@
     # Tiling Window Managers
     # libsForQt5.bismuth
     # libsForQt5.polonium
-    (callPackage ./../packages/polonium {})
+    nur.polonium
 
     libsForQt5.plasma-browser-integration
     libsForQt5.qt5.qtwebsockets
