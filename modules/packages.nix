@@ -9,9 +9,8 @@
     firefox
     brave
 
-    #discord
+    discord
     webcord
-    vesktop
     skypeforlinux
     mumble
     murmur
@@ -26,7 +25,6 @@
     qalculate-qt
     obsidian
     ledger
-    libsForQt5.korganizer
 
     ##############
     # Multimedia #
@@ -64,6 +62,8 @@
     minecraft
     lutris
     heroic
+    (callPackage ./../packages/proton-ge {})
+
     # Steam game version locking by making them packages
     # https://github.com/Siegema/nix-steam
 
@@ -121,7 +121,7 @@
     filezilla
 
     zerotierone
-    (callPackage ./../derivations/zerotier-gui/package.nix {})
+    (callPackage ./../packages/zerotier-gui {})
 
     joycond
 
@@ -134,7 +134,7 @@
     # Tiling Window Managers
     # libsForQt5.bismuth
     # libsForQt5.polonium
-    (callPackage ./../derivations/polonium.nix {})
+    (callPackage ./../packages/polonium {})
 
     libsForQt5.plasma-browser-integration
     libsForQt5.qt5.qtwebsockets
