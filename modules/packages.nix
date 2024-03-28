@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 
-let nur = import ../packages; in
+let nur = import ../packages { inherit pkgs; }; in
 
 {
   environment.systemPackages = with pkgs; [
