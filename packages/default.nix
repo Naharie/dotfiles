@@ -6,5 +6,4 @@
 
   # Temporary packages until the main repo is updated
   polonium = pkgs.callPackage ./polonium {};
-  godot-beta = pkgs.callPackage ./godot-beta {};
 }
