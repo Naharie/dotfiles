@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> {} }:
 
 {
   zerotier-gui = pkgs.callPackage ./zerotier-gui {};
