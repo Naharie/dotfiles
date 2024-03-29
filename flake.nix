@@ -45,12 +45,11 @@
 
         ./hardware-configuration.nix
 
-        ./hardware/boot-loader.nix
-        ./hardware/general.nix
-        ./hardware/graphics.nix
-        ./hardware/networking.nix
-        ./hardware/sound.nix
-
+        ./modules/boot-loader.nix
+        ./modules/hardware.nix
+        ./modules/graphics.nix
+        ./modules/networking.nix
+        ./modules/sound.nix
         ./modules/desktop-environment.nix
         ./modules/environment-variables.nix
         ./modules/localization.nix
