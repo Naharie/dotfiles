@@ -23,6 +23,7 @@
     #MOZ_ENABLE_WAYLAND = "1";
 
     LIBVA_DRIVER_NAME = "nvidia";
+    #QT_QPA_PLATFORMTHEME="wayland;xcb";
     #XDG_SESSION_TYPE = "wayland";
     #GBM_BACKEND = "nvidia-drm";
     #__GLX_VENDOR_LIBRARY_NAME = "nvidia";

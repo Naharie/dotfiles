@@ -27,6 +27,9 @@ let nur = import ../packages { inherit pkgs; }; in
     qalculate-qt
     obsidian
     ledger
+    
+    # Finances
+    denaro
 
     ##############
     # Multimedia #
@@ -117,6 +120,7 @@ let nur = import ../packages { inherit pkgs; }; in
 
     fsearch
     avalonia-ilspy
+
     # Backup Tool
     vorta
     filezilla
@@ -163,8 +167,8 @@ let nur = import ../packages { inherit pkgs; }; in
   programs.command-not-found.enable = false;
   programs.nix-index.enableBashIntegration = true;
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [];
+  #programs.nix-ld.enable = true;
+  #programs.nix-ld.libraries = with pkgs; [];
 
   services.dbus.enable = true;
 
