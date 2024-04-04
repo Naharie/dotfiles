@@ -13,11 +13,13 @@
   # networking.firewall.enable = false;
   networking.firewall.allowPing = true;
 
-   networking.firewall = { 
-    enable = true;
+  networking.firewall = { 
+    enable = false;
     allowedTCPPortRanges = [ 
       # KDE Connect
       { from = 1714; to = 1764; }
+      # WORDS Testing
+      { from = 5118; to = 5118; }
     ];  
     allowedUDPPortRanges = [ 
       # KDE Connect

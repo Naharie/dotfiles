@@ -55,6 +55,8 @@ let nur = import ../packages { inherit pkgs; }; in
       ];
     })
 
+    yt-dlp
+
     # Music
     puddletag
     amberol
@@ -164,6 +166,7 @@ let nur = import ../packages { inherit pkgs; }; in
     dedicatedServer.openFirewall = false;
   };
 
+  programs.kdeconnect.enable = true;
   programs.command-not-found.enable = false;
   programs.nix-index.enableBashIntegration = true;
 
