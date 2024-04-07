@@ -24,6 +24,13 @@
       fsType = "vfat";
     };
 
+    fileSystems."/mnt/network-drive" =
+    { device = "//192.168.1.112/Public";
+      fsType = "cifs";
+      # This being public doesn't matter because the drive is only available on the local network.
+      options = [ "users" "nofail" "username=admin,password=xwHPP0vb6Pb0" "uid=1000" "cache=loose" ];
+    };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
