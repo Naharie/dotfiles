@@ -14,13 +14,13 @@
     variant = "";
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
+  # Enable touchpad support (enabled by default in most desktops).
   services.xserver.libinput.enable = true;
 
   # Hyprland
 
   programs.hyprland = {
-    enable = true;
+    enable = false;
     xwayland.enable = true;
   };
 }
