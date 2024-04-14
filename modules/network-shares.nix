@@ -11,15 +11,13 @@
       netbios name = Valorium
     '';
     shares = {
-      public = {
+      network-drive = {
         path = "/mnt/network-drive";
         browseable = "yes";
         "read only" = "no";
         "guest ok" = "no";
         "create mask" = "0644";
         "directory mask" = "0755";
-        "force user" = "naharie";
-        "force group" = "naharie";
       };
     };
   };
