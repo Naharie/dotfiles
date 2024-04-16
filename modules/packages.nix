@@ -26,7 +26,7 @@ let nur = import ../packages { inherit pkgs; }; in
     keepassxc
     qalculate-qt
     obsidian
-    ledger
+    super-productivity
     
     # Finances
     denaro
@@ -94,9 +94,9 @@ let nur = import ../packages { inherit pkgs; }; in
     godot_4
     libreoffice
 
-    ############
-    # Runtimes #
-    ############
+    ###############
+    # Programming #
+    ###############
 
     wine64Packages.stableFull
     inputs.dotnet-sdks.packages.${system}.combinedSdk
@@ -104,6 +104,8 @@ let nur = import ../packages { inherit pkgs; }; in
     typescript
     nodejs_21
       corepack
+    
+    avalonia-ilspy
 
     #############
     # Databases #
@@ -121,10 +123,12 @@ let nur = import ../packages { inherit pkgs; }; in
     nil
 
     fsearch
-    avalonia-ilspy
 
-    # Backup Tool
+    ##########
+    # Backup #
+    #########
     vorta
+
     filezilla
 
     zerotierone
