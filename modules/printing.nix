@@ -11,8 +11,8 @@ let nur = import ../packages { inherit pkgs; }; in
   services.printing = {
     enable = true;
     drivers = [
-      #pkgs.canon-cups-ufr2
-      nur.canon-cups-ufr2
+      pkgs.canon-cups-ufr2
+      #nur.canon-cups-ufr2
     ];
     browsing = true;
     browsedConf = ''
