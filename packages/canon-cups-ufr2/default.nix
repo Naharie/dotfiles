@@ -53,7 +53,7 @@ stdenv.mkDerivation {
 
     ( cd cndrvcups-common-${commonVer}/c3plmod_ipc
       make
-    )meta = with stdenv.lib; {
+    )meta = with lib; {
     description = "CUPS Linux drivers for Canon printers";
     homepage = http://www.canon.com/;
     license = licenses.unfree;
@@ -94,7 +94,7 @@ stdenv.mkDerivation {
 
     (cd cndrvcups-common-${commonVer}/Rule
       mkdir -p $out/share/usb
-      chmod 644 *.usb-quirks $out/share/usbmeta = with stdenv.lib; {
+      chmod 644 *.usb-quirks $out/share/usbmeta = with lib; {
     description = "CUPS Linux drivers for Canon printers";
     homepage = http://www.canon.com/;
     license = licenses.unfree;
@@ -159,7 +159,7 @@ inaepcm
     mv $out/bin/c3pldrv $out/bin/.c3pldrv-real
     ${i686_NIX_GCC}/bin/gcc -m32 ${./vfhs.c} -o $out/bin/c3pldrv -DOUT=\"$out\" -DEXEC=\"$out/bin/.c3pldrv-real\"
     wrapProgram "$out/bin/c3pldrv" \
-      --prefix LD_LIBRARY_PATH : ${stdenv.lib.makeLibraryPath [ pkgsi686Linux.stdenv.cc.cc.lib ]} \
+      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ pkgsi686Linux.stdenv.cc.cc.lib ]} \
       --prefix LD_LIBRARY_PATH : "$out/lib32"
 
 
