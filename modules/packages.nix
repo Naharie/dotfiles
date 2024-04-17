@@ -145,7 +145,6 @@ let nur = import ../packages { inherit pkgs; }; in
     # Tiling Window Managers
     # libsForQt5.bismuth
     # libsForQt5.polonium
-    nur.polonium
 
     libsForQt5.plasma-browser-integration
     libsForQt5.qt5.qtwebsockets

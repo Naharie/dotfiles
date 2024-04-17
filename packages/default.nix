@@ -3,7 +3,5 @@
 {
   zerotier-gui = pkgs.callPackage ./zerotier-gui {};
   proton-ge = pkgs.callPackage ./proton-ge {};
-
-  # Temporary packages until the main repo is updated
-  polonium = pkgs.callPackage ./polonium {};
+  canon-cups-ufr2 = pkgs.callPackage ./canon-cups-ufr2 {};
 }
