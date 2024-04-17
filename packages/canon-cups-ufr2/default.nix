@@ -1,4 +1,6 @@
-{stdenv, fetchurl, unzip, autoreconfHook, libtool, makeWrapper, cups, ghostscript, pkgsi686Linux, zlib }:
+# Thanks kazcw for this little hack!
+
+{lib, stdenv, fetchurl, unzip, autoreconfHook, libtool, makeWrapper, cups, ghostscript, pkgsi686Linux, zlib }:
 
 let
 
@@ -51,7 +53,14 @@ stdenv.mkDerivation {
 
     ( cd cndrvcups-common-${commonVer}/c3plmod_ipc
       make
-    )
+    )meta = with stdenv.lib; {
+    description = "CUPS Linux drivers for Canon printers";
+    homepage = http://www.canon.com/;
+    license = licenses.unfree;
+    maintainers = with maintainers; [
+      kylesferrazza
+    ];
+  };
 
     ##
     ## cndrvcups-common installPhase
@@ -85,7 +94,14 @@ stdenv.mkDerivation {
 
     (cd cndrvcups-common-${commonVer}/Rule
       mkdir -p $out/share/usb
-      chmod 644 *.usb-quirks $out/share/usb
+      chmod 644 *.usb-quirks $out/share/usbmeta = with stdenv.lib; {
+    description = "CUPS Linux drivers for Canon printers";
+    homepage = http://www.canon.com/;
+    license = licenses.unfree;
+    maintainers = with maintainers; [
+      kylesferrazza
+    ];
+  };
     )
 
     (cd cndrvcups-common-${commonVer}/data
@@ -226,12 +242,11 @@ inaepcm
       --prefix PATH ":" "$out/bin"
     '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "CUPS Linux drivers for Canon printers";
-    homepage = http://www.canon.com/;
+    homepage = "http://www.canon.com/";
+    sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      kylesferrazza
-    ];
+    maintainers = with maintainers; [ lluchs ];
   };
 }
