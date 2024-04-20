@@ -4,9 +4,9 @@ let nur = import ../packages { inherit pkgs; }; in
 
 {
   environment.systemPackages = with pkgs; [
-    ################################
-    # Web Browsers & Communication #
-    ################################
+    ##############
+    # Networking #
+    ##############
 
     firefox
     brave
@@ -19,6 +19,12 @@ let nur = import ../packages { inherit pkgs; }; in
     mediamtx
     signal-desktop
 
+    zerotierone
+    nur.zerotier-gui
+
+    # Remote file management
+    filezilla
+
     ##############################
     # Notes & Secrets & Planning #
     ##############################
@@ -27,6 +33,9 @@ let nur = import ../packages { inherit pkgs; }; in
     qalculate-qt
     obsidian
     super-productivity
+    
+    # EBooks
+    calibre
     
     # Finances
     denaro
@@ -74,30 +83,23 @@ let nur = import ../packages { inherit pkgs; }; in
     # Steam game version locking by making them packages
     # https://github.com/Siegema/nix-steam
 
-    #######
-    # CLI #
-    #######
-
-    bat
-    eza
-    git
-    micro
-    ddcutil
-
     ################
     # Text Editors #
     ################
 
     kate
-    vscode
-    jetbrains.rider
-    godot_4
     libreoffice
 
     ###############
     # Programming #
     ###############
 
+    # Code Editors
+    vscode
+    jetbrains.rider
+
+    # Languages / Runtimes
+    godot_4
     wine64Packages.stableFull
     inputs.dotnet-sdks.packages.${system}.combinedSdk
     python3
@@ -105,7 +107,9 @@ let nur = import ../packages { inherit pkgs; }; in
     nodejs_21
       corepack
     
+    # Utilities
     avalonia-ilspy
+    nil
 
     #############
     # Databases #
@@ -118,25 +122,20 @@ let nur = import ../packages { inherit pkgs; }; in
     # Misc #
     ########
 
-    calibre
     ckb-next
-    nil
 
     fsearch
 
-    ##########
-    # Backup #
-    #########
-    vorta
-
-    filezilla
-
-    zerotierone
-    nur.zerotier-gui
-
-    joycond
+    ####################
+    # System Utilities #
+    ####################
 
     partition-manager
+
+    # Backup
+    vorta
+
+    #joycond
 
     libsForQt5.kpmcore
     libsForQt5.filelight
@@ -150,6 +149,18 @@ let nur = import ../packages { inherit pkgs; }; in
     libsForQt5.qt5.qtwebsockets
     libsForQt5.kdeconnect-kde
     libsForQt5.xdg-desktop-portal-kde
+
+    # Command Line Utilities
+    bat
+    eza
+    git
+    micro
+    ddcutil
+    comma
+
+    #################
+    # System Tweaks #
+    #################
 
     kde-rounded-corners
     lightly-qt
