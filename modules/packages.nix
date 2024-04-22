@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 
-let nur = import ../packages { inherit pkgs; }; in
+let mur = import ../packages { inherit pkgs; }; in
 
 {
   environment.systemPackages = with pkgs; [
@@ -20,7 +20,7 @@ let nur = import ../packages { inherit pkgs; }; in
     signal-desktop
 
     zerotierone
-    nur.zerotier-gui
+    mur.zerotier-gui
 
     # Remote file management
     filezilla
@@ -35,7 +35,7 @@ let nur = import ../packages { inherit pkgs; }; in
     super-productivity
     
     # EBooks
-    calibre
+    #calibre
     
     # Finances
     denaro
@@ -78,7 +78,7 @@ let nur = import ../packages { inherit pkgs; }; in
     minecraft
     lutris
     heroic
-    nur.proton-ge
+    mur.proton-ge
 
     # Steam game version locking by making them packages
     # https://github.com/Siegema/nix-steam
