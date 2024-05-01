@@ -53,7 +53,7 @@
         ./modules/sound.nix
         ./modules/desktop-environment.nix
         ./modules/environment-variables.nix
-        #./modules/printing.nix
+        ./modules/printing.nix
         ./modules/localization.nix
         ./modules/packages.nix
         ./modules/users.nix

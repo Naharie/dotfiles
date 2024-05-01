@@ -99,7 +99,8 @@ let mur = import ../packages { inherit pkgs; }; in
     jetbrains.rider
 
     # Languages / Runtimes
-    mur.godot-bleeding
+    #mur.godot-bleeding
+    godot_4
 
     wine64Packages.stableFull
     inputs.dotnet-sdks.packages.${system}.combinedSdk
@@ -124,8 +125,8 @@ let mur = import ../packages { inherit pkgs; }; in
     ########
 
     ckb-next
-
     fsearch
+
 
     ####################
     # System Utilities #

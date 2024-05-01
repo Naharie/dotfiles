@@ -1,6 +1,5 @@
 { pkgs, ... }:
 
-let nur = import ../packages { inherit pkgs; }; in
 {
   services.avahi = {
     enable = true;
@@ -12,7 +11,7 @@ let nur = import ../packages { inherit pkgs; }; in
     enable = true;
     drivers = [
       pkgs.canon-cups-ufr2
-      #nur.canon-cups-ufr2
+      pkgs.ptouch-driver
     ];
     browsing = true;
     browsedConf = ''
