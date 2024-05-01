@@ -1,5 +1,6 @@
-{ ... }:
+{ pkgs, ... }:
 
+let mur = import ../packages { inherit pkgs; }; in
 {
   environment.sessionVariables = rec {
     XDG_CACHE_HOME  = "$HOME/.cache";
@@ -25,8 +26,12 @@
     LIBVA_DRIVER_NAME = "nvidia";
     #QT_QPA_PLATFORMTHEME="wayland;xcb";
     #XDG_SESSION_TYPE = "wayland";
+    #SDL_VIDEODRIVER = "wayland"
+    
     #GBM_BACKEND = "nvidia-drm";
     #__GLX_VENDOR_LIBRARY_NAME = "nvidia";
     #WLR_NO_HARDWARE_CURSORS = "1";
+
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${mur.proton-ge}";
   };
 }

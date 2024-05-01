@@ -99,12 +99,13 @@ let mur = import ../packages { inherit pkgs; }; in
     jetbrains.rider
 
     # Languages / Runtimes
-    godot_4
+    mur.godot-bleeding
+
     wine64Packages.stableFull
     inputs.dotnet-sdks.packages.${system}.combinedSdk
     python3
     typescript
-    nodejs_21
+    nodejs
       corepack
     
     # Utilities

@@ -15,7 +15,7 @@
   };
 
   # Enable touchpad support (enabled by default in most desktops).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Hyprland
 
