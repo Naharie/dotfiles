@@ -3,7 +3,7 @@
 {
   zerotier-gui = pkgs.callPackage ./zerotier-gui {};
   proton-ge = pkgs.callPackage ./proton-ge {};
-  canon-cups-ufr2 = pkgs.callPackage ./canon-cups-ufr2 {};
+  dotnet-sdks = pkgs.callPackage ./dotnet-sdks {};
 
   godot-bleeding = pkgs.callPackage ./godot-bleeding {};
 }

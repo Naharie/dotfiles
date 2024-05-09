@@ -35,7 +35,7 @@ let mur = import ../packages { inherit pkgs; }; in
     super-productivity
     
     # EBooks
-    #calibre
+    calibre
     
     # Finances
     denaro
@@ -103,7 +103,7 @@ let mur = import ../packages { inherit pkgs; }; in
     godot_4
 
     wine64Packages.stableFull
-    inputs.dotnet-sdks.packages.${system}.combinedSdk
+    mur.dotnet-sdks
     python3
     typescript
     nodejs
@@ -126,7 +126,6 @@ let mur = import ../packages { inherit pkgs; }; in
 
     ckb-next
     fsearch
-
 
     ####################
     # System Utilities #

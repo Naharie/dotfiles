@@ -19,9 +19,6 @@
 
     eza.url = "github:eza-community/eza";
     eza.inputs.nixpkgs.follows = "nixpkgs";
-
-    dotnet-sdks.url = "path:/home/naharie/config/flakes/dotnet-sdks";
-    dotnet-sdks.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, nix-flatpak, home-manager, nix-index-database, ... }@inputs:
