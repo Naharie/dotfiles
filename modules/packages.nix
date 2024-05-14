@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 let mur = import ../packages { inherit pkgs; }; in
 
@@ -75,10 +75,10 @@ let mur = import ../packages { inherit pkgs; }; in
     ##########
 
     steam-run
-    minecraft
+    #minecraft
     lutris
     heroic
-    mur.proton-ge
+    #mur.proton-ge
 
     # Steam game version locking by making them packages
     # https://github.com/Siegema/nix-steam
