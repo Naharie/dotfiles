@@ -24,6 +24,9 @@ let mur = import ../packages { inherit pkgs; }; in
     #MOZ_ENABLE_WAYLAND = "1";
 
     LIBVA_DRIVER_NAME = "nvidia";
+    
+    #KWIN_TRIPLE_BUFFER="1";
+
     #QT_QPA_PLATFORMTHEME="wayland;xcb";
     #XDG_SESSION_TYPE = "wayland";
     #SDL_VIDEODRIVER = "wayland"

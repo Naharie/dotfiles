@@ -33,6 +33,7 @@ let mur = import ../packages { inherit pkgs; }; in
     qalculate-qt
     obsidian
     super-productivity
+    merkuro
     
     # EBooks
     calibre
@@ -68,7 +69,7 @@ let mur = import ../packages { inherit pkgs; }; in
 
     # Music
     puddletag
-    amberol
+    elisa
 
     ##########
     # Gaming #
@@ -78,7 +79,7 @@ let mur = import ../packages { inherit pkgs; }; in
     #minecraft
     lutris
     heroic
-    #mur.proton-ge
+    mur.proton-ge
 
     # Steam game version locking by making them packages
     # https://github.com/Siegema/nix-steam
@@ -138,18 +139,12 @@ let mur = import ../packages { inherit pkgs; }; in
 
     #joycond
 
-    libsForQt5.kpmcore
-    libsForQt5.filelight
-    libsForQt5.ksystemlog
+    kdePackages.kpmcore
+    kdePackages.filelight
+    kdePackages.ksystemlog
 
-    # Tiling Window Managers
-    # libsForQt5.bismuth
-    # libsForQt5.polonium
-
-    libsForQt5.plasma-browser-integration
-    libsForQt5.qt5.qtwebsockets
-    libsForQt5.kdeconnect-kde
-    libsForQt5.xdg-desktop-portal-kde
+    kdePackages.plasma-browser-integration
+    kdePackages.xdg-desktop-portal-kde
 
     # Command Line Utilities
     bat
@@ -164,7 +159,11 @@ let mur = import ../packages { inherit pkgs; }; in
     #################
 
     kde-rounded-corners
-    lightly-qt
+    #lightly-qt
+  ];
+
+  nixpkgs.overlays = [
+    ../overlays/kwin-explicit-sync pkgs
   ];
 
   services.flatpak.enable = true;
@@ -185,9 +184,6 @@ let mur = import ../packages { inherit pkgs; }; in
   programs.command-not-found.enable = false;
   programs.nix-index.enableBashIntegration = true;
 
-  #programs.nix-ld.enable = true;
-  #programs.nix-ld.libraries = with pkgs; [];
-
   services.dbus.enable = true;
 
   services.zerotierone = {
@@ -201,4 +197,6 @@ let mur = import ../packages { inherit pkgs; }; in
 
   services.mysql.enable = true;
   services.mysql.package = pkgs.mariadb_110;
+
+  services.joycond.enable = true;
 }
