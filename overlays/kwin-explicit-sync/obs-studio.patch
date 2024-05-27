@@ -1,0 +1,61 @@
+diff --git a/UI/properties-view.cpp b/UI/properties-view.cpp
+index efd1afc20..b68ed7c30 100644
+--- a/UI/properties-view.cpp
++++ b/UI/properties-view.cpp
+@@ -270,7 +270,7 @@ QWidget *OBSPropertiesView::AddCheckbox(obs_property_t *prop)
+ 
+ 	QCheckBox *checkbox = new QCheckBox(QT_UTF8(desc));
+ 	checkbox->setCheckState(val ? Qt::Checked : Qt::Unchecked);
+-	return NewWidget(prop, checkbox, &QCheckBox::stateChanged);
++	return NewWidget(prop, checkbox, &QCheckBox::checkStateChanged);
+ }
+ 
+ QWidget *OBSPropertiesView::AddText(obs_property_t *prop, QFormLayout *layout,
+diff --git a/UI/window-basic-settings.cpp b/UI/window-basic-settings.cpp
+index 5aa1cf658..0c931fec2 100644
+--- a/UI/window-basic-settings.cpp
++++ b/UI/window-basic-settings.cpp
+@@ -788,7 +788,7 @@ OBSBasicSettings::OBSBasicSettings(QWidget *parent)
+ 		&OBSBasicSettings::SimpleReplayBufferChanged);
+ 	connect(ui->simpleRBSecMax, &QSpinBox::valueChanged, this,
+ 		&OBSBasicSettings::SimpleReplayBufferChanged);
+-	connect(ui->advOutSplitFile, &QCheckBox::stateChanged, this,
++	connect(ui->advOutSplitFile, &QCheckBox::checkStateChanged, this,
+ 		&OBSBasicSettings::AdvOutSplitFileChanged);
+ 	connect(ui->advOutSplitFileType, &QComboBox::currentIndexChanged, this,
+ 		&OBSBasicSettings::AdvOutSplitFileChanged);
+@@ -1403,7 +1403,7 @@ void OBSBasicSettings::LoadGeneralSettings()
+ 					"HideOBSWindowsFromCapture");
+ 		ui->hideOBSFromCapture->setChecked(hideWindowFromCapture);
+ 
+-		connect(ui->hideOBSFromCapture, &QCheckBox::stateChanged, this,
++		connect(ui->hideOBSFromCapture, &QCheckBox::checkStateChanged, this,
+ 			&OBSBasicSettings::HideOBSWindowWarning);
+ 	}
+ #endif
+diff --git a/UI/window-basic-transform.cpp b/UI/window-basic-transform.cpp
+index f0add7ec3..9a45ff290 100644
+--- a/UI/window-basic-transform.cpp
++++ b/UI/window-basic-transform.cpp
+@@ -71,7 +71,7 @@ OBSBasicTransform::OBSBasicTransform(OBSSceneItem item, OBSBasic *parent)
+ 		   &OBSBasicTransform::OnCropChanged);
+ 	HookWidget(ui->cropBottom, ISCROLL_CHANGED,
+ 		   &OBSBasicTransform::OnCropChanged);
+-	HookWidget(ui->cropToBounds, &QCheckBox::stateChanged,
++	HookWidget(ui->cropToBounds, &QCheckBox::checkStateChanged,
+ 		   &OBSBasicTransform::OnControlChanged);
+ 
+ 	ui->buttonBox->button(QDialogButtonBox::Close)->setDefault(true);
+diff --git a/UI/window-youtube-actions.cpp b/UI/window-youtube-actions.cpp
+index e0b27cef1..f29d04021 100644
+--- a/UI/window-youtube-actions.cpp
++++ b/UI/window-youtube-actions.cpp
+@@ -67,7 +67,7 @@ OBSYoutubeActions::OBSYoutubeActions(QWidget *parent, Auth *auth,
+ 		[](const QString &link) { QDesktopServices::openUrl(link); });
+ 
+ 	ui->scheduledTime->setVisible(false);
+-	connect(ui->checkScheduledLater, &QCheckBox::stateChanged, this,
++	connect(ui->checkScheduledLater, &QCheckBox::checkStateChanged, this,
+ 		[&](int state) {
+ 			ui->scheduledTime->setVisible(state);
+ 			if (state) {

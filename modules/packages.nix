@@ -39,7 +39,7 @@ let mur = import ../packages { inherit pkgs; }; in
     calibre
     
     # Finances
-    denaro
+    kmymoney
 
     ##############
     # Multimedia #
@@ -153,6 +153,7 @@ let mur = import ../packages { inherit pkgs; }; in
     micro
     ddcutil
     comma
+    nix-index
 
     #################
     # System Tweaks #

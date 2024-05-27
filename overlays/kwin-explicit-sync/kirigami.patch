@@ -1,0 +1,37 @@
+diff --git a/src/primitives/CMakeLists.txt b/src/primitives/CMakeLists.txt
+index 1ddcef71..7d15db2d 100644
+--- a/src/primitives/CMakeLists.txt
++++ b/src/primitives/CMakeLists.txt
+@@ -53,32 +53,6 @@ else()
+     set(_extra_options PRECOMPILE OPTIMIZED)
+ endif()
+ 
+-qt6_add_shaders(KirigamiPrimitives "shaders"
+-    BATCHABLE
+-    PREFIX "/qt/qml/org/kde/kirigami/primitives/shaders"
+-    FILES
+-        shaders/shadowedrectangle.vert
+-        shaders/shadowedrectangle.frag
+-        shaders/shadowedrectangle_lowpower.frag
+-        shaders/shadowedborderrectangle.frag
+-        shaders/shadowedborderrectangle_lowpower.frag
+-        shaders/shadowedtexture.frag
+-        shaders/shadowedtexture_lowpower.frag
+-        shaders/shadowedbordertexture.frag
+-        shaders/shadowedbordertexture_lowpower.frag
+-    OUTPUTS
+-        shadowedrectangle.vert.qsb
+-        shadowedrectangle.frag.qsb
+-        shadowedrectangle_lowpower.frag.qsb
+-        shadowedborderrectangle.frag.qsb
+-        shadowedborderrectangle_lowpower.frag.qsb
+-        shadowedtexture.frag.qsb
+-        shadowedtexture_lowpower.frag.qsb
+-        shadowedbordertexture.frag.qsb
+-        shadowedbordertexture_lowpower.frag.qsb
+-    ${_extra_options}
+-)
+-
+ include_static_dependencies(KirigamiPrimitives EXPORT KirigamiTargets)
+ 
+ ecm_finalize_qml_module(KirigamiPrimitives)
