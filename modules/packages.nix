@@ -163,7 +163,7 @@ let mur = import ../packages { inherit pkgs; }; in
   ];
 
   nixpkgs.overlays = [
-    ../overlays/kwin-explicit-sync pkgs
+    (import ../overlays/kwin-explicit-sync pkgs)
   ];
 
   services.flatpak.enable = true;
