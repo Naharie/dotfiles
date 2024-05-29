@@ -36,7 +36,8 @@ let mur = import ../packages { inherit pkgs; }; in
     merkuro
     
     # EBooks
-    calibre
+    # TODO: OVERLAY
+    #calibre
     
     # Finances
     kmymoney

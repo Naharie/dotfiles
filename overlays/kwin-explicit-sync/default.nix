@@ -190,19 +190,41 @@ in
         "shadowedbordertexture_lowpower.frag"
       ];
     });
+
+    kdeclarative = kdePrev.kdeclarative.overrideAttrs (old: {
+      src = pkgs.fetchgit {
+        url = "https://github.com/KDE/kdeclarative.git";
+        rev = "cadf45c3963056ba0be1d7216bae1badc25c6130";
+        sha256 = "sha256-tFKPAkqzUabY1gxGu70nkTNHeuVwNhCq4WNs571de5Q=";
+      };
+      patches = [ ./kdeclarative.patch ];
+      preInstall = (old.preInstall or "") + " " + compileShaders "$src/src/qmlcontrols/graphicaleffects" "$out/shaders" [
+        "badge.frag"
+        "preserveaspect.vert"
+        "lanczos2sharp.frag"
+      ];
+    });
   });
 
   obs-studio = prev.obs-studio.overrideAttrs (old: {
     src = pkgs.fetchgit {
       url = "https://github.com/obsproject/obs-studio.git";
     
-      rev = "69d274074e8d1a6bdcf6777a0feba8596a8ee9b0";
-      sha256 = "sha256-M4IINBoYrgkM37ykb4boHyWP8AxwMX0b7IAeeNIw9Qo=";
+      rev = "9eca7b75252666f2c9790adbce497f52cf72b41f";
+      sha256 = "sha256-vg1N+PWWSqkmhHTlXaJg9RSvgL9ke9rCvOJRxhACvVM=";
 
       fetchSubmodules = true;
     };
 
-    patches = old.patches ++ [ ./obs-studio.patch ];
-    buildInputs = old.buildInputs ++ [ pkgs.uthash pkgs.nv-codec-headers-12 pkgs.libajantv2 ];
+    postUnpack = old.postUnpack + ''
+      rm -rf "$sourceRoot/plugins/aja"
+      substituteInPlace "$sourceRoot/plugins/CMakeLists.txt" --replace "add_obs_plugin(aja PLATFORMS WINDOWS MACOS LINUX WITH_MESSAGE)" ""
+      substituteInPlace "$sourceRoot/plugins/CMakeLists.txt" --replace "add_subdirectory(aja)" ""
+
+      substituteInPlace "$sourceRoot/plugins/obs-websocket/src/forms/SettingsDialog.cpp" --replace "&QCheckBox::stateChanged" "&QCheckBox::checkStateChanged"
+    '';
+
+    patches = [ ./obs-studio.patch ];
+    buildInputs = old.buildInputs ++ [ pkgs.uthash pkgs.nv-codec-headers-12 ];
   });
 }
