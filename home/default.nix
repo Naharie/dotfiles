@@ -20,7 +20,6 @@
     shellAliases = {
       ls = "eza";
       cat = "bat";
-      wine = "wine64";
     };
   };
 }

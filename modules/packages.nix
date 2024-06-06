@@ -8,7 +8,8 @@ let mur = import ../packages { inherit pkgs; }; in
     # Networking #
     ##############
 
-    firefox
+    #firefox
+    firefoxpwa
     brave
 
     discord
@@ -18,6 +19,7 @@ let mur = import ../packages { inherit pkgs; }; in
     murmur
     mediamtx
     signal-desktop
+    zoom-us
 
     zerotierone
     mur.zerotier-gui
@@ -32,13 +34,10 @@ let mur = import ../packages { inherit pkgs; }; in
     keepassxc
     qalculate-qt
     obsidian
-    super-productivity
-    merkuro
     
     # EBooks
-    # TODO: OVERLAY
-    #calibre
-    
+    calibre
+
     # Finances
     kmymoney
 
@@ -61,7 +60,6 @@ let mur = import ../packages { inherit pkgs; }; in
 
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
-        input-overlay
         obs-pipewire-audio-capture
       ];
     })
@@ -104,7 +102,9 @@ let mur = import ../packages { inherit pkgs; }; in
     #mur.godot-bleeding
     godot_4
 
-    wine64Packages.stableFull
+    wine
+    wine64
+
     mur.dotnet-sdks
     python3
     typescript
@@ -134,6 +134,8 @@ let mur = import ../packages { inherit pkgs; }; in
     ####################
 
     partition-manager
+
+    wlx-overlay-s
 
     # Backup
     vorta
@@ -165,16 +167,21 @@ let mur = import ../packages { inherit pkgs; }; in
   ];
 
   nixpkgs.overlays = [
-    (import ../overlays/kwin-explicit-sync pkgs)
+    #(import ../overlays/kwin-explicit-sync pkgs)
   ];
 
   services.flatpak.enable = true;
   services.flatpak.packages = [
     "io.github.congard.qnvsm"
     "io.github.everestapi.Olympus"
-    "us.zoom.Zoom"
   ];
   services.flatpak.update.onActivation = true;
+
+  programs.firefox = {
+    enable = true;
+    package = pkgs.firefox;
+    nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
+  };
 
   programs.steam = {
     enable = true;
