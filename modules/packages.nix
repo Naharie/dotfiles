@@ -3,177 +3,125 @@
 let mur = import ../packages { inherit pkgs; }; in
 
 {
-  environment.systemPackages = with pkgs; [
-    ##############
-    # Networking #
-    ##############
+  environment.systemPackages = with pkgs; (
+    # Networking 
+    [
+      firefoxpwa
+      brave
 
-    #firefox
-    firefoxpwa
-    brave
+      discord
+      webcord
+      skypeforlinux
+      mumble
+      murmur
+      mediamtx
+      signal-desktop
+      zoom-us
 
-    discord
-    webcord
-    skypeforlinux
-    mumble
-    murmur
-    mediamtx
-    signal-desktop
-    zoom-us
+      zerotierone
+      mur.zerotier-gui
 
-    zerotierone
-    mur.zerotier-gui
-
-    # Remote file management
-    filezilla
-
-    ##############################
-    # Notes & Secrets & Planning #
-    ##############################
-
-    keepassxc
-    qalculate-qt
-    obsidian
-    
-    # EBooks
-    calibre
-
-    # Finances
-    kmymoney
-
-    ##############
-    # Multimedia #
-    ##############
-
+      # Remote file management
+      filezilla
+    ] ++
+    # Notes, secrets, and planning
+    [
+      keepassxc
+      qalculate-qt
+      obsidian
+      calibre
+      kmymoney
+    ] ++
+    # Text Editors
+    [
+      kate
+      libreoffice
+    ] ++
     # Photos
-    darktable
-    libresprite
-    gimp
-    imagemagick
-    krita
-
+    [
+      darktable
+      #libresprite
+      gimp
+      imagemagick
+      krita
+    ] ++
     # Videos
-    vlc
-    mpv
-    kdenlive
-    ffmpeg
+    [
+      vlc
+      kdenlive
+      ffmpeg
 
-    (pkgs.wrapOBS {
-      plugins = with pkgs.obs-studio-plugins; [
-        obs-pipewire-audio-capture
-      ];
-    })
+      (pkgs.wrapOBS {
+        plugins = with pkgs.obs-studio-plugins; [
+          obs-pipewire-audio-capture
+        ];
+      })
 
-    yt-dlp
-
+      yt-dlp
+    ] ++
     # Music
-    puddletag
-    elisa
+    [
+      puddletag
+      elisa
+      #musescore
+    ] ++
+    # Gaming
+    [
+      steam-run
+      prismlauncher
+      lutris
+      heroic
+      mur.proton-ge
+    ] ++
+    # Programming
+    [
+      vscode
+      jetbrains.rider
+      jetbrains.rust-rover
 
-    ##########
-    # Gaming #
-    ##########
+      godot_4
 
-    steam-run
-    #minecraft
-    lutris
-    heroic
-    mur.proton-ge
+      mur.dotnet-sdks
+      typescript
+      nodejs
+        corepack
+      
+      avalonia-ilspy
+      nil
 
-    # Steam game version locking by making them packages
-    # https://github.com/Siegema/nix-steam
-
-    ################
-    # Text Editors #
-    ################
-
-    kate
-    libreoffice
-
-    ###############
-    # Programming #
-    ###############
-
-    # Code Editors
-    vscode
-    jetbrains.rider
-
-    # Languages / Runtimes
-    #mur.godot-bleeding
-    godot_4
-
-    wine
-    wine64
-
-    mur.dotnet-sdks
-    python3
-    typescript
-    nodejs
-      corepack
-    
+      beekeeper-studio
+    ] ++
     # Utilities
-    avalonia-ilspy
-    nil
+    [
+      wine
+      wine64
+      fsearch
+      partition-manager
+      vorta
 
-    #############
-    # Databases #
-    #############
+      kdePackages.filelight
+      kdePackages.ksystemlog
+      kdePackages.plasma-browser-integration
+      kdePackages.xdg-desktop-portal-kde
 
-    beekeeper-studio
-    mariadb_110
-
-    ########
-    # Misc #
-    ########
-
-    ckb-next
-    fsearch
-
-    ####################
-    # System Utilities #
-    ####################
-
-    partition-manager
-
-    wlx-overlay-s
-
-    # Backup
-    vorta
-
-    #joycond
-
-    kdePackages.kpmcore
-    kdePackages.filelight
-    kdePackages.ksystemlog
-
-    kdePackages.plasma-browser-integration
-    kdePackages.xdg-desktop-portal-kde
-
-    # Command Line Utilities
-    bat
-    eza
-    git
-    micro
-    ddcutil
-    comma
-    nix-index
-
-    #################
-    # System Tweaks #
-    #################
-
-    kde-rounded-corners
-    #lightly-qt
-  ];
-
-  nixpkgs.overlays = [
-    #(import ../overlays/kwin-explicit-sync pkgs)
-  ];
+      bat
+      eza
+      git
+      micro
+      ddcutil
+      comma
+    ] ++
+    # Hardware
+    [
+      ckb-next
+    ]
+  );
 
   services.flatpak.enable = true;
   services.flatpak.packages = [
     "io.github.congard.qnvsm"
     "io.github.everestapi.Olympus"
+    #"us.zoom.Zoom"
   ];
   services.flatpak.update.onActivation = true;
 
@@ -191,6 +139,8 @@ let mur = import ../packages { inherit pkgs; }; in
 
   programs.kdeconnect.enable = true;
   programs.command-not-found.enable = false;
+
+  programs.nix-index.enable = true;
   programs.nix-index.enableBashIntegration = true;
 
   services.dbus.enable = true;
@@ -206,6 +156,4 @@ let mur = import ../packages { inherit pkgs; }; in
 
   services.mysql.enable = true;
   services.mysql.package = pkgs.mariadb_110;
-
-  services.joycond.enable = true;
 }
