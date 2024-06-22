@@ -16,7 +16,7 @@ let mur = import ../packages { inherit pkgs; }; in
       murmur
       mediamtx
       signal-desktop
-      zoom-us
+      #zoom-us
 
       zerotierone
       mur.zerotier-gui
@@ -48,7 +48,7 @@ let mur = import ../packages { inherit pkgs; }; in
     # Videos
     [
       vlc
-      kdenlive
+      olive-editor
       ffmpeg
 
       (pkgs.wrapOBS {
@@ -89,10 +89,23 @@ let mur = import ../packages { inherit pkgs; }; in
       avalonia-ilspy
       nil
 
-      beekeeper-studio
+      # TODO: Update later
+      #beekeeper-studio
     ] ++
     # Utilities
     [
+      easyeffects
+
+      mission-center
+      coolercontrol.coolercontrol-gui
+        # Do I need to manually specify these?
+        # Probably not, but doesn't hurt to be safe.
+        coolercontrol.coolercontrold
+        coolercontrol.coolercontrol-ui-data
+        coolercontrol.coolercontrol-liqctld
+
+      nvtopPackages.full
+
       wine
       wine64
       fsearch
