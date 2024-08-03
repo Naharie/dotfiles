@@ -17,9 +17,11 @@ let mur = import ../packages { inherit pkgs; }; in
       mediamtx
       signal-desktop
       #zoom-us
+      thunderbird
 
       zerotierone
       mur.zerotier-gui
+      rquickshare
 
       # Remote file management
       filezilla
@@ -31,6 +33,7 @@ let mur = import ../packages { inherit pkgs; }; in
       obsidian
       calibre
       kmymoney
+      todoist-electron
     ] ++
     # Text Editors
     [
@@ -41,14 +44,13 @@ let mur = import ../packages { inherit pkgs; }; in
     [
       darktable
       #libresprite
-      gimp
       imagemagick
       krita
     ] ++
     # Videos
     [
       vlc
-      olive-editor
+      kdenlive
       ffmpeg
 
       (pkgs.wrapOBS {
@@ -89,8 +91,7 @@ let mur = import ../packages { inherit pkgs; }; in
       avalonia-ilspy
       nil
 
-      # TODO: Update later
-      #beekeeper-studio
+      beekeeper-studio
     ] ++
     # Utilities
     [
@@ -108,6 +109,8 @@ let mur = import ../packages { inherit pkgs; }; in
 
       wine
       wine64
+      bottles
+
       fsearch
       partition-manager
       vorta
@@ -116,6 +119,14 @@ let mur = import ../packages { inherit pkgs; }; in
       kdePackages.ksystemlog
       kdePackages.plasma-browser-integration
       kdePackages.xdg-desktop-portal-kde
+      kdePackages.kio-gdrive
+
+      kdePackages.kaccounts-providers
+        kdePackages.kaccounts-integration
+        kdePackages.kcmutils
+        #mur.signon-plugin-oauth2
+
+      android-tools
 
       bat
       eza
@@ -141,7 +152,7 @@ let mur = import ../packages { inherit pkgs; }; in
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
-    nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
+    #nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
   };
 
   programs.steam = {
