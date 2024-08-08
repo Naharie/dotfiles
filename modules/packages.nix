@@ -22,6 +22,7 @@ let mur = import ../packages { inherit pkgs; }; in
       zerotierone
       mur.zerotier-gui
       rquickshare
+      miraclecast
 
       # Remote file management
       filezilla

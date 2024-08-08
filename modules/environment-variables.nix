@@ -21,7 +21,7 @@ let mur = import ../packages { inherit pkgs; }; in
     
     # Wayland support in Electron apps
     NIXOS_OZONE_WL = "1";
-    MOZ_ENABLE_WAYLAND = "0";
+    MOZ_ENABLE_WAYLAND = "1";
 
     LIBVA_DRIVER_NAME = "nvidia";
     KWIN_TRIPLE_BUFFER="1";
