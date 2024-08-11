@@ -6,26 +6,25 @@ let mur = import ../packages { inherit pkgs; }; in
   environment.systemPackages = with pkgs; (
     # Networking 
     [
-      firefoxpwa
+      #firefoxpwa
       brave
 
       discord
       webcord
       skypeforlinux
-      mumble
-      murmur
-      mediamtx
-      signal-desktop
-      #zoom-us
-      thunderbird
+      #mediamtx
+      #signal-desktop
 
-      zerotierone
-      mur.zerotier-gui
-      rquickshare
+      #zerotierone
+      #mur.zerotier-gui
+
+      localsend
       miraclecast
+      #syncthing
+      #  syncthingtray
 
       # Remote file management
-      filezilla
+      #filezilla
     ] ++
     # Notes, secrets, and planning
     [
@@ -34,7 +33,7 @@ let mur = import ../packages { inherit pkgs; }; in
       obsidian
       calibre
       kmymoney
-      todoist-electron
+      #todoist-electron
     ] ++
     # Text Editors
     [
@@ -92,7 +91,7 @@ let mur = import ../packages { inherit pkgs; }; in
       avalonia-ilspy
       nil
 
-      beekeeper-studio
+      #beekeeper-studio
     ] ++
     # Utilities
     [
@@ -120,12 +119,8 @@ let mur = import ../packages { inherit pkgs; }; in
       kdePackages.ksystemlog
       kdePackages.plasma-browser-integration
       kdePackages.xdg-desktop-portal-kde
-      kdePackages.kio-gdrive
-
-      kdePackages.kaccounts-providers
-        kdePackages.kaccounts-integration
-        kdePackages.kcmutils
-        #mur.signon-plugin-oauth2
+      #kdePackages.kio-gdrive
+      #  mur.signon-plugin-oauth2
 
       android-tools
 
@@ -146,7 +141,7 @@ let mur = import ../packages { inherit pkgs; }; in
   services.flatpak.packages = [
     "io.github.congard.qnvsm"
     "io.github.everestapi.Olympus"
-    #"us.zoom.Zoom"
+    "us.zoom.Zoom"
   ];
   services.flatpak.update.onActivation = true;
 
@@ -162,7 +157,7 @@ let mur = import ../packages { inherit pkgs; }; in
     dedicatedServer.openFirewall = false;
   };
 
-  programs.kdeconnect.enable = true;
+  programs.kdeconnect.enable = false;
   programs.command-not-found.enable = false;
 
   programs.nix-index.enable = true;
@@ -171,11 +166,11 @@ let mur = import ../packages { inherit pkgs; }; in
   services.dbus.enable = true;
 
   services.zerotierone = {
-    enable = true;
+    enable = false;
     joinNetworks = [ "a84ac5c10a50e083" ];
   };
 
-  services.murmur.enable = true;
+  services.murmur.enable = false;
   services.murmur.hostName = "valorium";
   services.murmur.password = "valorium";
 
