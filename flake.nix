@@ -46,7 +46,6 @@
         ./modules/hardware.nix
         ./modules/graphics.nix
         ./modules/networking.nix
-        ./modules/network-shares.nix
         ./modules/sound.nix
         ./modules/desktop-environment.nix
         ./modules/environment-variables.nix

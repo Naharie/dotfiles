@@ -16,8 +16,8 @@ let fetchurl = args@{url, hash, ...}:
     updateScriptPreamble = ''
       set -eou pipefail
       PATH=${with pkgs; lib.makeBinPath [ common-updater-scripts coreutils curl gnugrep gnused jq nix ]}
-      sources_file=${__curPos.file}
       source ${./update-lib.sh}
+      sources_file=${__curPos.file}
     '';
 
     inherit (pkgs) writeShellScript;
