@@ -4,21 +4,24 @@
     #nixpkgs.url = "github:nixos/nixpkgs";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/main";
-    
-    nix-index-database.url = "github:Mic92/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     # Home Manager
     
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    #hyprland-nix.url = "github:spikespaz/hyprland-nix";
-
     # Packages
+
+    #hyprland-nix.url = "github:spikespaz/hyprland-nix";
 
     eza.url = "github:eza-community/eza";
     eza.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
+    affinity-nix.url = "github:mrshmllow/affinity-nix";
+    affinity-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, nix-flatpak, home-manager, nix-index-database, ... }@inputs:
@@ -31,6 +34,11 @@
     nixosConfigurations.valorium = nixpkgs.lib.nixosSystem {
       specialArgs = specialArgs;
       modules = [
+        ./hardware-configuration.nix
+        
+        ./modules/system.nix
+        ./modules/boot-loader.nix
+
         nix-flatpak.nixosModules.nix-flatpak
         nix-index-database.nixosModules.nix-index
 
@@ -40,9 +48,6 @@
             home-manager.users.naharie = ./home/default.nix;
         }
 
-        ./hardware-configuration.nix
-
-        ./modules/boot-loader.nix
         ./modules/hardware.nix
         ./modules/graphics.nix
         ./modules/networking.nix
@@ -53,7 +58,6 @@
         ./modules/localization.nix
         ./modules/packages.nix
         ./modules/users.nix
-        ./modules/system.nix
       ];
     };
   };

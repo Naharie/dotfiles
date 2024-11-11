@@ -16,6 +16,47 @@
         "type": "github"
       }
     },
+    "affinity-nix": {
+      "inputs": {
+        "elemental-wine-source": "elemental-wine-source",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "winetricks-source": "winetricks-source"
+      },
+      "locked": {
+        "lastModified": 1727655411,
+        "narHash": "sha256-0JWYShfwtE9hfHOggfbovEVHQeh84xfDE2p0fLXGzl4=",
+        "owner": "mrshmllow",
+        "repo": "affinity-nix",
+        "rev": "d57cc00e0cc09d05652f93df5167d8d165eb7efa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mrshmllow",
+        "repo": "affinity-nix",
+        "type": "github"
+      }
+    },
+    "elemental-wine-source": {
+      "flake": false,
+      "locked": {
+        "host": "gitlab.winehq.org",
+        "lastModified": 1693121664,
+        "narHash": "sha256-eMN4SN8980yteYODN2DQIVNEJMsGQE8OIdPs/7DbvqQ=",
+        "owner": "ElementalWarrior",
+        "repo": "wine",
+        "rev": "c12ed1469948f764817fa17efd2299533cf3fe1c",
+        "type": "gitlab"
+      },
+      "original": {
+        "host": "gitlab.winehq.org",
+        "owner": "ElementalWarrior",
+        "ref": "c12ed1469948f764817fa17efd2299533cf3fe1c",
+        "repo": "wine",
+        "type": "gitlab"
+      }
+    },
     "eza": {
       "inputs": {
         "advisory-db": "advisory-db",
@@ -275,6 +316,7 @@
     },
     "root": {
       "inputs": {
+        "affinity-nix": "affinity-nix",
         "eza": "eza",
         "home-manager": "home-manager",
         "nix-flatpak": "nix-flatpak",
@@ -336,6 +378,23 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "winetricks-source": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1704453875,
+        "narHash": "sha256-YTEgb19aoM54KK8/IjrspoChzVnWAEItDlTxpfpS52w=",
+        "owner": "winetricks",
+        "repo": "winetricks",
+        "rev": "bc91718a5cad45e9f33de9b351a5960d5395bed5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "winetricks",
+        "ref": "20240105",
+        "repo": "winetricks",
         "type": "github"
       }
     }

@@ -1,8 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, system, inputs, ... }:
 
+# Repos
+let affinity-nix = inputs.affinity-nix; in
 let mur = import ../packages { inherit pkgs; }; in
 
-# vorta and calibre (bafb3e4e13f24f9f665d4e4487c2ea597e65f23e)
+# Utilities
+let pin = import ../utilities/pin; in
+# Vorta & Calibre: bafb3e4e13f24f9f665d4e4487c2ea597e65f23e
 
 {
   environment.systemPackages = with pkgs; (
@@ -49,6 +53,7 @@ let mur = import ../packages { inherit pkgs; }; in
       #libresprite
       imagemagick
       krita
+      affinity-nix.packages.${system}.photo
     ] ++
     # Videos
     [
@@ -110,12 +115,9 @@ let mur = import ../packages { inherit pkgs; }; in
 
       wine
       wine64
-      bottles
-      mur.wine-affinity
 
       fsearch
       partition-manager
-      vorta
 
       kdePackages.filelight
       kdePackages.ksystemlog
