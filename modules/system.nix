@@ -1,9 +1,8 @@
-{ lib, ... }:
+{ system, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
-
-  nixpkgs.hostPlatform = "x86_64-linux";
+  nixpkgs.hostPlatform = system;
 
   system.stateVersion = "23.05";
 

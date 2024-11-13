@@ -1,6 +1,7 @@
 {
   inputs = {    
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    #nixpkgs.url = "github:numtide/nixpkgs-unfree/nixos-unstable";
     #nixpkgs.url = "github:nixos/nixpkgs";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/main";
@@ -21,7 +22,7 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     affinity-nix.url = "github:mrshmllow/affinity-nix";
-    affinity-nix.inputs.nixpkgs.follows = "nixpkgs";
+    affinity-nix.inputs.nixpkgs.url = "github:numtide/nixpkgs-unfree/nixos-unstable";
   };
 
   outputs = { self, nixpkgs, nix-flatpak, home-manager, nix-index-database, ... }@inputs:
