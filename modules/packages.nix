@@ -5,8 +5,8 @@ let affinity-nix = inputs.affinity-nix; in
 let mur = import ../packages { inherit pkgs; }; in
 
 # Utilities
-let pin = import ../utilities/pin; in
-# Vorta & Calibre: bafb3e4e13f24f9f665d4e4487c2ea597e65f23e
+let pin = import ../utilities/pin.nix system; in
+# Vorta & Calibre: bafb3e4e13f24f9f665d4e4487c2ea597e65f23e - sha256:0mxa39d48f5xa8rhk5q4nc2km9qn2bwgbsm0skzlp0yaqazj3yml
 
 {
   environment.systemPackages = with pkgs; (
@@ -38,7 +38,7 @@ let pin = import ../utilities/pin; in
       keepassxc
       qalculate-qt
       obsidian
-      calibre
+      (pin "bafb3e4e13f24f9f665d4e4487c2ea597e65f23e" "sha256:0mxa39d48f5xa8rhk5q4nc2km9qn2bwgbsm0skzlp0yaqazj3yml").calibre
       kmymoney
       todoist-electron
     ] ++
@@ -103,16 +103,6 @@ let pin = import ../utilities/pin; in
     [
       #easyeffects
 
-      mission-center
-      #coolercontrol.coolercontrol-gui
-        # Do I need to manually specify these?
-        # Probably not, but doesn't hurt to be safe.
-        #coolercontrol.coolercontrold
-        #coolercontrol.coolercontrol-ui-data
-        #coolercontrol.coolercontrol-liqctld
-
-      nvtopPackages.full
-
       wine
       wine64
 
@@ -145,9 +135,9 @@ let pin = import ../utilities/pin; in
 
   services.flatpak.enable = true;
   services.flatpak.packages = [
-    "io.github.congard.qnvsm"
     "io.github.everestapi.Olympus"
     "us.zoom.Zoom"
+    "io.github.zen_browser.zen"
   ];
   services.flatpak.update.onActivation = true;
 

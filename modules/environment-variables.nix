@@ -23,13 +23,6 @@ let mur = import ../packages { inherit pkgs; }; in
     NIXOS_OZONE_WL = "1";
     MOZ_ENABLE_WAYLAND = "1";
 
-    LIBVA_DRIVER_NAME = "nvidia";
-    KWIN_TRIPLE_BUFFER="1";
-
-    #QT_QPA_PLATFORMTHEME="wayland;xcb";
-    #XDG_SESSION_TYPE = "wayland";
-    #SDL_VIDEODRIVER = "wayland"
-
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${mur.proton-ge}";
   };
 }
