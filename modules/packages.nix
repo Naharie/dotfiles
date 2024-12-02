@@ -40,6 +40,7 @@ let pin = import ../utilities/pin.nix system; in
       obsidian
       (pin "bafb3e4e13f24f9f665d4e4487c2ea597e65f23e" "sha256:0mxa39d48f5xa8rhk5q4nc2km9qn2bwgbsm0skzlp0yaqazj3yml").calibre
       kmymoney
+      morgen
       todoist-electron
     ] ++
     # Text Editors
@@ -68,6 +69,7 @@ let pin = import ../utilities/pin.nix system; in
       })
 
       yt-dlp
+      makemkv
     ] ++
     # Music
     [
@@ -102,6 +104,8 @@ let pin = import ../utilities/pin.nix system; in
     # Utilities
     [
       #easyeffects
+
+      vorta
 
       wine
       wine64
