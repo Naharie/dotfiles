@@ -10,37 +10,26 @@ let pin = import ../utilities/pin.nix system; in
 
 {
   environment.systemPackages = with pkgs; (
-    # Networking 
+    # Internet & Communication
     [
-      #firefoxpwa
       brave
+      protonmail-desktop
 
-      discord
       webcord
       vesktop
       
       skypeforlinux
-      #mediamtx
       signal-desktop
-
-      #zerotierone
-      #mur.zerotier-gui
 
       localsend
       tun2socks
-      insync
-
-      # Remote file management
-      #filezilla
     ] ++
-    # Notes, secrets, and planning
+    # Documents, Secrets, and Planning
     [
       keepassxc
       qalculate-qt
       obsidian
       (pin "bafb3e4e13f24f9f665d4e4487c2ea597e65f23e" "sha256:0mxa39d48f5xa8rhk5q4nc2km9qn2bwgbsm0skzlp0yaqazj3yml").calibre
-      kmymoney
-      morgen
       todoist-electron
     ] ++
     # Text Editors
@@ -51,7 +40,6 @@ let pin = import ../utilities/pin.nix system; in
     # Photos
     [
       darktable
-      #libresprite
       imagemagick
       krita
       affinity-nix.packages.${system}.photo
@@ -75,15 +63,12 @@ let pin = import ../utilities/pin.nix system; in
     [
       puddletag
       elisa
-      #musescore
     ] ++
     # Gaming
     [
       steam-run
-      prismlauncher
-      lutris
-      heroic
       mur.proton-ge
+      libtas
     ] ++
     # Programming
     [
@@ -117,9 +102,6 @@ let pin = import ../utilities/pin.nix system; in
       kdePackages.ksystemlog
       kdePackages.plasma-browser-integration
       kdePackages.xdg-desktop-portal-kde
-      
-      #kdePackages.kio-gdrive
-        #mur.signon-plugin-oauth2
 
       android-tools
 
@@ -135,8 +117,6 @@ let pin = import ../utilities/pin.nix system; in
     ]
   );
 
-  #nixpkgs.overlays = [ (import ../packages/signon-plugin-oauth2/overlay.nix) ];
-
   services.flatpak.enable = true;
   services.flatpak.packages = [
     "io.github.everestapi.Olympus"
@@ -148,7 +128,6 @@ let pin = import ../utilities/pin.nix system; in
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
-    #nativeMessagingHosts.packages = [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ];
   };
 
   programs.steam = {
