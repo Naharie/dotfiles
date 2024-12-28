@@ -2,7 +2,6 @@
   inputs = {    
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     #nixpkgs.url = "github:numtide/nixpkgs-unfree/nixos-unstable";
-    #nixpkgs.url = "github:nixos/nixpkgs";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/main";
 
@@ -12,8 +11,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Packages
-
-    #hyprland-nix.url = "github:spikespaz/hyprland-nix";
 
     eza.url = "github:eza-community/eza";
     eza.inputs.nixpkgs.follows = "nixpkgs";
@@ -25,13 +22,12 @@
     affinity-nix.inputs.nixpkgs.url = "github:numtide/nixpkgs-unfree/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, nix-flatpak, home-manager, nix-index-database, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let specialArgs = {
     inputs = inputs;
     system = "x86_64-linux";
   }; in
   {
-    # valorium here is the system hostname  
     nixosConfigurations.valorium = nixpkgs.lib.nixosSystem {
       specialArgs = specialArgs;
       modules = [
@@ -40,13 +36,15 @@
         ./modules/system.nix
         ./modules/boot-loader.nix
 
-        nix-flatpak.nixosModules.nix-flatpak
-        nix-index-database.nixosModules.nix-index
+        inputs.nix-flatpak.nixosModules.nix-flatpak
+        inputs.nix-index-database.nixosModules.nix-index
 
         home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = specialArgs;
             home-manager.users.naharie = ./home/default.nix;
+            home-manager.backupFileExtension = "backup";
         }
 
         ./modules/hardware.nix
@@ -55,7 +53,6 @@
         ./modules/sound.nix
         ./modules/desktop-environment.nix
         ./modules/environment-variables.nix
-        #./modules/printing.nix
         ./modules/localization.nix
         ./modules/packages.nix
         ./modules/users.nix

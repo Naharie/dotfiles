@@ -1,34 +1,16 @@
-{ pkgs, ... }:
+{ inputs, ... }:
 
 {
-  home.pointerCursor = {
-      gtk.enable = true;
-      # x11.enable = true;
-      package = pkgs.kdePackages.breeze;
-      name = "Breeze";
-      size = 24;
-  };
-  gtk = {
-      enable = true;
-      theme = {
-          name = "Breeze";
-      };
-      iconTheme = {
-          name = "Papirus-Teal-Core";
-      };
-      font = {
-          name = "Noto Sans";
-          size = 10;
-      };
-  };
-
-  wayland.windowManager.hyprland = {
+    wayland.windowManager.hyprland = {
         enable = true;
+        systemd.enable = true;
+
         settings = {
             "$mod" = "SUPER";
+
             bind =
             [
-                "$mod, F, exec, firefox"
+                "$mod, Z, exec, flatpak run io.github.zen_browser.zen"
                 "$mod, T, exec, konsole"
             ]
             ++ (
@@ -44,6 +26,11 @@
                 )
                 10)
             );
+
+            bindel = [
+                ", PageUp, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+                ", PageDown, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+            ];
         };
     };
-}
+    }

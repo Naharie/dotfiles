@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, system, ... }:
 
 {
   # Enable the X11 windowing system.
@@ -22,7 +22,7 @@
   # Hyprland
 
   programs.hyprland = {
-    enable = false;
+    enable = true;
     xwayland.enable = true;
   };
 }

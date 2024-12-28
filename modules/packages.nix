@@ -29,7 +29,7 @@ let pin = import ../utilities/pin.nix system; in
       keepassxc
       qalculate-qt
       obsidian
-      (pin "bafb3e4e13f24f9f665d4e4487c2ea597e65f23e" "sha256:0mxa39d48f5xa8rhk5q4nc2km9qn2bwgbsm0skzlp0yaqazj3yml").calibre
+      (pin { commit = "bafb3e4e13f24f9f665d4e4487c2ea597e65f23e"; hash = "sha256:0mxa39d48f5xa8rhk5q4nc2km9qn2bwgbsm0skzlp0yaqazj3yml"; }).calibre
       todoist-electron
     ] ++
     # Text Editors
@@ -69,6 +69,7 @@ let pin = import ../utilities/pin.nix system; in
       steam-run
       mur.proton-ge
       libtas
+      itch
     ] ++
     # Programming
     [
@@ -105,6 +106,8 @@ let pin = import ../utilities/pin.nix system; in
 
       android-tools
 
+      kitty
+
       bat
       eza
       git
@@ -125,18 +128,12 @@ let pin = import ../utilities/pin.nix system; in
   ];
   services.flatpak.update.onActivation = true;
 
-  programs.firefox = {
-    enable = true;
-    package = pkgs.firefox;
-  };
-
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = false;
   };
 
-  programs.kdeconnect.enable = false;
   programs.command-not-found.enable = false;
   programs.nix-index-database.comma.enable = true;
 
@@ -149,11 +146,4 @@ let pin = import ../utilities/pin.nix system; in
     enable = false;
     joinNetworks = [ "a84ac5c10a50e083" ];
   };
-
-  services.murmur.enable = false;
-  services.murmur.hostName = "valorium";
-  services.murmur.password = "valorium";
-
-  services.mysql.enable = true;
-  services.mysql.package = pkgs.mariadb_114;
 }
