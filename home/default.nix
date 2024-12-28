@@ -1,15 +1,13 @@
-{ inputs, ... }:
+{ ... }:
 
 {
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
 
-  imports = [ ./hyprland.nix ];
-
   programs.git = {
     enable = true;
     userName  = "Naharie";
-    userEmail = "oneofthosewhoescaped@gmail.com";
+    userEmail = "naharie@pm.me";
   };
 
   programs.bash = {
