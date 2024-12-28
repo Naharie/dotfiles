@@ -1,20 +1,22 @@
 { ... }:
 
 {
-  home.stateVersion = "23.11";
-  programs.home-manager.enable = true;
+    home.stateVersion = "23.11";
+    programs.home-manager.enable = true;
 
-  programs.git = {
-    enable = true;
-    userName  = "Naharie";
-    userEmail = "naharie@pm.me";
-  };
+    imports = [ ./plasma.nix ];
 
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-      ls = "eza";
-      cat = "bat";
+    programs.git = {
+        enable = true;
+        userName  = "Naharie";
+        userEmail = "naharie@pm.me";
     };
-  };
+
+    programs.bash = {
+        enable = true;
+        shellAliases = {
+            ls = "eza";
+            cat = "bat";
+        };
+    };
 }
