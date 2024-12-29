@@ -7,7 +7,9 @@
 # nix run github:nix-community/plasma-manager
 
 {
-    imports = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+    imports = [
+        inputs.plasma-manager.homeManagerModules.plasma-manager
+    ];
 
     programs.plasma = {
         enable = true;
@@ -25,7 +27,6 @@
                         kickoff = {
                             icon = "nix-snowflake-white";
                             sortAlphabetically = true;
-                            settings.Shortcuts = { global = "Alt+F1"; };
                         };
                     }
                     {
@@ -160,20 +161,20 @@
 
         shortcuts = {
             kmix = {
-                decrease_volume = ["PgDown" "Volume Down,Volume Down,Decrease Volume"];
-                decrease_volume_small = ["Shift+PgDown" "Shift+Volume Down,Shift+Volume Down,Decrease Volume by 1%"];
+                increase_volume = "PgUp";
+                increase_volume_small = "Shift+PgUp";
+
+                decrease_volume = "PgDown";
+                decrease_volume_small = "Shift+PgDown";
                 
-                increase_volume = ["Volume Up" "PgUp,Volume Up,Increase Volume"];
-                increase_volume_small = ["Shift+Volume Up" "Shift+PgUp,Shift+Volume Up,Increase Volume by 1%"];
-                
-                mute = ["ScrollLock" "Volume Mute,Volume Mute,Mute"];
+                mute = "ScrollLock";
             };
-            mediacontrol.playpausemedia = ["Pause" "Media Play,Media Play,Play/Pause media playback"];
+            mediacontrol.playpausemedia = "Pause";
             
             kwin = {
                 "Kill Window" = "Meta+Ctrl+Esc";
 
-                "Grid View" = ["Meta+G" "Meta+Tab,Meta+G,Toggle Grid View"];
+                "Grid View" = "Meta+Tab";
                 
                 "Switch One Desktop Up" = "Meta+Ctrl+Up";
                 "Switch One Desktop Down" = "Meta+Ctrl+Down";
@@ -182,17 +183,18 @@
                 
                 "Walk Through Windows" = "Alt+Tab";
                 "Walk Through Windows (Reverse)" = "Alt+Shift+Tab";
-                "Window Close" = ["Alt+F4" "Meta+Q,Alt+F4,Close Window"];
+                "Window Close" = "Meta+Q";
 
-                "Window Fullscreen" = "Meta+F,,Make Window Fullscreen";
+                "Window Fullscreen" = "Meta+F";
                 
-                "view_actual_size" = "Meta+0";
-                "view_zoom_in" = ["Meta+=,Meta++" "Meta+=,Zoom In"];
-                "view_zoom_out" = "Meta+-";
+                "view_actual_size" = "Meta+)";
+                "view_zoom_in" = "Meta+}";
+                "view_zoom_out" = "Meta+{";
             };
 
             plasmashell = {
-                "activate application launcher" = ["none,Meta" "Alt+F1,Activate Application Launcher"];
+                "activate application launcher" = "Meta";
+
                 "activate task manager entry 1" = "Meta+1";
                 "activate task manager entry 2" = "Meta+2";
                 "activate task manager entry 3" = "Meta+3";
@@ -202,7 +204,7 @@
                 "activate task manager entry 7" = "Meta+7";
                 "activate task manager entry 8" = "Meta+8";
                 "activate task manager entry 9" = "Meta+9";
-                "activate task manager entry 10" = "none,Meta+0,Activate Task Manager Entry 10";
+                "activate task manager entry 10" = "Meta+0";
             };
 
             "services/org.kde.dolphin.desktop" = { _launch = "Meta+E"; };
@@ -229,7 +231,7 @@
                 PreviewSettings.Plugins = "audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs";
             };
             
-            "kcminputrc"."Mouse"."X11LibInputXAccelProfileFlat" = true;
+            kcminputrc.Mouse.X11LibInputXAccelProfileFlat = true;
             
             kdeglobals = {
                 General = {
@@ -302,8 +304,10 @@
                 wallpaperfileitemaction = true;
             };
 
-            "ktrashrc"."\\/home\\/naharie\\/.local\\/share\\/Trash"."UseSizeLimit" = false;
-            "ktrashrc"."\\/home\\/naharie\\/.local\\/share\\/Trash"."UseTimeLimit" = false;
+            ktrashrc = {
+                "\\/home\\/naharie\\/.local\\/share\\/Trash".UseSizeLimit = false;
+                "\\/home\\/naharie\\/.local\\/share\\/Trash".UseTimeLimit = false;
+            };
 
             kwinrc = {
                 Compositing = {
