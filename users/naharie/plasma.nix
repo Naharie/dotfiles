@@ -32,7 +32,7 @@
                     {
                         iconTasks = {
                             launchers = [
-                                "applications:io.github.zen_browser.zen.desktop"
+                                "applications:zen.desktop"
                             ];
                             behavior.grouping.method = "none";
                         };

@@ -1,39 +1,36 @@
 {
     inputs = {        
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-        #nixpkgs.url = "github:numtide/nixpkgs-unfree/nixos-unstable";
 
         nix-flatpak.url = "github:gmodena/nix-flatpak/main";
 
-        # Home Manager
-        
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
         plasma-manager = {
             url = "github:nix-community/plasma-manager";
-            inputs.nixpkgs.follows = "nixpkgs";
             inputs.home-manager.follows = "home-manager";
         };
 
-        # Packages
-
         eza.url = "github:eza-community/eza";
-        eza.inputs.nixpkgs.follows = "nixpkgs";
 
         nix-index-database.url = "github:Mic92/nix-index-database";
-        nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
         affinity-nix.url = "github:mrshmllow/affinity-nix";
         affinity-nix.inputs.nixpkgs.url = "github:numtide/nixpkgs-unfree/nixos-unstable";
+
+        zen-browser.url = "github:0xc000022070/zen-browser-flake";
     };
 
     outputs = { self, nixpkgs, home-manager, plasma-manager, ... }@inputs:
     
-    let specialArgs = {
-        inputs = inputs;
+    let
         system = "x86_64-linux";
-    }; in
+        specialArgs = {
+            inputs = inputs;
+            inherit system;
+        };
+    in
     {
         nixosConfigurations.valorium = nixpkgs.lib.nixosSystem {
             specialArgs = specialArgs;
@@ -53,7 +50,7 @@
                         
                         extraSpecialArgs = specialArgs;
 
-                        users.naharie = import ./home;
+                        users.naharie = import ./users/naharie;
                         backupFileExtension = "backup";
                     };
                 }

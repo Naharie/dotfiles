@@ -1,8 +1,5 @@
-{ stdenv
-, lib
-, fetchurl
-, nix-update-script
-}:
+{ stdenv, lib, fetchurl, nix-update-script }:
+
 stdenv.mkDerivation rec {
     pname = "proton-ge-custom";
     version = "GE-Proton9-20";
@@ -28,7 +25,6 @@ stdenv.mkDerivation rec {
         homepage = "https://github.com/GloriousEggroll/proton-ge-custom";
         license = licenses.bsd3;
         platforms = [ "x86_64-linux" ];
-        maintainers = with maintainers; [ ataraxiasjel ];
         preferLocalBuild = true;
     };
 }

@@ -12,7 +12,7 @@
         tiredpaperartist = {
             isNormalUser = true;
             description = "TiredPaperArtist";
-            extraGroups = [ "networkmanager" "wheel" ];
+            extraGroups = [ "networkmanager" ];
             shell = pkgs.bash;
         };
     };
