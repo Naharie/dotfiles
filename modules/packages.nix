@@ -6,7 +6,6 @@ let mur = import ../packages { inherit pkgs; }; in
 
 # Utilities
 let pin = import ../utilities/pin.nix system; in
-# Vorta & Calibre: bafb3e4e13f24f9f665d4e4487c2ea597e65f23e - sha256:0mxa39d48f5xa8rhk5q4nc2km9qn2bwgbsm0skzlp0yaqazj3yml
 
 {
     environment.systemPackages = with pkgs; (
@@ -29,7 +28,11 @@ let pin = import ../utilities/pin.nix system; in
             keepassxc
             qalculate-qt
             obsidian
-            (pin { commit = "bafb3e4e13f24f9f665d4e4487c2ea597e65f23e"; hash = "sha256:0mxa39d48f5xa8rhk5q4nc2km9qn2bwgbsm0skzlp0yaqazj3yml"; }).calibre
+            (pin {
+                commit = "bafb3e4e13f24f9f665d4e4487c2ea597e65f23e";
+                hash = "sha256:0mxa39d48f5xa8rhk5q4nc2km9qn2bwgbsm0skzlp0yaqazj3yml";
+                package = "calibre";
+            })
             todoist-electron
         ] ++
         # Text Editors
@@ -89,14 +92,9 @@ let pin = import ../utilities/pin.nix system; in
         ] ++
         # Utilities
         [
-            #easyeffects
-
-            vorta
-
-            wine
-            wine64
-
+            timeshift
             fsearch
+
             partition-manager
 
             kdePackages.filelight
@@ -106,13 +104,10 @@ let pin = import ../utilities/pin.nix system; in
 
             android-tools
 
-            kitty
-
             bat
             eza
             git
             micro
-            ddcutil
         ] ++
         # Hardware
         [

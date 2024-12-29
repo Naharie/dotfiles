@@ -52,7 +52,6 @@
                         useUserPackages = true;
                         
                         extraSpecialArgs = specialArgs;
-                        sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
 
                         users.naharie = import ./home;
                         backupFileExtension = "backup";

@@ -1,24 +1,88 @@
-{ ... }:
+{ inputs, ... }:
 
+# This file is very helpful in terms of seeing what a more real config might look like:
 # https://github.com/nix-community/plasma-manager/blob/trunk/examples/home.nix
 
+# To generate an auto config (useful for diffing):
+# nix run github:nix-community/plasma-manager
+
 {
+    imports = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+
     programs.plasma = {
         enable = true;
         overrideConfig = true;
 
+        panels = [
+            {
+                alignment = "center";
+                lengthMode = "fill";
+                location = "bottom";
+                height = 46;
+
+                widgets = [
+                    {
+                        kickoff = {
+                            icon = "nix-snowflake-white";
+                            sortAlphabetically = true;
+                            settings.Shortcuts = { global = "Alt+F1"; };
+                        };
+                    }
+                    {
+                        iconTasks = {
+                            launchers = [
+                                "applications:io.github.zen_browser.zen.desktop"
+                            ];
+                            behavior.grouping.method = "none";
+                        };
+                    }
+                    {
+                        systemTray = {
+                            icons.spacing = "large";
+                            items = {
+                                shown = [
+                                    "org.kde.plasma.bluetooth"
+                                    "org.kde.plasma.brightness"
+                                ];
+                                hidden = [
+                                    "org.kde.plasma.powermanagement"
+                                    "ckb-next_ckb-next"
+                                ];
+                            };
+                        };
+                    }
+                    {
+                        digitalClock = {
+                            date = {
+                                format = "isoDate";
+                                position = "belowTime";
+                            };
+
+                            time = {
+                                showSeconds = "onlyInTooltip";
+                            };
+                        };
+                    }
+                    {
+                        name = "org.kde.plasma.minimizeall";
+                        config.Shortcuts = { global = "Meta+M"; };
+                    }
+                ];
+            }
+        ];
+
         input = {
-            mice = {
-                "ckb1: CORSAIR HARPOON RGB PRO Gaming Mouse vM" = {
+            mice = [
+                {
                     name = "ckb1: CORSAIR HARPOON RGB PRO Gaming Mouse vM";
                     vendorId = "1b1c";
                     productId = "1b75";
                     
                     acceleration = 0;
                     accelerationProfile = "none";
-                    scrollSpeed = 5;
-                };
-            };
+                    scrollSpeed = 2.22;
+                }
+            ];
         };
 
         krunner = {
@@ -31,9 +95,6 @@
             captureEntireDesktop = "Print";
             captureWindowUnderCursor = "Shift+Print";
             captureRectangularRegion = "Ctrl+Print";
-
-            "services/org.kde.spectacle.desktop"."RectangularRegionScreenShot" = "Ctrl+Print";
-            "services/org.kde.spectacle.desktop"."WindowUnderCursorScreenShot" = "Shift+Print";
         };
 
         kscreenlocker = {
@@ -45,9 +106,9 @@
 
         kwin = {
             effects = {
+                dimInactive.enable = true;
                 desktopSwitching.animation = "slide";
                 dimAdminMode.enable = true;
-                dimInactive.enable = true;
                 shakeCursor.enable = true;
             };
 
@@ -72,24 +133,7 @@
             };
         };
 
-        panels = [
-            {
-                alignment = "center";
-                lengthMode = "fill";
-                location = "bottom";
-                height = 46;
-
-                widgets = [
-                    "org.kde.plasma.kickoff"
-                    "org.kde.plasma.icontasks"
-                    "org.kde.plasma.systemtray"
-                    "org.kde.plasma.digitalclock"
-                    "org.kde.plasma.showdesktop"
-                ];
-            }
-        ];
-
-        powerdevl.AC = {
+        powerdevil.AC = {
             autoSuspend.idleTimeout = null;
             dimDisplay.enable = false;
             powerButtonAction = "showLogoutScreen";
@@ -101,27 +145,35 @@
         };
 
         workspace = {
+            theme = "Breeze";
+            colorScheme = "Andromeda";
+
             wallpaper = "/home/naharie/Pictures/wallpaper/10.jpg";
             wallpaperFillMode = "preserveAspectCrop";
 
             cursor.theme = "ArcAurora-cursors";
-            splashScreen.theme = "Vivid-Splash-6";
+            splashScreen.theme = "Andromeda";
+            iconTheme = "breeze";
+
+            enableMiddleClickPaste = false;
         };
 
         shortcuts = {
             kmix = {
-                decrease_volume = ["Volume Down" "PgDown,Volume Down,Decrease Volume"];
+                decrease_volume = ["PgDown" "Volume Down,Volume Down,Decrease Volume"];
                 decrease_volume_small = ["Shift+PgDown" "Shift+Volume Down,Shift+Volume Down,Decrease Volume by 1%"];
+                
                 increase_volume = ["Volume Up" "PgUp,Volume Up,Increase Volume"];
                 increase_volume_small = ["Shift+Volume Up" "Shift+PgUp,Shift+Volume Up,Increase Volume by 1%"];
-                mute = ["Volume Mute" "ScrollLock,Volume Mute,Mute"];
+                
+                mute = ["ScrollLock" "Volume Mute,Volume Mute,Mute"];
             };
             mediacontrol.playpausemedia = ["Pause" "Media Play,Media Play,Play/Pause media playback"];
             
             kwin = {
                 "Kill Window" = "Meta+Ctrl+Esc";
 
-                "Grid View" = "Meta+Tab,Meta+G,Toggle Grid View";
+                "Grid View" = ["Meta+G" "Meta+Tab,Meta+G,Toggle Grid View"];
                 
                 "Switch One Desktop Up" = "Meta+Ctrl+Up";
                 "Switch One Desktop Down" = "Meta+Ctrl+Down";
@@ -129,18 +181,18 @@
                 "Switch One Desktop to the Right" = "Meta+Ctrl+Right";
                 
                 "Walk Through Windows" = "Alt+Tab";
-                "Walk Through Windows (Reverse)" = "Alt+Shift+Backtab,Alt+Shift+Tab,Walk Through Windows (Reverse)";
+                "Walk Through Windows (Reverse)" = "Alt+Shift+Tab";
                 "Window Close" = ["Alt+F4" "Meta+Q,Alt+F4,Close Window"];
 
-                "Window Fullscreen" = "none,,Make Window Fullscreen";
+                "Window Fullscreen" = "Meta+F,,Make Window Fullscreen";
                 
                 "view_actual_size" = "Meta+0";
-                "view_zoom_in" = ["Meta++" "Meta+=,Meta++" "Meta+=,Zoom In"];
+                "view_zoom_in" = ["Meta+=,Meta++" "Meta+=,Zoom In"];
                 "view_zoom_out" = "Meta+-";
             };
 
             plasmashell = {
-                "activate application launcher" = ["Meta,Meta" "Alt+F1,Activate Application Launcher"];
+                "activate application launcher" = ["none,Meta" "Alt+F1,Activate Application Launcher"];
                 "activate task manager entry 1" = "Meta+1";
                 "activate task manager entry 2" = "Meta+2";
                 "activate task manager entry 3" = "Meta+3";
@@ -152,6 +204,12 @@
                 "activate task manager entry 9" = "Meta+9";
                 "activate task manager entry 10" = "none,Meta+0,Activate Task Manager Entry 10";
             };
+
+            "services/org.kde.dolphin.desktop" = { _launch = "Meta+E"; };
+            "services/org.kde.krunner.desktop" = {
+                _launch = builtins.concatStringsSep "\t" [ "Alt+Space" "Search" ];
+            };
+            "services/org.kde.konsole.desktop" = { _launch = "Meta+T"; };
         };
 
         configFile = {
@@ -183,7 +241,11 @@
                     XftSubPixel = "none";
                 };
 
-                Icons.Theme = "breeze";
+                # Needed so we can use Page Up and Page Down for media control.
+                Shortcuts = {
+                    Next = "";
+                    Prior = "";
+                };
 
                 KDE = {
                     ShowDeleteCommand = true;
@@ -195,7 +257,7 @@
                     "Automatically select filename extension" = true;
                     "Show Full Path" = true;
                     "Show Inline Previews" = true;
-                    "Show Preview" = true;
+                    "Show Preview" = false;
                     "Show hidden files" = false;
                     "Sort by" = "Name";
                     "Sort directories first" = true;
@@ -255,6 +317,7 @@
                 };
 
                 Effect-hidecursor.HideOnTyping = true;
+                Effect-overview.BorderActivate = 9;
 
                 Plugins = {
                     desktopchangeosdEnabled = true;
@@ -267,6 +330,8 @@
                     Scale = 1.25;
                     XwaylandEavesdrops = "Combinations";
                 };
+
+                TabBox.LayoutName = "thumbnail_grid";
             };
 
             plasmanotifyrc = {
@@ -281,8 +346,8 @@
 
     programs.elisa = {
         enable = true;
-        defaultView = "allAlbums";
         appearance = {
+            defaultView = "allAlbums";
             showNowPlayingBackground = true;
             showProgressOnTaskBar = true;
         };
