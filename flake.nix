@@ -8,10 +8,18 @@
         # Home Manager
         
         home-manager.url = "github:nix-community/home-manager";
+        home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+        plasma-manager = {
+            url = "github:nix-community/plasma-manager";
+            inputs.nixpkgs.follows = "nixpkgs";
+            inputs.home-manager.follows = "home-manager";
+        };
 
         # Packages
 
         eza.url = "github:eza-community/eza";
+        eza.inputs.nixpkgs.follows = "nixpkgs";
 
         nix-index-database.url = "github:Mic92/nix-index-database";
         nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +28,8 @@
         affinity-nix.inputs.nixpkgs.url = "github:numtide/nixpkgs-unfree/nixos-unstable";
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    outputs = { self, nixpkgs, home-manager, plasma-manager, ... }@inputs:
+    
     let specialArgs = {
         inputs = inputs;
         system = "x86_64-linux";
@@ -38,11 +47,16 @@
                 inputs.nix-index-database.nixosModules.nix-index
 
                 home-manager.nixosModules.home-manager {
-                    home-manager.useGlobalPkgs = true;
-                    home-manager.useUserPackages = true;
-                    home-manager.extraSpecialArgs = specialArgs;
-                    home-manager.users.naharie = ./home/default.nix;
-                    home-manager.backupFileExtension = "backup";
+                    home-manager = {
+                        useGlobalPkgs = true;
+                        useUserPackages = true;
+                        
+                        extraSpecialArgs = specialArgs;
+                        sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+
+                        users.naharie = import ./home;
+                        backupFileExtension = "backup";
+                    };
                 }
 
                 ./modules/hardware.nix
