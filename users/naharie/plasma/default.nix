@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ pkgs, inputs, ... }:
 
 # This file is very helpful in terms of seeing what a more real config might look like:
 # https://github.com/nix-community/plasma-manager/blob/trunk/examples/home.nix
@@ -6,10 +6,10 @@
 # To generate an auto config (useful for diffing):
 # nix run github:nix-community/plasma-manager
 
+let mur = import ../../../packages { inherit pkgs; }; in
+
 {
-    imports = [
-        inputs.plasma-manager.homeManagerModules.plasma-manager
-    ];
+    imports = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
 
     programs.plasma = {
         enable = true;
@@ -31,9 +31,7 @@
                     }
                     {
                         iconTasks = {
-                            launchers = [
-                                "applications:zen.desktop"
-                            ];
+                            launchers = [ "applications:zen.desktop" ];
                             behavior.grouping.method = "none";
                         };
                     }
@@ -133,6 +131,26 @@
                 rows = 3;
             };
         };
+        shortcuts.kwin = {
+            "Kill Window" = "Meta+Ctrl+Esc";
+
+            "Grid View" = "Meta+Tab";
+            
+            "Switch One Desktop Up" = "Meta+Ctrl+Up";
+            "Switch One Desktop Down" = "Meta+Ctrl+Down";
+            "Switch One Desktop to the Left" = "Meta+Ctrl+Left";
+            "Switch One Desktop to the Right" = "Meta+Ctrl+Right";
+            
+            "Walk Through Windows" = "Alt+Tab";
+            "Walk Through Windows (Reverse)" = "Alt+Shift+Tab";
+            "Window Close" = "Meta+Q";
+
+            "Window Fullscreen" = "Meta+F";
+            
+            "view_actual_size" = "Meta+)";
+            "view_zoom_in" = "Meta+}";
+            "view_zoom_out" = "Meta+{";
+        };
 
         powerdevil.AC = {
             autoSuspend.idleTimeout = null;
@@ -154,7 +172,7 @@
 
             cursor.theme = "ArcAurora-cursors";
             splashScreen.theme = "Andromeda";
-            iconTheme = "breeze";
+            iconTheme = "candy-icons";
 
             enableMiddleClickPaste = false;
         };
@@ -170,27 +188,6 @@
                 mute = "ScrollLock";
             };
             mediacontrol.playpausemedia = "Pause";
-            
-            kwin = {
-                "Kill Window" = "Meta+Ctrl+Esc";
-
-                "Grid View" = "Meta+Tab";
-                
-                "Switch One Desktop Up" = "Meta+Ctrl+Up";
-                "Switch One Desktop Down" = "Meta+Ctrl+Down";
-                "Switch One Desktop to the Left" = "Meta+Ctrl+Left";
-                "Switch One Desktop to the Right" = "Meta+Ctrl+Right";
-                
-                "Walk Through Windows" = "Alt+Tab";
-                "Walk Through Windows (Reverse)" = "Alt+Shift+Tab";
-                "Window Close" = "Meta+Q";
-
-                "Window Fullscreen" = "Meta+F";
-                
-                "view_actual_size" = "Meta+)";
-                "view_zoom_in" = "Meta+}";
-                "view_zoom_out" = "Meta+{";
-            };
 
             plasmashell = {
                 "activate application launcher" = "Meta";
@@ -305,8 +302,10 @@
             };
 
             ktrashrc = {
-                "\\/home\\/naharie\\/.local\\/share\\/Trash".UseSizeLimit = false;
-                "\\/home\\/naharie\\/.local\\/share\\/Trash".UseTimeLimit = false;
+                "\\/home\\/naharie\\/.local\\/share\\/Trash" = {
+                    UseSizeLimit = false;
+                    UseTimeLimit = false;
+                };
             };
 
             kwinrc = {
@@ -348,16 +347,9 @@
         };
     };
 
-    programs.elisa = {
-        enable = true;
-        appearance = {
-            defaultView = "allAlbums";
-            showNowPlayingBackground = true;
-            showProgressOnTaskBar = true;
-        };
-        indexer = {
-            paths = [ "$HOME/Music" ];
-            scanAtStartup = true;
-        };
-    };
+    home.packages = [
+        mur.arcaurora-cursors
+        mur.andromeda-theme
+        pkgs.candy-icons
+    ];
 }

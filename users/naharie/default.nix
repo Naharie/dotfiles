@@ -1,7 +1,7 @@
 { pkgs, inputs, system, ... }:
 
 let affinity-nix = inputs.affinity-nix; in
-let vur = import ../../packages { inherit pkgs; }; in
+let mur = import ../../packages { inherit pkgs; }; in
 
 let lib = pkgs.lib; in
 let pin = import ../../lib/pin.nix system; in
@@ -10,7 +10,8 @@ let pin = import ../../lib/pin.nix system; in
     programs.home-manager.enable = true;
 
     imports = [
-        ./plasma.nix
+        ./plasma
+        ./apps
     ];
 
     home.sessionVariables = {
@@ -39,9 +40,9 @@ let pin = import ../../lib/pin.nix system; in
         qalculate-qt
         obsidian
         (pin {
+            package = calibre;
             commit = "bafb3e4e13f24f9f665d4e4487c2ea597e65f23e";
             hash = "sha256:0mxa39d48f5xa8rhk5q4nc2km9qn2bwgbsm0skzlp0yaqazj3yml";
-            package = calibre;
         })
         todoist-electron
 
@@ -89,7 +90,7 @@ let pin = import ../../lib/pin.nix system; in
 
         godot_4
 
-        vur.dotnet-sdks
+        mur.dotnet-sdks
         typescript
         nodejs
             corepack
@@ -113,18 +114,4 @@ let pin = import ../../lib/pin.nix system; in
         git
         micro
     ];
-
-    programs.git = {
-        enable = true;
-        userName  = "Naharie";
-        userEmail = "naharie@pm.me";
-    };
-
-    programs.bash = {
-        enable = true;
-        shellAliases = {
-            ls = "${pkgs.eza}/bin/eza";
-            cat = "${pkgs.bat}/bin/bat";
-        };
-    };
 }
