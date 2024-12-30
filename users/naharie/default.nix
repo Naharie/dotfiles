@@ -90,7 +90,7 @@ let pin = import ../../lib/pin.nix system; in
 
         godot_4
 
-        mur.dotnet-sdks
+        dotnetCorePackages.sdk_9_0
         typescript
         nodejs
             corepack

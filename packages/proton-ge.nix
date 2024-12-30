@@ -1,4 +1,9 @@
-{ stdenv, lib, fetchurl, nix-update-script }:
+{
+    stdenv,
+    lib,
+    fetchurl,
+    nix-update-script
+}:
 
 stdenv.mkDerivation rec {
     pname = "proton-ge-custom";

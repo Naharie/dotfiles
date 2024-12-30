@@ -1,6 +1,6 @@
 # Valorium
 
-Hey, you've stumbled across the repository that contains my personal configuration files for my computers running [NixOS].
+Hey, you've stumbled across the repository that contains my personal configuration files for my computers running [NixOS](https://nixos.org).
 I put this out here both for my convenience of having version history for things, but also on the off chance that somebody else finds this a helpful reference for setting up their own system.
 
 > [!WARNING]

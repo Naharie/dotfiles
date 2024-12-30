@@ -171,7 +171,9 @@ let mur = import ../../../packages { inherit pkgs; }; in
             wallpaperFillMode = "preserveAspectCrop";
 
             cursor.theme = "ArcAurora-cursors";
-            splashScreen.theme = "Andromeda";
+            splashScreen.theme = "None";
+
+            
             iconTheme = "candy-icons";
 
             enableMiddleClickPaste = false;

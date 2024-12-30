@@ -1,4 +1,8 @@
-{ pkgs, stdenv, lib }:
+{
+    pkgs,
+    stdenv,
+    lib
+}:
 
 stdenv.mkDerivation {
     pname = "arcaurora-cursors";

@@ -20,7 +20,7 @@
     security.sudo.extraRules = [
         {
             users = [ "naharie" ];
-            commands = [ { command = "/home/naharie/scripts/proxy"; options = [ "NOPASSWD" ]; } ];
+            commands = [ { command = "/home/naharie/config/bin/proxy"; options = [ "NOPASSWD" ]; } ];
         }
 
         {
