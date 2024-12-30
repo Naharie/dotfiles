@@ -8,5 +8,5 @@ I put this out here both for my convenience of having version history for things
 > That and Nix as a language and system is still evolving and changing, so things may just change and I forget to update them here.
 >
 > DO **NOT** tell nix to build and switch to my flake. It **WILL** causes problems and damage.
-> My config is very opinionated and assumes the entirety of `~/.config` is declarative and can be wiped with every rebuild.
+> My config is very opinionated will overwrite most of the stuff in `~/.config`.
 > This means your personal settings **WILL** be irreversibly lost by building this flake.

@@ -1,4 +1,39 @@
 {
+    outputs = inputs@{ self, nixpkgs, ... }:
+    
+    let
+        host = "valorium";
+        system = "x86_64-linux";
+        specialArgs = {
+            inputs = inputs;
+            inherit system;
+            inherit host;
+        };
+    in
+
+    {
+        nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
+            specialArgs = specialArgs;
+
+            modules = [
+                ./modules/users/naharie.nix
+                ./modules/users/tiredpaperartist.nix
+                ./modules/boot-loader.nix
+                ./modules/desktop-environment-plasma.nix
+                ./modules/desktop-environment.nix
+                ./modules/environment-variables.nix
+                ./modules/graphics.nix
+                ./modules/hardware-configuration.nix
+                ./modules/hardware-corsair.nix
+                ./modules/home.nix
+                ./modules/localization.nix
+                ./modules/networking.nix
+                ./modules/sound.nix
+                ./modules/system.nix
+            ];
+        };
+    };
+
     inputs = {        
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -20,51 +55,5 @@
         affinity-nix.inputs.nixpkgs.url = "github:numtide/nixpkgs-unfree/nixos-unstable";
 
         zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    };
-
-    outputs = { self, nixpkgs, home-manager, plasma-manager, ... }@inputs:
-    
-    let
-        system = "x86_64-linux";
-        specialArgs = {
-            inputs = inputs;
-            inherit system;
-        };
-    in
-    {
-        nixosConfigurations.valorium = nixpkgs.lib.nixosSystem {
-            specialArgs = specialArgs;
-            modules = [
-                ./hardware-configuration.nix
-                
-                ./modules/system.nix
-                ./modules/boot-loader.nix
-
-                inputs.nix-flatpak.nixosModules.nix-flatpak
-                inputs.nix-index-database.nixosModules.nix-index
-
-                home-manager.nixosModules.home-manager {
-                    home-manager = {
-                        useGlobalPkgs = true;
-                        useUserPackages = true;
-                        
-                        extraSpecialArgs = specialArgs;
-
-                        users.naharie = import ./users/naharie;
-                        backupFileExtension = "backup";
-                    };
-                }
-
-                ./modules/hardware.nix
-                ./modules/graphics.nix
-                ./modules/networking.nix
-                ./modules/sound.nix
-                ./modules/desktop-environment.nix
-                ./modules/environment-variables.nix
-                ./modules/localization.nix
-                ./modules/packages.nix
-                ./modules/users.nix
-            ];
-        };
     };
 }

@@ -1,21 +1,35 @@
-{ pkgs, inputs, system, ... }:
+{
+    pkgs,
+    inputs,
+    system,
+    ...
+}:
 
 let affinity-nix = inputs.affinity-nix; in
-let mur = import ../../packages { inherit pkgs; }; in
 
-let lib = pkgs.lib; in
-let pin = import ../../lib/pin.nix system; in
+let
+
+lib = inputs.nixpkgs.lib;
+
+pin = import ../../lib/pin.nix system;
+importDir = import ../../lib/importDir.nix lib;
+
+in  
+
 {
     home.stateVersion = "23.11";
     programs.home-manager.enable = true;
 
     imports = [
+        inputs.nix-flatpak.homeManagerModules.nix-flatpak
         ./plasma
-        ./apps
-    ];
+    ] ++ importDir ./apps;
 
     home.sessionVariables = {
-        PATH = lib.strings.concatStringsSep ":" [ "$PATH" "$HOME/.dotnet/tools" ];
+        PATH = lib.strings.concatStringsSep ":" [
+            "$PATH"
+            "$HOME/.dotnet/tools"
+        ];
         EDITOR="code --wait";
     };
 
@@ -27,10 +41,8 @@ let pin = import ../../lib/pin.nix system; in
 
         webcord
         vesktop
-        
         skypeforlinux
         signal-desktop
-
         localsend
         tun2socks
     
@@ -63,13 +75,11 @@ let pin = import ../../lib/pin.nix system; in
         vlc
         kdenlive
         ffmpeg
-
         (pkgs.wrapOBS {
             plugins = with pkgs.obs-studio-plugins; [
                 obs-pipewire-audio-capture
             ];
         })
-
         yt-dlp
         makemkv
     
@@ -87,14 +97,11 @@ let pin = import ../../lib/pin.nix system; in
         vscode
         jetbrains.rider
         jetbrains.rust-rover
-
         godot_4
-
         dotnetCorePackages.sdk_9_0
         typescript
         nodejs
             corepack
-        
         avalonia-ilspy
         nil
     
@@ -102,16 +109,20 @@ let pin = import ../../lib/pin.nix system; in
     
         timeshift
         fsearch
-
         partition-manager
-
         kdePackages.filelight
         kdePackages.ksystemlog
         kdePackages.plasma-browser-integration
 
-        android-tools
-
-        git
         micro
     ];
+
+    services.flatpak = {
+        enable = true;
+        packages = [
+            "io.github.everestapi.Olympus"
+            "us.zoom.Zoom"
+        ];
+        update.onActivation = true;
+    };
 }

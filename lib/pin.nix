@@ -1,3 +1,7 @@
+# Pins a single package, that is, builds the package based off of the specific nixpkgs commit.
+# pin :: system:String -> { commit:String, hash:String, package:String | Derivation } -> Derivation
+
+
 system: { commit, hash, package }:
 
 (import (builtins.fetchTarball {

@@ -1,8 +1,5 @@
 { pkgs, inputs, ... }:
 
-# This file is very helpful in terms of seeing what a more real config might look like:
-# https://github.com/nix-community/plasma-manager/blob/trunk/examples/home.nix
-
 # To generate an auto config (useful for diffing):
 # nix run github:nix-community/plasma-manager
 

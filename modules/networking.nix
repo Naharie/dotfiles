@@ -1,8 +1,16 @@
-{ ... }:
+{
+    ...
+}:
 
 {
-    networking.hostName = "valorium";
-    networking.networkmanager.enable = true;
+    networking = {
+        hostName = "valorium";
+        networkmanager.enable = true;
+        firewall.allowPing = true;
+    };
 
-    networking.firewall.allowPing = true;
+    hardware.bluetooth = {
+        enable = true;
+        powerOnBoot = true;
+    };
 }
