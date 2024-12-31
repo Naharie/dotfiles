@@ -1,24 +1,23 @@
-{
-    inputs,
-    system,
-    host,
-    ...
+{ inputs
+, system
+, host
+, ...
 }:
 
 {
-    imports = [ inputs.home-manager.nixosModules.home-manager ];
+  imports = [ inputs.home-manager.nixosModules.home-manager ];
 
-    home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        
-        extraSpecialArgs = {
-            inherit inputs;
-            inherit system;
-            inherit host;
-        };
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
 
-        users.naharie = import ../users/naharie;
-        backupFileExtension = "backup";
+    extraSpecialArgs = {
+      inherit inputs;
+      inherit system;
+      inherit host;
     };
+
+    users.naharie = import ../users/naharie;
+    backupFileExtension = "backup";
+  };
 }

@@ -1,130 +1,124 @@
-{
-    pkgs,
-    inputs,
-    system,
-    ...
+{ pkgs
+, inputs
+, system
+, ...
 }:
 
 let affinity-nix = inputs.affinity-nix; in
 
 let
 
-lib = inputs.nixpkgs.lib;
-pin = import ../../lib/pin.nix system;
+  lib = inputs.nixpkgs.lib;
+  pin = import ../../lib/pin.nix system;
 
-in  
+in
 
 {
-    home.stateVersion = "23.11";
-    programs.home-manager.enable = true;
+  home.stateVersion = "23.11";
+  programs.home-manager.enable = true;
 
-    imports = [
-        inputs.nix-flatpak.homeManagerModules.nix-flatpak
-        ./plasma
+  imports = [
+    inputs.nix-flatpak.homeManagerModules.nix-flatpak
+    ./plasma
 
-        ./apps/bash.nix
-        ./apps/elisa.nix
-        ./apps/git.nix
-        ./apps/vscode.nix
+    ./apps/bash.nix
+    ./apps/elisa.nix
+    ./apps/git.nix
+    ./apps/vscode.nix
+    ./apps/obs.nix
+    ./apps/micro.nix
+    ./apps/kate.nix
+  ];
+
+  home.sessionVariables = {
+    PATH = lib.strings.concatStringsSep ":" [
+      "$PATH"
+      "$HOME/.dotnet/tools"
     ];
+    EDITOR = "code --wait";
+  };
 
-    home.sessionVariables = {
-        PATH = lib.strings.concatStringsSep ":" [
-            "$PATH"
-            "$HOME/.dotnet/tools"
-        ];
-        EDITOR="code --wait";
-    };
-
-    home.packages = with pkgs;
+  home.packages = with pkgs;
     [
-        # Internet & Communication
+      # Internet & Communication
 
-        inputs.zen-browser.packages.${system}.default
+      inputs.zen-browser.packages.${system}.default
 
-        webcord
-        vesktop
-        skypeforlinux
-        signal-desktop
-        localsend
-        tun2socks
-    
-        # Documents, Secrets, and Planning
+      webcord
+      vesktop
+      skypeforlinux
+      signal-desktop
+      localsend
+      tun2socks
 
-        keepassxc
-        qalculate-qt
-        obsidian
-        (pin {
-            package = calibre;
-            commit = "bafb3e4e13f24f9f665d4e4487c2ea597e65f23e";
-            hash = "sha256:0mxa39d48f5xa8rhk5q4nc2km9qn2bwgbsm0skzlp0yaqazj3yml";
-        })
-        todoist-electron
+      # Documents, Secrets, and Planning
 
-        # Text Editors
+      keepassxc
+      qalculate-qt
+      obsidian
+      (pin {
+        package = calibre;
+        commit = "bafb3e4e13f24f9f665d4e4487c2ea597e65f23e";
+        hash = "sha256:0mxa39d48f5xa8rhk5q4nc2km9qn2bwgbsm0skzlp0yaqazj3yml";
+      })
+      todoist-electron
 
-        kate
-        libreoffice
-    
-        # Photos
+      # Text Editors
 
-        darktable
-        imagemagick
-        krita
-        affinity-nix.packages.${system}.photo
-    
-        # Videos
+      libreoffice
 
-        vlc
-        kdenlive
-        ffmpeg
-        (pkgs.wrapOBS {
-            plugins = with pkgs.obs-studio-plugins; [
-                obs-pipewire-audio-capture
-            ];
-        })
-        yt-dlp
-        makemkv
-    
-        # Music
+      # Photos
 
-        puddletag
-    
-        # Gaming
+      darktable
+      imagemagick
+      krita
+      affinity-nix.packages.${system}.photo
 
-        libtas
-        itch
-    
-        # Programming
+      # Videos
 
-        jetbrains.rider
-        jetbrains.rust-rover
-        godot_4
-        dotnetCorePackages.sdk_9_0
-        typescript
-        nodejs
-            corepack
-        avalonia-ilspy
-        nil
-    
-        # Utilities
-    
-        timeshift
-        fsearch
-        partition-manager
-        kdePackages.filelight
-        kdePackages.ksystemlog
-        kdePackages.plasma-browser-integration
+      vlc
+      kdenlive
+      ffmpeg
+      yt-dlp
+      makemkv
 
-        micro
+      # Music
+
+      puddletag
+
+      # Gaming
+
+      libtas
+      itch
+
+      # Programming
+
+      nixpkgs-fmt
+      jetbrains.rider
+      jetbrains.rust-rover
+      godot_4
+      dotnetCorePackages.sdk_9_0
+      typescript
+      nodejs
+      corepack
+      avalonia-ilspy
+
+      # Utilities
+
+      timeshift
+      fsearch
+      partition-manager
+      kdePackages.filelight
+      kdePackages.ksystemlog
+      kdePackages.plasma-browser-integration
     ];
 
-    services.flatpak = {
-        enable = true;
-        packages = [
-            "io.github.everestapi.Olympus"
-            "us.zoom.Zoom"
-        ];
-        update.onActivation = true;
-    };
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "io.github.everestapi.Olympus"
+      "us.zoom.Zoom"
+    ];
+    update.onActivation = true;
+  };
 }

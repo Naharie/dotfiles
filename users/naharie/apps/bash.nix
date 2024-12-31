@@ -1,14 +1,13 @@
-{
-    pkgs,
-    ...
+{ pkgs
+, ...
 }:
 
 {
-    programs.bash = {
-        enable = true;
-        shellAliases = {
-            ls = "${pkgs.eza}/bin/eza";
-            cat = "${pkgs.bat}/bin/bat";
-        };
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      ls = "${pkgs.eza}/bin/eza";
+      cat = "${pkgs.bat}/bin/bat";
     };
+  };
 }

@@ -1,11 +1,10 @@
-{
-    ...
+{ ...
 }:
 
 {
-    programs.git = {
-        enable = true;
-        userName  = "Naharie";
-        userEmail = "naharie@pm.me";
-    };
+  programs.git = {
+    enable = true;
+    userName = "Naharie";
+    userEmail = "naharie@pm.me";
+  };
 }

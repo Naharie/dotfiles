@@ -1,0 +1,6 @@
+{ ...
+}:
+
+{
+  programs.kate.enable = true;
+}
