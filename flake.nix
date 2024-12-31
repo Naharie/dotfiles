@@ -16,8 +16,11 @@
             specialArgs = specialArgs;
 
             modules = [
+                ./apps/steam.nix
+
                 ./modules/users/naharie.nix
                 ./modules/users/tiredpaperartist.nix
+
                 ./modules/boot-loader.nix
                 ./modules/desktop-environment-plasma.nix
                 ./modules/desktop-environment.nix

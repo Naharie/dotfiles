@@ -10,9 +10,7 @@ let affinity-nix = inputs.affinity-nix; in
 let
 
 lib = inputs.nixpkgs.lib;
-
 pin = import ../../lib/pin.nix system;
-importDir = import ../../lib/importDir.nix lib;
 
 in  
 
@@ -23,7 +21,12 @@ in
     imports = [
         inputs.nix-flatpak.homeManagerModules.nix-flatpak
         ./plasma
-    ] ++ importDir ./apps;
+
+        ./apps/bash.nix
+        ./apps/elisa.nix
+        ./apps/git.nix
+        ./apps/vscode.nix
+    ];
 
     home.sessionVariables = {
         PATH = lib.strings.concatStringsSep ":" [
@@ -94,7 +97,6 @@ in
     
         # Programming
 
-        vscode
         jetbrains.rider
         jetbrains.rust-rover
         godot_4
