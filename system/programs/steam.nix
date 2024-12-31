@@ -2,7 +2,7 @@
 , ...
 }:
 
-let mur = import ../packages { inherit pkgs; }; in
+let mur = import ../../packages { inherit pkgs; }; in
 
 {
   environment.systemPackages = with pkgs; [

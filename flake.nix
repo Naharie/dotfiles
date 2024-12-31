@@ -1,49 +1,29 @@
 {
-  outputs = inputs@{ nixpkgs, ... }:
-    let
-      host = "valorium";
-      system = "x86_64-linux";
-      specialArgs = {
-        inputs = inputs;
-        inherit system;
-        inherit host;
-      };
-    in
+  outputs = inputs@{ flake-parts, nixpkgs, ... }:
 
-    {
-      nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
-        specialArgs = specialArgs;
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
 
-        modules = [
-          ./apps/steam.nix
-
-          ./modules/users/naharie.nix
-          ./modules/users/tiredpaperartist.nix
-
-          ./modules/boot-loader.nix
-          ./modules/desktop-environment-plasma.nix
-          ./modules/desktop-environment.nix
-          ./modules/environment-variables.nix
-          ./modules/graphics.nix
-          ./modules/hardware-configuration.nix
-          ./modules/hardware-corsair.nix
-          ./modules/home.nix
-          ./modules/localization.nix
-          ./modules/networking.nix
-          ./modules/sound.nix
-          ./modules/system.nix
-        ];
+      flake = {
+        nixosConfigurations.valorium = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; system = "x86_64-linux"; };
+          modules = import ./system;
+        };
       };
     };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    nix-flatpak.url = "github:gmodena/nix-flatpak/main";
-    nix-index-database.url = "github:Mic92/nix-index-database";
+    nixpkgs-stable.url = "github:nixos/nixpkgs";
+    nixpkgs-unfree.url = "github:numtide/nixpkgs-unfree/nixos-unstable";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/main";
+    nix-index-database.url = "github:Mic92/nix-index-database";
 
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
@@ -51,8 +31,11 @@
     };
 
     affinity-nix.url = "github:mrshmllow/affinity-nix";
-    affinity-nix.inputs.nixpkgs.url = "github:numtide/nixpkgs-unfree/nixos-unstable";
+    affinity-nix.inputs.nixpkgs.follows = "nixpkgs-unfree";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
   };
 }

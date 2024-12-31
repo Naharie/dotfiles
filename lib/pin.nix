@@ -1,7 +1,6 @@
 # Pins a single package, that is, builds the package based off of the specific nixpkgs commit.
 # pin :: system:String -> { commit:String, hash:String, package:String | Derivation } -> Derivation
 
-
 system: { commit, hash, package }:
 
 (import
@@ -9,7 +8,7 @@ system: { commit, hash, package }:
     url = "https://github.com/NixOS/nixpkgs/archive/${commit}.tar.gz";
     sha256 = hash;
   })
-  { system = system; }).${
+  { inherit system; }).${
 if builtins.isString package then
   package
 else if builtins.isAttrs package && package ? pname then

@@ -1,6 +1,5 @@
 { inputs
 , system
-, host
 , ...
 }:
 
@@ -14,10 +13,9 @@
     extraSpecialArgs = {
       inherit inputs;
       inherit system;
-      inherit host;
     };
 
-    users.naharie = import ../users/naharie;
+    users.naharie = import ../home/naharie;
     backupFileExtension = "backup";
   };
 }

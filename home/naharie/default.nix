@@ -1,6 +1,6 @@
 { pkgs
-, inputs
 , system
+, inputs
 , ...
 }:
 
@@ -9,7 +9,6 @@ let affinity-nix = inputs.affinity-nix; in
 let
 
   lib = inputs.nixpkgs.lib;
-  pin = import ../../lib/pin.nix system;
 
 in
 
@@ -20,15 +19,7 @@ in
   imports = [
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     ./plasma
-
-    ./apps/bash.nix
-    ./apps/elisa.nix
-    ./apps/git.nix
-    ./apps/vscode.nix
-    ./apps/obs.nix
-    ./apps/micro.nix
-    ./apps/kate.nix
-  ];
+  ] ++ import ./programs;
 
   home.sessionVariables = {
     PATH = lib.strings.concatStringsSep ":" [
@@ -56,11 +47,7 @@ in
       keepassxc
       qalculate-qt
       obsidian
-      (pin {
-        package = calibre;
-        commit = "bafb3e4e13f24f9f665d4e4487c2ea597e65f23e";
-        hash = "sha256:0mxa39d48f5xa8rhk5q4nc2km9qn2bwgbsm0skzlp0yaqazj3yml";
-      })
+      inputs.nixpkgs-stable.legacyPackages.${system}.calibre
       todoist-electron
 
       # Text Editors
