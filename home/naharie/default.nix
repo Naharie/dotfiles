@@ -33,6 +33,7 @@ in
     [
       # Internet & Communication
 
+      brave
       inputs.zen-browser.packages.${system}.default
 
       webcord
@@ -99,13 +100,4 @@ in
       kdePackages.ksystemlog
       kdePackages.plasma-browser-integration
     ];
-
-  services.flatpak = {
-    enable = true;
-    packages = [
-      "io.github.everestapi.Olympus"
-      "us.zoom.Zoom"
-    ];
-    update.onActivation = true;
-  };
 }
