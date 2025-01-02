@@ -19,8 +19,12 @@ let extensions = inputs.nix-vscode-extensions.extensions.${system}; in
       git.enableSmartCommit = true;
 
       nix.enableLanguageServer = true;
-      nix.serverPath = "${pkgs.nil}/bin/nil";
+      nix.serverPath = "${pkgs.nixd}/bin/nixd";
       nix.formatterPath = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
+
+      "[nix]" = {
+        editor.defaultFormatter = "jnoortheen.nix-ide";
+      };
 
       editor.linkedEditing = true;
       editor.tabSize = 4;

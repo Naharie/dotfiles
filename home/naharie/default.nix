@@ -16,10 +16,7 @@ in
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
 
-  imports = [
-    inputs.nix-flatpak.homeManagerModules.nix-flatpak
-    ./plasma
-  ] ++ import ./programs;
+  imports = [ ./plasma ] ++ import ./programs;
 
   home.sessionVariables = {
     PATH = lib.strings.concatStringsSep ":" [
@@ -80,16 +77,13 @@ in
       itch
 
       # Programming
-
-      nixpkgs-fmt
-      jetbrains.rider
+      
       jetbrains.rust-rover
-      godot_4
-      dotnetCorePackages.sdk_9_0
-      typescript
-      nodejs
-      corepack
+      
+      jetbrains.rider
       avalonia-ilspy
+      
+      godot_4
 
       # Utilities
 

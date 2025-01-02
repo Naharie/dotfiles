@@ -3,12 +3,17 @@
 
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
+      imports = [ inputs.devshell.flakeModule ];
 
       flake = {
         nixosConfigurations.valorium = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; system = "x86_64-linux"; };
           modules = import ./system;
         };
+      };
+
+      perSystem = { config, pkgs, ... }: {
+        devshells = import ./devshells pkgs;
       };
     };
 
@@ -21,6 +26,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
+    devshell.url = "github:numtide/devshell";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/main";
     nix-index-database.url = "github:Mic92/nix-index-database";
