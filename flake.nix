@@ -12,7 +12,7 @@
         };
       };
 
-      perSystem = { config, pkgs, ... }: {
+      perSystem = { pkgs, ... }: {
         devshells = import ./devshells pkgs;
       };
     };
