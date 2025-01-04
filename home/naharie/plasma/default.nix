@@ -144,9 +144,9 @@ let mur = import ../../../packages { inherit pkgs; }; in
 
       "Window Fullscreen" = "Meta+F";
 
-      "view_actual_size" = "Meta+)";
-      "view_zoom_in" = "Meta+}";
-      "view_zoom_out" = "Meta+{";
+      "view_actual_size" = "Meta+0";
+      "view_zoom_in" = "Meta++\tMeta+=";
+      "view_zoom_out" = "Meta+-";
     };
 
     powerdevil.AC = {
@@ -200,7 +200,7 @@ let mur = import ../../../packages { inherit pkgs; }; in
         "activate task manager entry 7" = "Meta+7";
         "activate task manager entry 8" = "Meta+8";
         "activate task manager entry 9" = "Meta+9";
-        "activate task manager entry 10" = "Meta+0";
+        #"activate task manager entry 10" = "Meta+0";
       };
 
       "services/org.kde.dolphin.desktop" = { _launch = "Meta+E"; };
