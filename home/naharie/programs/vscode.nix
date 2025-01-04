@@ -4,7 +4,12 @@
 , ...
 }:
 
-let extensions = inputs.nix-vscode-extensions.extensions.${system}; in
+
+let
+
+extensions = inputs.nix-vscode-extensions.extensions.${system};
+
+in
 
 {
   programs.vscode = {
@@ -19,7 +24,7 @@ let extensions = inputs.nix-vscode-extensions.extensions.${system}; in
       git.enableSmartCommit = true;
 
       nix.enableLanguageServer = true;
-      nix.serverPath = "${pkgs.nixd}/bin/nixd";
+      nix.serverPath = "${pkgs.nil}/bin/nil";
       nix.formatterPath = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
 
       "[nix]" = {
