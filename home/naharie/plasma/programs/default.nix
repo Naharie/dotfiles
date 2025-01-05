@@ -1,0 +1,4 @@
+[
+  ./krunner.nix
+  ./dolphin.nix
+]

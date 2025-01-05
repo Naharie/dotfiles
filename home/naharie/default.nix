@@ -7,9 +7,7 @@
 let affinity-nix = inputs.affinity-nix; in
 
 let
-
   lib = inputs.nixpkgs.lib;
-
 in
 
 {
