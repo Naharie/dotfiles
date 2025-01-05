@@ -4,6 +4,7 @@
   ./git.nix
   ./kate.nix
   ./micro.nix
+  ./nushell.nix
   ./obs.nix
   ./olympus.nix
   ./vscode.nix

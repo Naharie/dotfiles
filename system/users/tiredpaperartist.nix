@@ -2,22 +2,17 @@
 , ...
 }:
 
-let mur = import ../../packages { inherit pkgs; }; in
+let
+  username = "tiredpaperartist";
+in
 
 {
   users.users = {
-    tiredpaperartist = {
+    ${username} = {
       isNormalUser = true;
       description = "TiredPaperArtist";
       extraGroups = [ "networkmanager" ];
       shell = pkgs.bash;
     };
   };
-
-  security.sudo.extraRules = [
-    {
-      users = [ "tiredpaperartist" ];
-      commands = [ { command = "${mur.phone-proxy}/bin/phone-proxy"; options = [ "NOPASSWD" ]; } ];
-    }
-  ];
 }

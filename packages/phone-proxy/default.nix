@@ -4,6 +4,6 @@
 
 pkgs.writeShellApplication {
   name = "phone-proxy";
-  runtimeInputs = with pkgs ;[ tun2socks ];
+  runtimeInputs = with pkgs ;[ sysctl iproute2 networkmanager tun2socks ];
   text = builtins.readFile ./proxy.sh;
 }

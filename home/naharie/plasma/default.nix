@@ -8,13 +8,15 @@
 {
   imports = [
     inputs.plasma-manager.homeManagerModules.plasma-manager
-    ./layout.nix
-    ./input.nix
+    
     ./appearance.nix
-    ./shortcuts.nix
     ./display.nix
+    ./input.nix
+    ./layout.nix
     ./night-light.nix
     ./notifications.nix
+    ./screen-locking.nix
+    ./shortcuts.nix
     ./startup.nix
   ] ++ import ./programs;
 
