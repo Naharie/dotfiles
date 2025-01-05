@@ -2,6 +2,8 @@
 , ...
 }:
 
+let mur = import ../../packages { inherit pkgs; }; in
+
 {
   users.users = {
     naharie = {
@@ -15,7 +17,7 @@
   security.sudo.extraRules = [
     {
       users = [ "naharie" ];
-      commands = [{ command = "/home/naharie/scripts/proxy"; options = [ "NOPASSWD" ]; }];
+      commands = [ { command = "${mur.phone-proxy}/bin/phone-proxy"; options = [ "NOPASSWD" ]; } ];
     }
   ];
 }

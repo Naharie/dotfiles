@@ -16,6 +16,8 @@
     };
 
     users.naharie = import ../home/naharie;
+    users.tiredpaperartist = import ../home/tiredpaperartist;
+
     backupFileExtension = "backup";
   };
 }

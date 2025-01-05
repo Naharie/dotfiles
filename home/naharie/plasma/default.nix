@@ -15,10 +15,12 @@
     ./display.nix
     ./night-light.nix
     ./notifications.nix
+    ./startup.nix
   ] ++ import ./programs;
 
   programs.plasma = {
     enable = true;
     overrideConfig = true;
+    immutableByDefault = true;
   };
 }

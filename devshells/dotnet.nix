@@ -2,8 +2,11 @@
 , ...
 }:
 
+let mur = import ../packages { inherit pkgs; }; in
+
 {
   packages = with pkgs; [
-    dotnetCorePackages.sdk_9_0
+    dotnet-sdk_9
+    mur.dotnet-publish
   ];
 }

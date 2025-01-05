@@ -2,6 +2,8 @@
 , ...
 }:
 
+let mur = import ../../packages { inherit pkgs; }; in
+
 {
   users.users = {
     tiredpaperartist = {
@@ -15,7 +17,7 @@
   security.sudo.extraRules = [
     {
       users = [ "tiredpaperartist" ];
-      commands = [{ command = "/home/tiredpaperartist/proxy"; options = [ "NOPASSWD" ]; }];
+      commands = [ { command = "${mur.phone-proxy}/bin/phone-proxy"; options = [ "NOPASSWD" ]; } ];
     }
   ];
 }

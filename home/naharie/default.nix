@@ -36,7 +36,6 @@ in
       skypeforlinux
       signal-desktop
       localsend
-      tun2socks
 
       # Documents, Secrets, and Planning
 
