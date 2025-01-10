@@ -40,6 +40,7 @@ in
       # Documents, Secrets, and Planning
 
       keepassxc
+      proton-pass
       qalculate-qt
       obsidian
       inputs.nixpkgs-stable.legacyPackages.${system}.calibre
@@ -86,7 +87,6 @@ in
 
       timeshift
       fsearch
-      partition-manager
       kdePackages.filelight
       kdePackages.ksystemlog
       kdePackages.plasma-browser-integration
