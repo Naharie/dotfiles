@@ -14,20 +14,24 @@ let
 
   columnType = types.enum [ "Name" "Path" "Type" "Extension" "Size" "Modified" ];
 
-  mkColumn = { name, visible, width, position }: types.submodule ({ ... }: {
-    options = {
-      visible = mkOption {
-        type = types.bool;
-        default = visible;
-        description = "Show the ${name} column.";
+  mkColumn = { name, visible, width }: mkOption {
+    type = types.submodule ({ ... }: {
+      options = {
+        visible = mkOption {
+          type = types.bool;
+          default = visible;
+          description = "Show the ${name} column.";
+        };
+        width = mkOption {
+          type = types.int;
+          default = width;
+          description = "The width of the ${name} column.";
+        };
       };
-      width = mkOption {
-        type = types.int;
-        default = width;
-        description = "The width of the ${name} column.";
-      };
-    };
-  });
+    });
+    default = { inherit visible width; };
+    description = "Configuration for the ${name} column.";
+  };
 in
 
 {
@@ -233,16 +237,19 @@ in
                   visible = true;
                   width = 125;
                 };
-                name = types.submodule ({ ... }: {
-                  options = {
-                    # name_column_width
-                    width = mkOption {
-                      type = types.int;
-                      default = width;
-                      description = "The width of the name column.";
+                name = mkOption {
+                  type = types.submodule ({ ... }: {
+                    options = {
+                      width = mkOption {
+                        type = types.int;
+                        default = 250;
+                        description = "The width of the name column.";
+                      };
                     };
-                  };
-                });
+                  });
+                  default = {};
+                  description = "Configuration for the Name column.";
+                };
               };
             });
             default = {};
@@ -379,10 +386,10 @@ in
             type = types.listOf (types.submodule ({ ... }: {
               options = {
                 path = mkOption {
-                  type = types.string;
+                  type = types.str;
                   description = "The path to the folder to include.";
                 };
-                enabled = mkOption {
+                enable = mkOption {
                   type = types.bool;
                   default = true;
                   description = "Enable using the index for this folder.";
@@ -406,20 +413,22 @@ in
             type = types.submodule ({ ... }: {
               options = {
                 files = mkOption {
-                  type = types.listOf types.string;
+                  type = types.listOf types.str;
                   default = [];
                   description = "A list of file patterns to exclude.";
                 };
                 folders = mkOption {
                   type = types.listOf (types.submodule ({ ... } : {
-                    path = mkOption {
-                      type = types.string;
-                      description = "The path to the folder to exclude.";
-                    };
-                    enable = mkOption {
-                      type = types.bool;
-                      default = true;
-                      description = "Whether or not to process this exclusion.";
+                    options = {
+                        path = mkOption {
+                        type = types.str;
+                        description = "The path to the folder to exclude.";
+                      };
+                      enable = mkOption {
+                        type = types.bool;
+                        default = true;
+                        description = "Whether or not to process this exclusion.";
+                      };
                     };
                   }));
                   default = [
@@ -430,7 +439,7 @@ in
                 };
               };
             });
-            default = [];
+            default = {};
             description = "Files and folders to exclude from the index.";
           };
         };
@@ -442,18 +451,17 @@ in
     filters = mkOption {
       type = types.listOf (types.submodule ({ ... }: {
         options = {
-          # filter_1_name=...
           name = mkOption {
-            type = types.string;
+            type = types.str;
             description = "The name of the filter.";
           };
           macro = mkOption {
-            type = types.string;
+            type = types.str;
             default = "";
             description = "Allows access of this filter via typing in :\${macro} into the query bar.";
           };
           query = mkOption {
-            type = types.string;
+            type = types.str;
             default = "";
             description = "The search query to apply.";
           };
@@ -585,12 +593,12 @@ in
           name_column_width = interface.columns.name.width; 
         }
         # Column ordering
-          // builtins.foldl' ({ attrs, index }: column:
+          // (builtins.foldl' ({ attrs, index }: column:
             {
               attrs = attrs // { "${strings.toLower column}_column_pos" = index; };
               index = index + 1;
             }
-          ) { attrs = {}; index = 0; } interface.columns.order;
+          ) { attrs = {}; index = 0; } interface.columns.order).attrs;
 
         Dialogs = {
           show_dialog_failed_opening = dialogs.showDialogFailedOpening;
@@ -615,27 +623,41 @@ in
 
           exclude_files = builtins.concatStringsSep ";" database.exclude.files;
         }
-          // builtins.foldl' ({ attrs, index }: entry:
+          // (builtins.foldl' ({ attrs, index }: entry:
             {
               index = index + 1;
               attrs = attrs // {
-                "location_${index}" = entry.path;
-                "location_enabled_${index}" = entry.enabled;
-                "location_update_${index}" = entry.update;
-                "location_one_filesystem_${index}" = entry.oneFilesystem;
+                "location_${builtins.toString index}" = entry.path;
+                "location_enabled_${builtins.toString index}" = entry.enable;
+                "location_update_${builtins.toString index}" = entry.update;
+                "location_one_filesystem_${builtins.toString index}" = entry.oneFilesystem;
               };
             }
-          ) { attrs = {}; index = 1; } database.include
+          ) { attrs = {}; index = 1; } database.include).attrs
 
-          // builtins.foldl' ({ attrs, index }: entry:
+          // (builtins.foldl' ({ attrs, index }: entry:
             {
               index = index + 1;
               attrs = attrs // {
-                "exclude_location_${index}" = entry.path;
-                "exclude_location_enabled_${index}" = entry.enabled;
+                "exclude_location_${builtins.toString index}" = entry.path;
+                "exclude_location_enabled_${builtins.toString index}" = entry.enable;
               };
             }
-          ) { attrs = {}; index = 1; } database.exclude.folders;
+          ) { attrs = {}; index = 1; } database.exclude.folders).attrs;
+
+        Filters = (builtins.foldl' ({ attrs, index }: entry:
+          {
+            index = index + 1;
+            attrs = attrs // {
+              "filter_${builtins.toString index}_name" = entry.name;
+              "filter_${builtins.toString index}_macro" = entry.macro;
+              "filter_${builtins.toString index}_query" = entry.query;
+              "filter_${builtins.toString index}_match_case" = entry.matchCase;
+              "filter_${builtins.toString index}_search_in_path" = entry.searchInPath;
+              "filter_${builtins.toString index}_enable_regex" = entry.enableRegex;
+            };
+          }
+        ) { attrs = {}; index = 1; } filters).attrs;
       });
   };
 }

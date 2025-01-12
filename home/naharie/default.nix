@@ -69,7 +69,6 @@ in
       
       godot_4
 
-      fsearch # File search
       timeshift # Personal file backup
       kdePackages.filelight # Disk space usage
       kdePackages.ksystemlog # System log viewer
