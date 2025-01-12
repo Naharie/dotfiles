@@ -7,7 +7,7 @@
     appearance = {
       defaultView = "allAlbums";
       showNowPlayingBackground = true;
-      showProgressOnTaskBar = true;
+      showProgressOnTaskBar = false;
     };
     indexer = {
       paths = [ "$HOME/Music" ];

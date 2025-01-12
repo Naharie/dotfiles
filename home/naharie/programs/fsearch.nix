@@ -24,6 +24,4 @@
       followSymbolicLinks = true;
     };
   };
-
-  home.packages = with pkgs; [ fsearch ];
 }
