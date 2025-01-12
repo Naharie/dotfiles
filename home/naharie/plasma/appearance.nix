@@ -6,7 +6,7 @@ let mur = import ../../../packages { inherit pkgs; }; in
 {
   programs.plasma = {
     workspace = {
-      theme = "Breeze";
+      theme = "Breeze Dark";
       colorScheme = "Andromeda";
 
       wallpaper = "/home/naharie/Pictures/wallpaper/10.jpg";
