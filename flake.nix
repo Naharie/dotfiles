@@ -10,6 +10,10 @@
           specialArgs = { inherit inputs; system = "x86_64-linux"; };
           modules = import ./system;
         };
+
+        homeManagerModules = {
+          fsearch = import ./modules/home-manager/fsearch.nix;
+        };
       };
 
       perSystem = { pkgs, ... }: {

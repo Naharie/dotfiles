@@ -14,7 +14,7 @@ in
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
 
-  imports = [ ./plasma ] ++ import ./programs;
+  imports = [ ./plasma ] ++ import ./programs ++ import ./services;
 
   home.sessionVariables = {
     PATH = lib.strings.concatStringsSep ":" [
@@ -26,69 +26,53 @@ in
 
   home.packages = with pkgs;
     [
-      # Internet & Communication
+      inputs.zen-browser.packages.${system}.default # Web browser
+      brave # Backup web browser
 
-      brave
-      inputs.zen-browser.packages.${system}.default
-
-      webcord
-      vesktop
+      webcord # Discord client
+      vesktop # Discord client for streaming
       skypeforlinux
       signal-desktop
-      localsend
+      localsend # Share files with phone and tablet
 
-      # Documents, Secrets, and Planning
+      proton-pass # Password manager
+      qalculate-qt # Calculator
+      obsidian # Notes
+      inputs.nixpkgs-stable.legacyPackages.${system}.calibre # Ebooks
+      todoist-electron # To-do list
 
-      keepassxc
-      proton-pass
-      qalculate-qt
-      obsidian
-      inputs.nixpkgs-stable.legacyPackages.${system}.calibre
-      todoist-electron
-
-      # Text Editors
-
-      libreoffice
+      libreoffice # Word docs and spreadsheets
 
       # Photos
 
-      darktable
-      imagemagick
-      krita
-      affinity-nix.packages.${system}.photo
+      darktable # Photo organization & raw photo editing
+      imagemagick # Command line photo editing
+      affinity-nix.packages.${system}.photo # Photo editor
 
-      # Videos
+      vlc # Video player
+      kdenlive # Video editor
+      ffmpeg # Video converter
+      yt-dlp # YouTube downloader
+      makemkv # Bluray converter
 
-      vlc
-      kdenlive
-      ffmpeg
-      yt-dlp
-      makemkv
+      puddletag # Music tag editor
 
-      # Music
-
-      puddletag
-
-      # Gaming
-
-      libtas
-      itch
+      libtas # TAS for linux native games
+      itch # itch.io client
 
       # Programming
       
-      jetbrains.rust-rover
+      jetbrains.rider # Code editor for .NET
+      avalonia-ilspy # IL viewer
       
-      jetbrains.rider
-      avalonia-ilspy
+      jetbrains.rust-rover # Code editor for Rust
       
       godot_4
 
-      # Utilities
-
-      timeshift
-      fsearch
-      kdePackages.filelight
-      kdePackages.ksystemlog
-      kdePackages.plasma-browser-integration
+      fsearch # File search
+      timeshift # Personal file backup
+      kdePackages.filelight # Disk space usage
+      kdePackages.ksystemlog # System log viewer
+      kdePackages.plasma-browser-integration # Web browser media control
     ];
 }

@@ -1,6 +1,7 @@
 [
   ./bash.nix
   ./elisa.nix
+  ./fsearch.nix
   ./git.nix
   ./kate.nix
   ./micro.nix

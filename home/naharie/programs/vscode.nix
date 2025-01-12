@@ -17,7 +17,7 @@ in
 
     userSettings = {
       workbench.iconTheme = "vscode-icons";
-      workbench.colorTheme = "Default Dark+";
+      workbench.colorTheme = "Dark Modern";
 
       git.confirmSync = false;
       git.autofetch = true;
