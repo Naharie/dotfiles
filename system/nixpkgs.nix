@@ -1,5 +1,5 @@
-{ system
-, ...
+{
+  ...
 }:
 
 {
@@ -7,7 +7,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.hostPlatform = system;
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   nixpkgs.config.permittedInsecurePackages = [
     # For Rider

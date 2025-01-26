@@ -1,5 +1,4 @@
 { inputs
-, system
 , ...
 }:
 
@@ -10,10 +9,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
 
-    extraSpecialArgs = {
-      inherit inputs;
-      inherit system;
-    };
+    extraSpecialArgs = { inherit inputs; };
 
     users.naharie = import ../home/naharie;
     users.tiredpaperartist = import ../home/tiredpaperartist;
