@@ -659,5 +659,6 @@ in
           }
         ) { attrs = {}; index = 1; } filters).attrs;
       });
+    xdg.configFile."fsearch/fsearch.conf".force = true;
   };
 }
