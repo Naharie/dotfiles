@@ -7,7 +7,7 @@
 
       flake = {
         nixosConfigurations.valorium = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs; system = "x86_64-linux"; };
           modules = import ./system;
         };
 

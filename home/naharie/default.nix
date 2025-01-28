@@ -1,5 +1,6 @@
 { pkgs
 , inputs
+, system
 , ...
 }:
 
@@ -30,7 +31,7 @@ in
 
   home.packages = with pkgs;
     [
-      inputs.zen-browser.packages.${pkgs.system}.default # Web browser
+      inputs.zen-browser.packages.${system}.default # Web browser
       brave # Backup web browser
 
       webcord # Discord client
@@ -42,13 +43,13 @@ in
       proton-pass # Password manager
       qalculate-qt # Calculator
       obsidian # Notes
-      inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.calibre # Ebooks
+      inputs.nixpkgs-stable.legacyPackages.${system}.calibre # Ebooks
       todoist-electron # To-do list
 
       # Photos
 
       darktable # Photo organization & raw photo editing
-      affinity-nix.packages.${pkgs.system}.photo # Photo editor
+      affinity-nix.packages.${system}.photo # Photo editor
 
       vlc # Video player
       kdenlive # Video editor
