@@ -73,5 +73,7 @@ in
 
       dotnet-sdk_9
       mur.dotnet-publish
+
+      zoom # Video Meeting Software
     ];
 }
