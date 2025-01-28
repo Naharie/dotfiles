@@ -22,6 +22,7 @@ in
       "$HOME/.dotnet/tools"
     ];
     EDITOR = "code --wait";
+    XDG_DATA_DIRS = "/var/lib/flatpak/exports/share;/home/naharie/.local/share/flatpak/exports/share";
   };
 
   home.packages = with pkgs;

@@ -9,4 +9,5 @@
   ./obs.nix
   ./olympus.nix
   ./vscode.nix
+  ./zoom.nix
 ]
