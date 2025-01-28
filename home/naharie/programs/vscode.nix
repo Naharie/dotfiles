@@ -1,13 +1,12 @@
 { pkgs
 , inputs
-, system
 , ...
 }:
 
 
 let
 
-extensions = inputs.nix-vscode-extensions.extensions.${system};
+extensions = inputs.nix-vscode-extensions.extensions.${pkgs.system};
 
 in
 
