@@ -45,12 +45,9 @@ in
       inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.calibre # Ebooks
       todoist-electron # To-do list
 
-      libreoffice # Word docs and spreadsheets
-
       # Photos
 
       darktable # Photo organization & raw photo editing
-      imagemagick # Command line photo editing
       affinity-nix.packages.${pkgs.system}.photo # Photo editor
 
       vlc # Video player
@@ -61,17 +58,12 @@ in
 
       puddletag # Music tag editor
 
-      libtas # TAS for linux native games
-      itch # itch.io client
-
       # Programming
       
       jetbrains.rider # Code editor for .NET
       avalonia-ilspy # IL viewer
       
       jetbrains.rust-rover # Code editor for Rust
-      
-      godot_4
 
       timeshift # Personal file backup
       kdePackages.filelight # Disk space usage
