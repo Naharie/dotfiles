@@ -1,4 +1,10 @@
-[
-  ./naharie.nix
-  ./tiredpaperartist.nix
-]
+{
+  ...
+}:
+
+{
+  imports = [
+    ./naharie.nix
+    ./tiredpaperartist.nix
+  ];
+}

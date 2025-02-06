@@ -11,10 +11,7 @@
   ./networking.nix
   ./nixpkgs.nix
   ./sound.nix
-]
-++
-builtins.concatLists [
-  (import ./programs)
-  (import ./services)
-  (import ./users)
+  ./programs
+  ./services
+  ./users
 ]

@@ -1,6 +1,12 @@
-[
-  ./dbus.nix
-  ./phone-proxy.nix
-  ./udev.nix
-  ./jellyfin.nix
-]
+{
+  ...
+}:
+
+{
+  imports = [
+    ./dbus.nix
+    ./phone-proxy.nix
+    ./udev.nix
+    ./jellyfin.nix
+  ];
+}

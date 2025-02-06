@@ -1,3 +1,9 @@
-[
-  ./flatpak.nix
-]
+{
+  ...
+}:
+
+{
+  imports = [
+    ./flatpak.nix
+  ];
+}
