@@ -41,9 +41,9 @@ in
       inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.calibre # Ebooks
       todoist-electron # To-do list
 
-      libreoffice # Word docs and spreadsheets
+      rcu # reMarkable management
 
-      # Photos
+      libreoffice # Word docs and spreadsheets
 
       darktable # Photo organization & raw photo editing
       imagemagick # Command line photo editing
@@ -60,8 +60,6 @@ in
       libtas # TAS for linux native games
       itch # itch.io client
 
-      # Programming
-      
       jetbrains.rider # Code editor for .NET
       avalonia-ilspy # IL viewer
       
@@ -76,6 +74,11 @@ in
 
       dotnet-sdk_9
       mur.dotnet-publish
+
+      nodejs
+      nodePackages_latest.ts-node
+        corepack
+        typescript
 
       zoom
     ];
