@@ -12,11 +12,13 @@ let affinity-nix = inputs.affinity-nix; in
     affinity-nix.packages.${pkgs.system}.photo # Photo editor
 
     vlc # Video player
-    kdenlive # Video editor
+    kdePackages.kdenlive # Video editor
     ffmpeg # Video converter
     yt-dlp # YouTube downloader
     makemkv # Bluray converter
+    losslesscut-bin # Lossless video slicer
 
     puddletag # Music tag editor
+    jellyfin-media-player # Jellyfin client
   ];
 }

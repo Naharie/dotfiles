@@ -34,7 +34,7 @@ let lib = inputs.nixpkgs.lib; in
       kdePackages.filelight # Disk space usage
       kdePackages.ksystemlog # System log viewer
       kdePackages.plasma-browser-integration # Web browser media control
-
+      
       zoom
     ];
 }
