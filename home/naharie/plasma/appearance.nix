@@ -9,7 +9,7 @@ let mur = import ../../../packages { inherit pkgs; }; in
       theme = "Breeze Dark";
       colorScheme = "Andromeda";
 
-      wallpaper = "/home/naharie/Pictures/wallpaper/10.jpg";
+      wallpaper = "/home/naharie/Vault/pictures.wallpaper.6.jpg";
       wallpaperFillMode = "preserveAspectCrop";
 
       cursor.theme = "ArcAurora-cursors";
@@ -20,7 +20,7 @@ let mur = import ../../../packages { inherit pkgs; }; in
     };
 
     kscreenlocker = {
-      appearance.wallpaper = "/home/naharie/Pictures/wallpaper/2.jpg";
+      appearance.wallpaper = "/home/naharie/Vault/pictures.wallpaper.2.jpg";
     };
 
     kwin = {

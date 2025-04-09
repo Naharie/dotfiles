@@ -9,4 +9,6 @@
 
   dotnet-publish = pkgs.callPackage ./dotnet-publish.nix {};
   phone-proxy = pkgs.callPackage ./phone-proxy {};
+
+  zerotier-gui = pkgs.callPackage ./zerotier-gui.nix {};
 }

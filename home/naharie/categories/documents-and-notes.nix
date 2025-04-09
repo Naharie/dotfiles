@@ -15,5 +15,7 @@
 
     libreoffice # Word docs and spreadsheets
     inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.calibre # Ebooks
+
+    krename # Bulk file renaming
   ];
 }
