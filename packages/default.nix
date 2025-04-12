@@ -1,4 +1,5 @@
-{ pkgs
+{
+  pkgs
 }:
 
 {
@@ -11,4 +12,6 @@
   phone-proxy = pkgs.callPackage ./phone-proxy {};
 
   zerotier-gui = pkgs.callPackage ./zerotier-gui.nix {};
+
+  vial-udev = pkgs.callPackage ./vial-udev {};
 }

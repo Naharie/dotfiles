@@ -9,7 +9,7 @@
 
   services.flatpak = {
     enable = true;
-    update.onActivation = true;
+    update.onActivation = false;
     uninstallUnmanaged = true;
     uninstallUnused = true; # Not needed as long as uninstallUnmanaged is true, but I like to be explicit
   };
