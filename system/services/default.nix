@@ -8,6 +8,5 @@
     ./jellyfin.nix
     ./phone-proxy.nix
     ./udev.nix
-    #./zerotier.nix
   ];
 }
