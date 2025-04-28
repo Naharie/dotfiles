@@ -21,4 +21,9 @@
     dataDir = "/home/naharie/.local/share/jellyfin/data";
     configDir = "/home/naharie/.local/share/jellyfin/config";
   };
+
+  # Shenanigans to try and get Jellyfin to not start until my user account is loaded.
+  systemd.services.jellyfin = {
+    after = [ "home-manager-naharie.service" ];
+  };
 }
