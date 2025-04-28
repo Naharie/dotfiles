@@ -11,5 +11,6 @@
     jetbrains.idea-community-bin # Code editor for Java
 
     godot_4
+    code-cursor
   ];
 }
