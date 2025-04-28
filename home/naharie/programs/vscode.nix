@@ -56,8 +56,8 @@ in
         bradlc.vscode-tailwindcss
 
         # Rust
-        rust-lang.rust-analyzer
-        tamasfe.even-better-toml
+        #rust-lang.rust-analyzer
+        #tamasfe.even-better-toml
 
         # Nix
         jnoortheen.nix-ide
