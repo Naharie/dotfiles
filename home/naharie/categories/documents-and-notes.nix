@@ -8,8 +8,7 @@
     proton-pass # Password manager
     qalculate-qt # Calculator
     obsidian # Notes
-    kmymoney # Finance Tracking
-      
+
     todoist-electron # To-do list
 
     rcu # reMarkable management
