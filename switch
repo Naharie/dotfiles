@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+sudo nixos-rebuild switch --log-format internal-json -v --flake ./ |& nom --json
