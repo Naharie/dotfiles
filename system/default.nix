@@ -1,5 +1,6 @@
 [
   ./boot-loader.nix
+  ./chaotic-nix.nix
   ./desktop-environment-plasma.nix
   ./desktop-environment.nix
   ./environment-variables.nix

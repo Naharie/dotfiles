@@ -2,11 +2,9 @@
 , ...
 }:
 
-let mur = import ../../packages { inherit pkgs; }; in
-
 {
   environment.systemPackages = with pkgs; [
-    mur.proton-ge
+    proton-ge-custom
     steam-run
   ];
 
