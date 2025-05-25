@@ -64,6 +64,10 @@ in
         brettm12345.nixfmt-vscode
         jeff-hykin.better-nix-syntax
         christian-kohler.path-intellisense
+
+        # Prolog
+        # https://www.gyanblog.com/vscode/visual-studio-code-associate-file-extensions-language/
+        jeff-hykin.better-prolog-syntax
       ];
     };
   };
