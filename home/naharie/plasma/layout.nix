@@ -19,7 +19,7 @@
         }
         {
           iconTasks = {
-            launchers = [ "applications:zen.desktop" ];
+            launchers = [ "applications:zen-beta.desktop" ];
             behavior.grouping.method = "none";
           };
         }
