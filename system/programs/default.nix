@@ -5,7 +5,7 @@
 {
   imports = [
     ./nix-index.nix
-    ./nom.nix
+    ./nix-output-monitor.nix
     ./steam.nix
     ./kde-partition-manager.nix
     ./vial.nix
