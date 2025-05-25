@@ -1,6 +1,5 @@
-{ pkgs, ... }:
+{ ... }:
 
-let mur = import ../packages { inherit pkgs; }; in
 {
   environment.sessionVariables = rec {
     XDG_CACHE_HOME = "$HOME/.cache";
@@ -15,7 +14,5 @@ let mur = import ../packages { inherit pkgs; }; in
 
     NIXOS_OZONE_WL = "1";
     MOZ_ENABLE_WAYLAND = "1";
-
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${mur.proton-ge}";
   };
 }
