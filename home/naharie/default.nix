@@ -27,7 +27,7 @@ let lib = inputs.nixpkgs.lib; in
   home.packages = with pkgs;
     [
       inputs.zen-browser.packages.${pkgs.system}.default # Web browser
-      microsoft-edge # Backup web browser
+      brave # Backup web browser
 
       inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.vorta # Backup
 
