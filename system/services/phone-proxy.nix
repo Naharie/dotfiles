@@ -1,10 +1,9 @@
 { pkgs
+, inputs
 , ...
 }:
 
-let
-  mur = import ../../packages { inherit pkgs; };
-in
+let mur = inputs.self.packages.${pkgs.system}; in
 
 {
   systemd.services.phone-proxy = {

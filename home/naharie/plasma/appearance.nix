@@ -1,8 +1,9 @@
 { pkgs
+, inputs
 , ...
 }:
 
-let mur = import ../../../packages { inherit pkgs; }; in
+let mur = inputs.self.packages.${pkgs.system}; in
 {
   programs.plasma = {
     workspace = {
