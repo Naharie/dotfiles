@@ -50,5 +50,7 @@
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-alien.url = "github:thiagokokada/nix-alien";
   };
 }
