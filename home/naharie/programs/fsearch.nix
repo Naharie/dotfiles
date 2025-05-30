@@ -1,9 +1,10 @@
-{ 
-  ...
+{
+  inputs
+, ...
 }:
 
 {
-  imports = [ ../../../modules/home-manager/fsearch.nix ];
+  imports = [ inputs.self.homeManagerModules.fsearch ];
 
   programs.fsearch = {
     enable = true;
