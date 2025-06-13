@@ -12,6 +12,7 @@
     ./kate.nix
     ./micro.nix
     ./nushell.nix
+    ./nxdumptool.nix
     ./obs.nix
     ./olympus.nix
     ./prism-launcher.nix

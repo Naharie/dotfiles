@@ -12,4 +12,5 @@
   zerotier-gui = pkgs.callPackage ./zerotier-gui.nix {};
 
   vial-udev = pkgs.callPackage ./vial-udev {};
+  nxdumptool-udev = pkgs.callPackage ./nxdumptool-udev {};
 }

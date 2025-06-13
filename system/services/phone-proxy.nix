@@ -7,7 +7,7 @@ let mur = inputs.self.packages.${pkgs.system}; in
 
 {
   systemd.services.phone-proxy = {
-    enable = true;
+    enable = false;
     name = "phone-proxy.service";
     description = "Proxy all network traffic through the phone's data plan";
 
