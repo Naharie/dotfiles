@@ -15,4 +15,6 @@ in
       shell = pkgs.bash;
     };
   };
+
+  home-manager.users.naharie = import ../../home/naharie;
 }

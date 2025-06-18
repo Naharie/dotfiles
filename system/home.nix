@@ -1,4 +1,5 @@
 { inputs
+, valLib
 , ...
 }:
 
@@ -9,9 +10,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
 
-    extraSpecialArgs = { inherit inputs; };
-
-    users.naharie = import ../home/naharie;
+    extraSpecialArgs = { inherit inputs; inherit valLib; };
 
     backupFileExtension = "backup";
   };
