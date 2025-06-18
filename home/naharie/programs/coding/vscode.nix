@@ -5,9 +5,7 @@
 
 
 let
-
 extensions = inputs.nix-vscode-extensions.extensions.${pkgs.system};
-
 in
 
 {

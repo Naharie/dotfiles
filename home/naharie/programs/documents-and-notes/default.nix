@@ -1,9 +1,12 @@
 { pkgs
 , inputs
+, valLib
 , ...
 }:
 
 {
+  imports = valLib.gatherImports ./.;
+
   home.packages = with pkgs; [
     proton-pass # Password manager
     qalculate-qt # Calculator
