@@ -2,15 +2,15 @@
   pkgs
 }:
 
-{
-  arcaurora-cursors = pkgs.callPackage ./arcaurora-cursors.nix {};
-  andromeda-theme = pkgs.callPackage ./andromeda-theme.nix {};
+builtins.mapAttrs (n: v: pkgs.callPackage v {}) {
+  arcaurora-cursors = ./arcaurora-cursors.nix;
+  andromeda-theme = ./andromeda-theme.nix;
 
-  dotnet-publish = pkgs.callPackage ./dotnet-publish.nix {};
-  phone-proxy = pkgs.callPackage ./phone-proxy {};
+  dotnet-publish = ./dotnet-publish.nix;
+  phone-proxy = ./phone-proxy;
 
-  zerotier-gui = pkgs.callPackage ./zerotier-gui.nix {};
+  zerotier-gui = ./zerotier-gui.nix;
 
-  vial-udev = pkgs.callPackage ./vial-udev {};
-  nxdumptool-udev = pkgs.callPackage ./nxdumptool-udev {};
+  vial-udev = ./vial-udev;
+  nxdumptool-udev = ./nxdumptool-udev;
 }

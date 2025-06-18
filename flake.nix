@@ -6,8 +6,11 @@
       imports = [ inputs.devshell.flakeModule ];
 
       flake = {
-        nixosConfigurations.valorium = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+        nixosConfigurations.valorium =  nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            valLib = import ./lib { lib = nixpkgs.lib; };
+          };
           modules = import ./system;
         };
 

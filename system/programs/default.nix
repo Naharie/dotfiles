@@ -1,16 +1,7 @@
-{
-  ...
+{ valLib
+, ...
 }:
 
 {
-  imports = [
-    ./appimage.nix
-    ./nix-alien.nix
-    ./nix-index.nix
-    ./nix-output-monitor.nix
-    ./nxdumptool.nix
-    ./steam.nix
-    ./kde-partition-manager.nix
-    ./vial.nix
-  ];
+  imports = valLib.gatherImports ./.;
 }
