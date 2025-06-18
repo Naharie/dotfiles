@@ -20,7 +20,6 @@
       };
 
       perSystem = { pkgs, ... }: {
-        devshells = import ./devshells pkgs;
         packages = import ./packages { inherit pkgs; };
       };
     };
