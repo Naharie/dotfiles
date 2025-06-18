@@ -1,5 +1,6 @@
 {
   outputs = inputs@{ flake-parts, nixpkgs, ... }:
+    let valLib = import ./lib { lib = nixpkgs.lib; }; in
 
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
@@ -9,10 +10,12 @@
         nixosConfigurations.valorium =  nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            valLib = import ./lib { lib = nixpkgs.lib; };
+            inherit valLib;
           };
-          modules = import ./system;
+          modules = valLib.gatherImports ./system;
         };
+
+        valLib = import ./lib { lib = nixpkgs.lib; };
 
         homeManagerModules = {
           fsearch = import ./modules/home-manager/fsearch.nix;
@@ -20,7 +23,7 @@
       };
 
       perSystem = { pkgs, ... }: {
-        packages = import ./packages { inherit pkgs; };
+        packages = import ./packages { inherit pkgs; lib = nixpkgs.lib; };
       };
     };
 

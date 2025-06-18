@@ -9,7 +9,7 @@ else
   lib.trivial.pipe (builtins.readDir dir) [
     (lib.attrsets.mapAttrsToList (name: type:
       if type == "directory" then
-        [ (gatherImports false (dir + "/${name}")) ]
+        (gatherImports false (dir + "/${name}"))
       else if name != "default.nix" && lib.strings.hasSuffix ".nix" name then
         [ (dir + "/${name}") ]
       else

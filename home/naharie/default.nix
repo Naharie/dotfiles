@@ -1,5 +1,6 @@
 { pkgs
 , inputs
+, valLib
 , ...
 }:
 
@@ -9,12 +10,7 @@ let lib = inputs.nixpkgs.lib; in
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
 
-  imports = [
-    ./categories
-    ./plasma
-    ./programs
-    ./services
-  ];
+  imports = valLib.gatherImports ./.;
 
   home.sessionVariables = {
     PATH = lib.strings.concatStringsSep ":" [

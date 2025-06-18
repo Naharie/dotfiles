@@ -1,7 +1,0 @@
-{ valLib
-, ...
-}:
-
-{
-  imports = valLib.gatherImports ./.;
-}

@@ -7,13 +7,16 @@ if !ignoreDefault && builtins.pathExists defaultFile then
   fn defaultFile
 else
   lib.trivial.pipe (builtins.readDir dir) [
-    (builtins.mapAttrs (name: type:
+    (lib.attrsets.mapAttrs' (name: type:
       if type == "directory" then
-        importDir false (dir + "/${name}") fn
+        { inherit name; value = importDir false (dir + "/${name}") fn; }
       else if name != "default.nix" && lib.strings.hasSuffix ".nix" name then
-        fn (dir + "/${name}")
+        {
+          name = builtins.substring 0 (builtins.stringLength name - 4) name;
+          value = fn (dir + "/${name}");
+        }
       else
-        null
+        { inherit name; value = null; }
     ))
 
     (lib.attrsets.filterAttrs (n: v: v != null))
