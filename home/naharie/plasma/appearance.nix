@@ -10,7 +10,7 @@ let mur = inputs.self.packages.${pkgs.system}; in
       theme = "Breeze Dark";
       colorScheme = "Andromeda";
 
-      wallpaper = "/home/naharie/Pictures/pictures.wallpaper.6.jpg";
+      wallpaper = "/home/naharie/Pictures/wallpaper/pictures.wallpaper.6.jpg";
       wallpaperFillMode = "preserveAspectCrop";
 
       cursor.theme = "ArcAurora-cursors";
@@ -21,7 +21,7 @@ let mur = inputs.self.packages.${pkgs.system}; in
     };
 
     kscreenlocker = {
-      appearance.wallpaper = "/home/naharie/Pictures/pictures.wallpaper.2.jpg";
+      appearance.wallpaper = "/home/naharie/Pictures/wallpaper/pictures.wallpaper.2.jpg";
     };
 
     kwin = {
