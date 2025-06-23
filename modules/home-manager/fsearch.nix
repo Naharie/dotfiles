@@ -591,6 +591,9 @@ in
           modified_column_width = interface.columns.modified.width;
 
           name_column_width = interface.columns.name.width; 
+
+          sort_ascending = interface.sort.mode == "ascending";
+          sort_by = interface.sort.byColumn;
         }
         # Column ordering
           // (builtins.foldl' ({ attrs, index }: column:
