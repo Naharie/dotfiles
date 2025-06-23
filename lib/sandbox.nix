@@ -1,7 +1,7 @@
 # Borrowed from https://github.com/stelcodes/nixflake as shared in their reddit post: https://www.reddit.com/r/NixOS/comments/1b56jdx/simple_nix_function_for_wrapping_executables_with/
 { pkgs, lib }:
 
-{ executable, desktop ? null, profile ? null, extraArgs ? [ ] }:
+{ pkgs, executable, desktop ? null, profile ? null, extraArgs ? [ ] }:
     pkgs.runCommand "firejail-wrap" {
 			preferLocalBuild = true;
 			allowSubstitutes = false;
