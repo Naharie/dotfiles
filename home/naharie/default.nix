@@ -18,7 +18,9 @@ let lib = inputs.nixpkgs.lib; in
       "$HOME/.dotnet/tools"
     ];
     EDITOR = "code --wait";
+    XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share";
   };
+  
 
   home.packages = with pkgs;
     [

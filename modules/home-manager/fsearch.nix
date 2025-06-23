@@ -1,6 +1,7 @@
 { pkgs
 , lib
 , config
+, valLib
 , ...
 }:
 
@@ -9,7 +10,7 @@ with lib;
 let
 
   cfg = config.programs.fsearch;
-  maintainers = import ../../lib/maintainers.nix;
+  maintainers = valLib.maintainers;
   iniFormat = pkgs.formats.ini {};
 
   columnType = types.enum [ "Name" "Path" "Type" "Extension" "Size" "Modified" ];
@@ -38,7 +39,7 @@ in
   meta.maintainers = [ maintainers.naharie ];
 
   options.programs.fsearch = {
-    enable = mkEnableOption "fsearch, a fast indexing file search solution";
+    enable = mkEnableOption "Whether to enable fsearch, a fast indexing file search solution";
     package = mkPackageOption pkgs "fsearch" {};
 
     interface = mkOption {
