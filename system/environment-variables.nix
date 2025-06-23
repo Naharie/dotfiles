@@ -7,6 +7,7 @@
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_STATE_HOME = "$HOME/.local/state";
     XDG_BIN_HOME = "$HOME/.local/bin";
+    XDG_DATA_DIRS = "/var/lib/flatpak/exports/share";
 
     PATH = [ "${XDG_BIN_HOME}" ];
 
