@@ -7,6 +7,9 @@
 let lib = inputs.nixpkgs.lib; in
 
 {
+  # https://askubuntu.com/questions/1086529/how-to-give-a-flatpak-app-access-to-a-directory
+  # Flatpak permissions management
+
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
 
@@ -18,10 +21,10 @@ let lib = inputs.nixpkgs.lib; in
       "$HOME/.dotnet/tools"
     ];
     EDITOR = "code --wait";
+    # Do I need this with the new flatpak manager?
     XDG_DATA_DIRS = "$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share";
   };
   
-
   home.packages = with pkgs;
     [
       inputs.zen-browser.packages.${pkgs.system}.default # Web browser

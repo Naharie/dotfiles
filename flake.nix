@@ -40,7 +40,8 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     devshell.url = "github:numtide/devshell";
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/main";
+    nix-flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/stable-v3";
+
     nix-index-database.url = "github:Mic92/nix-index-database";
 
     plasma-manager = {

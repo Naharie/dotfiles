@@ -3,5 +3,5 @@
 }:
 
 {  
-  services.flatpak.packages = [ "io.github.everestapi.Olympus" ];
+  services.flatpak.packages = [ "flathub:app/io.github.everestapi.Olympus//stable" ];
 }

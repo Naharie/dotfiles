@@ -3,5 +3,5 @@
 }:
 
 {  
-  services.flatpak.packages = [ "org.v1993.NXDumpClient" ];
+  services.flatpak.packages = [ "flathub:app/org.v1993.NXDumpClient//stable" ];
 }

@@ -5,12 +5,13 @@
 
 {
   home.packages = with pkgs; [ flatpak ];
-  imports = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
+  imports = [ inputs.nix-flatpaks.homeModule ];
 
   services.flatpak = {
     enable = true;
-    update.onActivation = false;
-    uninstallUnmanaged = true;
-    uninstallUnused = true; # Not needed as long as uninstallUnmanaged is true, but I like to be explicit
+    remotes = {
+      flathub = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+      flathub-beta = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo";
+    };
   };
 }
