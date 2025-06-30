@@ -1,3 +1,5 @@
+# TODO: https://github.com/NixOS/nix/issues/10431 had to nix-shell -p git and then run with --option sandbox false
+
 { pkgs
 , stdenv
 , lib
@@ -11,6 +13,7 @@ stdenv.mkDerivation {
     url = "https://github.com/yeyushengfan258/ArcAurora-Cursors";
     rev = "9689e49487818bface315f8cf1d2c4f860f050a7";
     narHash = "sha256-u/x8aEeOskv6R8uCB4ojn9tXxTxflejWACxgp03o9PI=";
+    ref = "main";
   };
 
   nativeBuildInputs = with pkgs; [ bash inkscape xorg.xcursorgen ];

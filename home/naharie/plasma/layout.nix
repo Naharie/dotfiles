@@ -52,7 +52,7 @@
         }
         {
           name = "org.kde.plasma.minimizeall";
-          config.Shortcuts = { global = "Meta+M"; };
+          config.Configuration.Shortcuts = "Meta+M";
         }
       ];
     }
