@@ -24,14 +24,16 @@
           };
         }
         {
-          systemTray = {
-            icons.spacing = "large";
-            items = {
-              shown = [
+          name = "org.kde.plasma.systemtray";
+          config = {
+            General = {
+              iconSpacing = 6;
+
+              shownItems = [
                 "org.kde.plasma.bluetooth"
                 "org.kde.plasma.brightness"
               ];
-              hidden = [
+              hiddenItems = [
                 "org.kde.plasma.powermanagement"
                 "ckb-next_ckb-next"
               ];
@@ -52,7 +54,7 @@
         }
         {
           name = "org.kde.plasma.minimizeall";
-          config.Configuration.Shortcuts = "Meta+M";
+          config.Shortcuts = "Meta+M";
         }
       ];
     }
