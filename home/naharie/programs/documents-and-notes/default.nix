@@ -1,5 +1,4 @@
 { pkgs
-, inputs
 , valLib
 , ...
 }:
@@ -14,7 +13,7 @@
 
     rcu # reMarkable management
 
-    inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.calibre # Ebooks
+    calibre # Ebooks
 
     krename # Bulk file renaming
   ];
