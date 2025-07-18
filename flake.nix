@@ -29,7 +29,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs";
+    nixpkgs-stable.url = "github:numtide/nixpkgs-unfree/nixos-24.05";
     nixpkgs-unfree.url = "github:numtide/nixpkgs-unfree/nixos-unstable";
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
