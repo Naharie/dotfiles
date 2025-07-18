@@ -1,7 +1,10 @@
 { pkgs
+, inputs
 , ...
 }:
 
 {
-  home.packages = with pkgs; [ jetbrains.rider ];
+  home.packages = [
+    inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.jetbrains.rider
+  ];
 }
