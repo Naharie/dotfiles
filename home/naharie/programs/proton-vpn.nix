@@ -1,7 +1,10 @@
 { pkgs
+, inputs
 , ...
 }:
 
 {
-  home.packages = with pkgs; [ protonvpn-gui ];
+  home.packages = [
+    inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.protonvpn-gui
+  ];
 }
