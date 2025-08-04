@@ -3,5 +3,5 @@
 }:
 
 {
-  home.packages = with pkgs; [ rclone rclone-ui ];
+  home.packages = with pkgs; [ rclone rclone-ui rclone-browser ];
 }
