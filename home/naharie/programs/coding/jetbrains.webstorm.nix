@@ -5,6 +5,6 @@
 
 {
   home.packages = [
-    inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.jetbrains.webstorm
+    #inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.jetbrains.webstorm
   ];
 }

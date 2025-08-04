@@ -5,6 +5,6 @@
 
 {
   home.packages = [
-    inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.jetbrains.clion
+    #inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.jetbrains.clion
   ];
 }
