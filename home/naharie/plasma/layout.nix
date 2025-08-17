@@ -33,10 +33,7 @@
                 "org.kde.plasma.bluetooth"
                 "org.kde.plasma.brightness"
               ];
-              hiddenItems = [
-                "org.kde.plasma.powermanagement"
-                "ckb-next_ckb-next"
-              ];
+              hiddenItems = [];
             };
           };
         }
