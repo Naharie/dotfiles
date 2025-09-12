@@ -11,8 +11,6 @@
     qalculate-qt # Calculator
     obsidian # Notes
 
-    rcu # reMarkable management
-
     calibre # Ebooks
 
     krename # Bulk file renaming
