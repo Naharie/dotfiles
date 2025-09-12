@@ -4,8 +4,6 @@
 }:
 
 {
-  imports = [ inputs.self.nixosModules.amdgpu ];
-
   environment.systemPackages = with pkgs; [
     proton-ge-custom
     steam-run
