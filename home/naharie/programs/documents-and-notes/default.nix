@@ -14,5 +14,7 @@
     calibre # Ebooks
 
     krename # Bulk file renaming
+
+    protonmail-desktop
   ];
 }
