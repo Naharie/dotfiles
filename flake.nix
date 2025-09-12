@@ -17,9 +17,7 @@
 
         valLib = import ./lib { lib = nixpkgs.lib; };
 
-        nixosModules = {
-          amdgpu = import ./modules/nixos/amdgpu;
-        };
+        nixosModules = {};
 
         homeManagerModules = {
           fsearch = import ./modules/home-manager/fsearch.nix;
