@@ -13,7 +13,7 @@
       widgets = [
         {
           kickoff = {
-            icon = "nix-snowflake-white";
+            icon = "nix-snowflake";
             sortAlphabetically = true;
           };
         }

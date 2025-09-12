@@ -7,16 +7,14 @@ let mur = inputs.self.packages.${pkgs.system}; in
 {
   programs.plasma = {
     workspace = {
-      theme = "breeze-dark";
-      colorScheme = "Ant-Dark"; # plasma-apply-colorscheme --list-schemes
+      theme = "breeze-light";
+      colorScheme = "BreezeLight";
 
       wallpaper = "/home/naharie/Pictures/wallpaper/pictures.wallpaper.7.png";
       wallpaperFillMode = "preserveAspectCrop";
 
       cursor.theme = "ArcAurora-cursors";
       splashScreen.theme = "None";
-
-      iconTheme = "candy-icons";
     };
 
     kscreenlocker = {
@@ -54,7 +52,7 @@ let mur = inputs.self.packages.${pkgs.system}; in
 
   home.packages = [
     mur.arcaurora-cursors
-    mur.andromeda-theme
-    pkgs.candy-icons
+    pkgs.papirus-folders
+    pkgs.papirus-icon-theme
   ];
 }

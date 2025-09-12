@@ -61,6 +61,6 @@
 
     nix-alien.url = "github:thiagokokada/nix-alien";
 
-    tuxedo-nixos.url = "github:sund3RRR/tuxedo-nixos";  
+    tuxedo-nixos.url = "github:sund3RRR/tuxedo-nixos";
   };
 }

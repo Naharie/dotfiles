@@ -11,7 +11,7 @@
   };
 
   # Let TUXEDO Control Center handle CPU frequencies
-  services.power-profiles-daemon.enable = false;
+  services.power-profiles-daemon.enable = false;  
 
   boot = {
     kernelParams = [
