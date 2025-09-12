@@ -15,11 +15,8 @@ stdenv.mkDerivation {
   };
 
   buildCommand = ''
-    cd $src/kde/Dark/plasma
-
-    mkdir -p $out/share/plasma
-    cp -r ./desktoptheme $out/share/plasma
-    cp -r ./look-and-feel $out/share/plasma
+    mkdir -p $out/share/themes
+    cp -r $src/kde/Dark/plasma $out/share/themes
   '';
 
   meta = with lib; {

@@ -4,18 +4,23 @@
 
 {
   programs.plasma = {
-    input.mice = [
+    input.touchpads = [
       {
-        name = "ckb1: CORSAIR HARPOON RGB PRO Gaming Mouse vM";
-        vendorId = "1b1c";
-        productId = "1b75";
+        enable = true;
 
-        acceleration = 0;
-        accelerationProfile = "none";
-        scrollSpeed = 2.22;
+        name = "UNIW0001:00 093A:0255 Touchpad";
+        vendorId = "2362";
+        productId = "597";
+
+        disableWhileTyping = true;
+        middleButtonEmulation = true;
+        
+        pointerSpeed = 0;
+        accelerationProfile = "default";
+
+        naturalScroll = true;
+        tapToClick = true;
       }
     ];
-
-    configFile.kcminputrc.Mouse.X11LibInputXAccelProfileFlat = true;
   };
 }

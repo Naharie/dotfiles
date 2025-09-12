@@ -7,15 +7,14 @@ let mur = inputs.self.packages.${pkgs.system}; in
 {
   programs.plasma = {
     workspace = {
-      theme = "Breeze Dark";
-      colorScheme = "Andromeda";
+      theme = "breeze-dark";
+      colorScheme = "Ant-Dark"; # plasma-apply-colorscheme --list-schemes
 
-      wallpaper = "/home/naharie/Pictures/wallpaper/pictures.wallpaper.6.jpg";
+      wallpaper = "/home/naharie/Pictures/wallpaper/pictures.wallpaper.7.png";
       wallpaperFillMode = "preserveAspectCrop";
 
       cursor.theme = "ArcAurora-cursors";
       splashScreen.theme = "None";
-
 
       iconTheme = "candy-icons";
     };

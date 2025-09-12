@@ -10,18 +10,20 @@
       captureRectangularRegion = "Ctrl+Print";
     };
 
+    hotkeys.commands = {
+        "launch-konsole" = {
+          name = "Launch Konsole";
+          key = "Meta+T";
+          command = "konsole";
+        };
+        "launch-dolphin" = {
+          name = "Launch Dolphine";
+          key = "Meta+E";
+          command = "dolphin";
+        };
+    };
+
     shortcuts = {
-      kmix = {
-        increase_volume = "PgUp";
-        increase_volume_small = "Shift+PgUp";
-
-        decrease_volume = "PgDown";
-        decrease_volume_small = "Shift+PgDown";
-
-        mute = "ScrollLock";
-      };
-      mediacontrol.playpausemedia = "Pause";
-
       plasmashell = {
         "activate application launcher" = "Meta";
 
@@ -55,19 +57,6 @@
         "view_actual_size" = "Meta+)";
         "view_zoom_in" = "Meta++";
         "view_zoom_out" = "Meta+_";
-      };
-
-      "services/org.kde.dolphin.desktop" = { _launch = "Meta+E"; };
-      "services/org.kde.konsole.desktop" = { _launch = "Meta+T"; };
-    };
-
-    configFile = {
-      kdeglobals = {
-        # Needed so we can use Page Up and Page Down for media control.
-        Shortcuts = {
-          Next = "";
-          Prior = "";
-        };
       };
     };
 
