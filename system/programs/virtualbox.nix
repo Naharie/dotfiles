@@ -4,7 +4,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    virtualbox
+    virtualboxWithExtpack
     linuxKernel.packages.linux_zen.virtualbox
   ];
 }
